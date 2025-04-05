@@ -87,14 +87,10 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nessa etapa, vamos trabalhar com a metdologia de Design Thinking para compreender com maior profundidade o problema a ser tratado. Nesse processo, vamos elaborar:
->
-> * **Matriz CSD**: também conhecida por Matriz de Alinhamento, é uma ferramenta utilizada no Design Thinking para organizar informações e facilitar o processo de tomada de decisão e solução de problemas;
-> * **Mapa de stakeholders**: ferramenta que nos permite compreender o grupo de pessoas e entidades que devemos estudar e conversar para entender mais sobre o problema
-> * **Entrevistas qualitativas**: série de entrevistas qualitativas para validar suposições e solucionar as dúvidas com as principais pessoas envolvidas;
-> * **Highlights de pesquisa**: um compilado do levantamento realizado por meio das entrevistas.
+![alt text](<img/Matriz CSD e Mapa de Stakeholders.png>)
+![alt text](<img/Entrevistas 1.png>) 
+![alt text](<img/Entrevistas 2.png>) 
+![alt text](img/Highlights.png)
 
 ## Etapa de Definição
 
@@ -102,16 +98,11 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Relacione as personas identificadas no seu projeto e os respectivos mapas de empatia. Lembre-se que você deve ser enumerar e descrever precisamente e de forma personalizada todos os principais envolvidos com a solução almeja.
->
-> **Orientações**:
->
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Criar personas (Hotmart)](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
+![alt text](<img/Persona 1.png>)
+![alt text](<img/Persona 2.png>)
+![alt text](<img/Persona 3.png>)
+![alt text](<img/Persona 4.png>)
+
 
 # Product Design
 
@@ -119,33 +110,15 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 ## Histórias de Usuários
 
-Com base na análise das personas foram identificadas as seguintes histórias de usuários:
-
-| EU COMO...`PERSONA` | QUERO/PRECISO ...`FUNCIONALIDADE`        | PARA ...`MOTIVO/VALOR`               |
-| --------------------- | ------------------------------------------ | -------------------------------------- |
-| Usuário do sistema   | Registrar minhas tarefas ⚠️ EXEMPLO ⚠️ | Não esquecer de fazê-las             |
-| Administrador         | Alterar permissões ⚠️ EXEMPLO ⚠️      | Permitir que possam administrar contas |
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
->
-> **Orientações**:
->
-> - [Histórias de usuários com exemplos e template](https://www.atlassian.com/br/agile/project-management/user-stories)
-> - [Como escrever boas histórias de usuário (User Stories)](https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac)
+![alt text](<img/Histórias Usuários 1.png>)
+![alt text](<img/Histórias Usuários 2.png>)
 
 ## Proposta de Valor
 
-**✳️✳️✳️ APRESENTE O DIAGRAMA DA PROPOSTA DE VALOR PARA CADA PERSONA ✳️✳️✳️**
-
-##### Proposta para Persona XPTO ⚠️ EXEMPLO ⚠️
-
-![Exemplo de proposta de valor](images/exemplo-proposta-valor.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O mapa da proposta de valor é uma ferramenta que nos ajuda a definir qual tipo de produto ou serviço melhor atende às personas definidas anteriormente.
+![alt text](<img/Mapa de Valor 1.png>)
+![alt text](<img/Mapa de Valor 2.png>)
+![alt text](<img/Mapa de Valor 3.png>)
+![alt text](<img/Mapa de Valor 4.png>)
 
 ## Requisitos
 
@@ -153,33 +126,32 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-| ID     | Descrição do Requisito                                   | Prioridade |
-| ------ | ---------------------------------------------------------- | ---------- |
-| RF-001 | Permitir que o usuário cadastre tarefas ⚠️ EXEMPLO ⚠️ | ALTA       |
-| RF-002 | Emitir um relatório de tarefas no mês ⚠️ EXEMPLO ⚠️ | MÉDIA     |
+ID	    Descrição do Requisito	                                        Prioridade
+RF-001	Permitir o cadastro de usuários (adotantes, protetores e ONGs).	ALTA
+RF-002	Permitir o cadastro de pets com informações detalhadas (nome, idade, raça, histórico, fotos).	ALTA
+RF-003	Fornecer um formulário de avaliação para os adotantes.	MÉDIA
+RF-004	Permitir busca e recomendação de pets com base no perfil do adotante.	ALTA
+RF-005	Oferecer um chat interno para comunicação entre adotantes e protetores.	ALTA
+RF-006	Possibilitar o acompanhamento pós-adoção com relatórios e envio de fotos.	MÉDIA
+RF-007	Incluir funcionalidades sociais como postagens, curtidas e comentários.	MÉDIA
+RF-008	Permitir moderação de usuários e postagens para garantir a segurança.	ALTA
+RF-009	Integrar eventos de adoção e campanhas organizadas por ONGs.	MÉDIA
+RF-010	Permitir doações e financiamento coletivo para ONGs e abrigos.	MÉDIA
 
 ### Requisitos não Funcionais
 
-| ID      | Descrição do Requisito                                                              | Prioridade |
-| ------- | ------------------------------------------------------------------------------------- | ---------- |
-| RNF-001 | O sistema deve ser responsivo para rodar em um dispositivos móvel ⚠️ EXEMPLO ⚠️ | MÉDIA     |
-| RNF-002 | Deve processar requisições do usuário em no máximo 3s ⚠️ EXEMPLO ⚠️          | BAIXA      |
+ID	    Descrição do Requisito	                                                     Prioridade
+RNF-001	O sistema deve ser responsivo e acessível em dispositivos móveis e desktops.	ALTA
+RNF-002	O sistema deve garantir alta disponibilidade e segurança dos dados.	ALTA
+RNF-003	O sistema deve ser intuitivo e de fácil usabilidade.	ALTA
+RNF-004	O sistema deve utilizar autenticação segura (OAuth, Firebase ou JWT).	ALTA
+RNF-005	O sistema deve suportar um grande número de usuários simultaneamente.	MÉDIA
+RNF-006	O sistema deve garantir a proteção dos dados pessoais dos usuários.	ALTA
+RNF-007	O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais.	MÉDIA
+RNF-008	O sistema deve ser escalável para futuras atualizações e melhorias.	MÉDIA
+RNF-009	O sistema deve oferecer suporte a múltiplos idiomas.	BAIXA
+RNF-010	O sistema deve utilizar tecnologias modernas para backend e frontend.	MÉDIA
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Os requisitos de um projeto são classificados em dois grupos:
->
-> - [Requisitos Funcionais (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
->   correspondem a uma funcionalidade que deve estar presente na plataforma (ex: cadastro de usuário).
-> - [Requisitos Não Funcionais (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
->   correspondem a uma característica técnica, seja de usabilidade, desempenho, confiabilidade, segurança ou outro (ex: suporte a dispositivos iOS e Android).
->
-> Lembre-se que cada requisito deve corresponder à uma e somente uma característica alvo da sua solução. Além disso, certifique-se de que todos os aspectos capturados nas Histórias de Usuário foram cobertos.
->
-> **Orientações**:
->
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
 
 ## Projeto de Interface
 
