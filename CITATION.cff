@@ -1,31 +1,38 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Adote.ME - Plataforma de Adoção de Animais
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Magalhães
+    given-names: Gabriel Mendonça Almeida
+  - family-names: Xavier
+    given-names: Gisele Câmara
+  - family-names: Ramalho
+    given-names: Matheus Gouvêa
+  - family-names: Araújo
+    given-names: Pedro Augusto Gomes de
+  - family-names: Sodré
+    given-names: Phillipe Wallace Rodrigues
+  - family-names: Domingos
+    given-names: Thalita Ágata
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Curto
+    given-names: Hayala Nepomuceno
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Diniz
+    given-names: Luciana Mara Freitas
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Maciel
+    given-names: Wesley Dias
 keywords:
-  - 
-  - 
-repository-code: 
+  - Adoção
+  - Animais
+  - Pets
+  - Plataforma digital
+  - Responsabilidade social
+repository-code: https://github.com/usuario/repositorio-adote-me
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2025-04-04
