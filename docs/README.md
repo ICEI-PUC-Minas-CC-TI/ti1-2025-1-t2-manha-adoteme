@@ -2,13 +2,15 @@
 
 Informações básicas do projeto.
 
-* **Projeto:** [NOME DO PROJETO]
-* **Repositório GitHub:** [LINK PARA O REPOSITÓRIO NO GITHUB]
+* **Projeto:** Adote.ME
+* **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-CC-TI/ti1-2025-1-t2-manha-adoteme
 * **Membros da equipe:**
-
-  * [Fulano](https://github.com/fulano) ⚠️ EXEMPLO ⚠️
-  * [Beltrano](https://github.com/beltrano) ⚠️ EXEMPLO ⚠️
-  * [Cicrano](https://github.com/cicrano) ⚠️ EXEMPLO ⚠️
+  * [Gabriel Mendonça Almeida Magalhães](https://github.com/)
+  * [Gisele Câmara Xavier](https://github.com/giselecx) 
+  * [Matheus Gouvêa Ramalho](https://github.com/matheussgr) 
+  * [Pedro Augusto Gomes de Araújo](https://github.com/PedroAugustoPucMG) 
+  * [Phillipe Wallace Rodrigues Sodré](https://github.com/)
+  * [Thalita Ágata Domingos](https://github.com/)
 
 A documentação do projeto é estruturada da seguinte forma:
 
@@ -30,56 +32,58 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Nesse momento você deve apresentar o problema que a sua aplicação deve resolver. No entanto, não é a hora de comentar sobre a aplicação. Descreva também o contexto em que essa aplicação será usada, se houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de fato existir, pois ainda não é a hora de apresentar requisitos detalhados ou projetos.
->
-> **Orientações**:
->
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+A adoção de animais no Brasil enfrenta diversos obstáculos que dificultam o processo tanto para os adotantes quanto para as instituições envolvidas. Atualmente, não existe uma plataforma centralizada e confiável que reúna informações atualizadas sobre pets disponíveis para adoção, abrigos, ONGs e protetores independentes.
+
+Essa fragmentação de informações dificulta o acesso dos interessados, que muitas vezes desistem da adoção por não saberem por onde começar ou por se depararem com processos burocráticos, pouco intuitivos e, em alguns casos, excludentes.
+
+Além disso, muitos adotantes não têm clareza sobre os custos e responsabilidades envolvidos no cuidado com um animal, o que pode gerar abandonos futuros. 
+
+Nesse cenário, surge a necessidade de uma solução digital que promova a aproximação entre adotantes e instituições, desburocratize o processo e forneça informações relevantes e educativas sobre adoção responsável.
 
 ## Objetivos
 
 **✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
->
-> **Orientações**:
->
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+Objetivo Geral:
+Desenvolver uma plataforma digital que facilite e incentive a adoção responsável de pets, conectando adotantes a abrigos, ONGs e protetores independentes, de forma acessível, segura e intuitiva.
+
+Objetivos Específicos:
+
+Centralizar informações de animais disponíveis para adoção e instituições parceiras.
+
+Reduzir a burocracia e simplificar o processo de adoção.
+
+Fornecer orientações educativas sobre cuidados com os pets e responsabilidades do adotante.
+
+Oferecer suporte informativo sobre os custos iniciais da adoção.
 
 ## Justificativa
 
 **✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
->
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Orientações**:
->
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+A escolha por desenvolver esta solução surgiu a partir da identificação de um problema social cada vez mais evidente. No Brasil, o processo de adoção de animais ainda enfrenta muitas barreiras, como a falta de acesso à informação e a burocracia envolvida. Enquanto isso, milhares de animais permanecem em abrigos ou nas ruas, muitas vezes sem visibilidade e com poucas chances de encontrar um lar.
+
+Apesar da existência de ONGs e iniciativas individuais que lutam pela causa animal, ainda falta uma ferramenta eficiente que conecte essas iniciativas à população interessada em adotar. Ao unir tecnologia com responsabilidade social, a plataforma visa preencher essa lacuna, ampliando as possibilidades de adoção e garantindo mais bem-estar aos animais.
+
+A solução proposta tem impacto direto não apenas no bem-estar dos pets, mas também na vida das pessoas, ao proporcionar uma experiência de adoção mais humana, informada e segura.
 
 ## Público-Alvo
 
 **✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Descreva quais são as pessoas que usarão a sua aplicação indicando os diferentes perfis. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição textual, ou diagramas de personas, mapa de stakeholders, ou como o grupo achar mais conveniente.
->
-> **Orientações**:
->
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+O público-alvo da plataforma é composto por diferentes perfis:
+
+Pessoas interessadas em adotar: Buscam um meio confiável, prático e seguro para encontrar um novo companheiro..
+
+Veterinários e clínicas parceiras: Podem oferecer cuidados básicos aos animais adotados e suporte técnico aos adotantes.
+
+Voluntários e protetores independentes: Atuam no resgate e cuidado inicial dos animais e precisam de apoio para promover as adoções.
+
+Educadores e agentes de conscientização: Trabalham com a divulgação de informações sobre adoção consciente e cuidados com os pets.
+
+Adotantes já experientes: Que podem compartilhar feedback, ajudar na orientação de novos adotantes e continuar conectados à rede de apoio pós-adoção.
+
+Esses diferentes perfis demonstram a necessidade de uma solução abrangente, inclusiva e colaborativa, capaz de atender a múltiplas demandas dentro de um único ecossistema digital.
 
 # Product Discovery
 
