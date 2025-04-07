@@ -87,10 +87,10 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
 
-![alt text](<img/Matriz CSD e Mapa de Stakeholders.png>)
-![alt text](<img/Entrevistas 1.png>) 
-![alt text](<img/Entrevistas 2.png>) 
-![alt text](img/Highlights.png)
+![alt text](<images/Matriz CSD e Mapa de Stakeholders.png>)
+![alt text](<images/Entrevistas 1.png>)
+![alt text](<images/Entrevistas 2.png>)
+![alt text](images/Highlights.png)
 
 ## Etapa de Definição
 
@@ -98,10 +98,10 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 **✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
 
-![alt text](<img/Persona 1.png>)
-![alt text](<img/Persona 2.png>)
-![alt text](<img/Persona 3.png>)
-![alt text](<img/Persona 4.png>)
+![alt text](<images/Persona 1.png>)
+![alt text](<images/Persona 2.png>)
+![alt text](<images/Persona 3.png>)
+![alt text](<images/Persona 4.png>)
 
 
 # Product Design
@@ -110,15 +110,18 @@ Nesse momento, vamos transformar os insights e validações obtidos em soluçõe
 
 ## Histórias de Usuários
 
-![alt text](<img/Histórias Usuários 1.png>)
-![alt text](<img/Histórias Usuários 2.png>)
+![alt text](<images/Histórias Usuários 1.png>)
+![alt text](<images/Histórias Usuários 1.png>)
+
 
 ## Proposta de Valor
 
-![alt text](<img/Mapa de Valor 1.png>)
-![alt text](<img/Mapa de Valor 2.png>)
-![alt text](<img/Mapa de Valor 3.png>)
-![alt text](<img/Mapa de Valor 4.png>)
+![alt text](<images/Mapa de Valor 1.png>)
+![alt text](<images/Mapa de Valor 2.png>)
+![alt text](<images/Mapa de Valor 3.png>)
+![alt text](<images/Mapa de Valor 4.png>)
+
+
 
 ## Requisitos
 
@@ -126,31 +129,36 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-ID	    Descrição do Requisito	                                        Prioridade
-RF-001	Permitir o cadastro de usuários (adotantes, protetores e ONGs).	ALTA
-RF-002	Permitir o cadastro de pets com informações detalhadas (nome, idade, raça, histórico, fotos).	ALTA
-RF-003	Fornecer um formulário de avaliação para os adotantes.	MÉDIA
-RF-004	Permitir busca e recomendação de pets com base no perfil do adotante.	ALTA
-RF-005	Oferecer um chat interno para comunicação entre adotantes e protetores.	ALTA
-RF-006	Possibilitar o acompanhamento pós-adoção com relatórios e envio de fotos.	MÉDIA
-RF-007	Incluir funcionalidades sociais como postagens, curtidas e comentários.	MÉDIA
-RF-008	Permitir moderação de usuários e postagens para garantir a segurança.	ALTA
-RF-009	Integrar eventos de adoção e campanhas organizadas por ONGs.	MÉDIA
-RF-010	Permitir doações e financiamento coletivo para ONGs e abrigos.	MÉDIA
+| ID | Descrição do Requisito | Prioridade |
+| --- | --- | --- |
+| RF-001 | Permitir o cadastro de usuários (adotantes, protetores e ONGs) | ALTA |
+| RF-002 | Permitir o cadastro de pets com informações detalhadas (nome, idade, raça, histórico, fotos) | ALTA |
+| RF-003 | Fornecer um formulário de avaliação para os adotantes | MÉDIA |
+| RF-004 | Permitir busca e recomendação de pets com base no perfil do adotante | ALTA |
+| RF-005 | Oferecer um chat interno para comunicação entre adotantes e protetores | ALTA |
+| RF-006 | Possibilitar o acompanhamento pós-adoção com relatórios e envio de fotos | MÉDIA |
+| RF-007 | Incluir funcionalidades sociais como postagens, curtidas e comentários | MÉDIA |
+| RF-008 | Permitir moderação de usuários e postagens para garantir a segurança | ALTA |
+| RF-009 | Integrar eventos de adoção e campanhas organizadas por ONGs | MÉDIA |
+| RF-010 | Permitir doações e financiamento coletivo para ONGs e abrigos | MÉDIA |
+
+
 
 ### Requisitos não Funcionais
 
-ID	    Descrição do Requisito	                                                     Prioridade
-RNF-001	O sistema deve ser responsivo e acessível em dispositivos móveis e desktops.	ALTA
-RNF-002	O sistema deve garantir alta disponibilidade e segurança dos dados.	ALTA
-RNF-003	O sistema deve ser intuitivo e de fácil usabilidade.	ALTA
-RNF-004	O sistema deve utilizar autenticação segura (OAuth, Firebase ou JWT).	ALTA
-RNF-005	O sistema deve suportar um grande número de usuários simultaneamente.	MÉDIA
-RNF-006	O sistema deve garantir a proteção dos dados pessoais dos usuários.	ALTA
-RNF-007	O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais.	MÉDIA
-RNF-008	O sistema deve ser escalável para futuras atualizações e melhorias.	MÉDIA
-RNF-009	O sistema deve oferecer suporte a múltiplos idiomas.	BAIXA
-RNF-010	O sistema deve utilizar tecnologias modernas para backend e frontend.	MÉDIA
+
+| ID | Descrição do Requisito | Prioridade |
+| --- | --- | --- |
+| RNF-001 | O sistema deve ser responsivo e acessível em dispositivos móveis e desktops | ALTA |
+| RNF-002 | O sistema deve garantir alta disponibilidade e segurança dos dados | ALTA |
+| RNF-003 | O sistema deve ser intuitivo e de fácil usabilidade | ALTA |
+| RNF-004 | O sistema deve utilizar autenticação segura (OAuth, Firebase ou JWT) | ALTA |
+| RNF-005 | O sistema deve suportar um grande número de usuários simultaneamente | MÉDIA |
+| RNF-006 | O sistema deve garantir a proteção dos dados pessoais dos usuários | MÉDIA |
+| RNF-007 | O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais | MÉDIA |
+| RNF-008 | O sistema deve ser escalável para futuras atualizações e melhorias | MÉDIA |
+| RNF-009 | O sistema deve oferecer suporte a múltiplos idiomas | BAIXA |
+| RNF-010 | O sistema deve utilizar tecnologias modernas para backend e frontend | MÉDIA |
 
 
 ## Projeto de Interface
@@ -161,50 +169,18 @@ Artefatos relacionados com a interface e a interacão do usuário na proposta de
 
 Estes são os protótipos de telas do sistema.
 
-**✳️✳️✳️ COLOQUE AQUI OS PROTÓTIPOS DE TELAS COM TÍTULO E DESCRIÇÃO ✳️✳️✳️**
+![alt text](<images/Wireframes 1.png>)
+![alt text](<images/Wireframes 2.png>)
+![alt text](<images/Wireframes 3.png>)
 
-##### TELA XPTO ⚠️ EXEMPLO ⚠️
-
-Descrição para a tela XPTO
-
-![Exemplo de wireframe](images/exemplo-wireframe.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Wireframes são protótipos das telas da aplicação usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante ao layout de elementos fundamentais na interface.
->
-> **Orientações**:
->
-> - [Ferramentas de Wireframes](https://rockcontent.com/blog/wireframes/)
-> - [Figma](https://www.figma.com/)
-> - [Adobe XD](https://www.adobe.com/br/products/xd.html#scroll)
-> - [MarvelApp](https://marvelapp.com/developers/documentation/tutorials/)
 
 ### User Flow
 
-**✳️✳️✳️ COLOQUE AQUI O DIAGRAMA DE FLUXO DE TELAS ✳️✳️✳️**
-
-![Exemplo de fluxo de telas](images/exemplo-userflow.png)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapear todo fluxo de telas do site ou app. Essa técnica funciona para alinhar os caminhos e as possíveis ações que o usuário pode fazer junto com os membros de sua equipe.
->
-> **Orientações**:
->
-> - [User Flow: O Quê É e Como Fazer?](https://medium.com/7bits/fluxo-de-usu%C3%A1rio-user-flow-o-que-%C3%A9-como-fazer-79d965872534)
-> - [User Flow vs Site Maps](http://designr.com.br/sitemap-e-user-flow-quais-as-diferencas-e-quando-usar-cada-um/)
-> - [Top 25 User Flow Tools &amp; Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
+![alt text](<images/Fluxo de Usuários.png>)
 
 ### Protótipo Interativo
 
-**✳️✳️✳️ COLOQUE AQUI UM IFRAME COM SEU PROTÓTIPO INTERATIVO ✳️✳️✳️**
-
-✅ [Protótipo Interativo (MarvelApp)](https://marvelapp.com/prototype/4hd6091?emb=1&iosapp=false&frameless=false)  ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Um protótipo interativo apresenta o projeto de interfaces e permite ao usuário navegar pelas funcionalidades como se estivesse lidando com o software pronto. Utilize as mesmas ferramentas de construção de wireframes para montagem do seu protótipo interativo. Inclua o link para o protótipo interativo do projeto.
+https://www.figma.com/proto/9nqgkjLYdcLDgqU3qD0Ys5/TI-1--?node-id=1-1130&p=f&t=zol3TUu77AKOu688-1&scaling=contain&content-scaling=fixed&page-id=0%3A1
 
 # Metodologia
 
