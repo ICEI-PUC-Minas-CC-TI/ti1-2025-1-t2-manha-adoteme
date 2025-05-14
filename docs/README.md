@@ -30,7 +30,6 @@ Detalhes sobre o espaço de problema, os objetivos do projeto, sua justificativa
 
 ## Problema
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
 A adoção de animais no Brasil enfrenta diversos obstáculos que dificultam o processo tanto para os adotantes quanto para as instituições envolvidas. Atualmente, não existe uma plataforma centralizada e confiável que reúna informações atualizadas sobre pets disponíveis para adoção, abrigos, ONGs e protetores independentes.
 
@@ -42,7 +41,7 @@ Nesse cenário, surge a necessidade de uma solução digital que promova a aprox
 
 ## Objetivos
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+
 
 Objetivo Geral:
 Desenvolver uma plataforma digital que facilite e incentive a adoção responsável de pets, conectando adotantes a abrigos, ONGs e protetores independentes, de forma acessível, segura e intuitiva.
@@ -59,7 +58,6 @@ Oferecer suporte informativo sobre os custos iniciais da adoção.
 
 ## Justificativa
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
 
 A escolha por desenvolver esta solução surgiu a partir da identificação de um problema social cada vez mais evidente. No Brasil, o processo de adoção de animais ainda enfrenta muitas barreiras, como a falta de acesso à informação e a burocracia envolvida. Enquanto isso, milhares de animais permanecem em abrigos ou nas ruas, muitas vezes sem visibilidade e com poucas chances de encontrar um lar.
 
@@ -69,7 +67,7 @@ A solução proposta tem impacto direto não apenas no bem-estar dos pets, mas t
 
 ## Público-Alvo
 
-**✳️✳️✳️ COLOQUE AQUI O SEU TEXTO ✳️✳️✳️**
+
 
 O público-alvo da plataforma é composto por diferentes perfis:
 
@@ -89,7 +87,6 @@ Esses diferentes perfis demonstram a necessidade de uma solução abrangente, in
 
 ## Etapa de Entendimento
 
-**✳️✳️✳️ APRESENTE OS ARTEFATOS DA ETAPA  ✳️✳️✳️**
 
 ![alt text](<images/Matriz CSD e Mapa de Stakeholders.png>)
 ![alt text](<images/Entrevistas 1.png>)
@@ -100,7 +97,6 @@ Esses diferentes perfis demonstram a necessidade de uma solução abrangente, in
 
 ### Personas
 
-**✳️✳️✳️ APRESENTE OS DIAGRAMAS DE PERSONAS ✳️✳️✳️**
 
 ![alt text](<images/Persona 1.png>)
 ![alt text](<images/Persona 2.png>)
