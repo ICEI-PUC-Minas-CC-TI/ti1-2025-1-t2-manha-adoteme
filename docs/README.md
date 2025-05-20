@@ -241,15 +241,15 @@ Permite a inclusão, leitura, alteração e exclusão de ONGS para o sistema
 
 ##### Funcionalidade 1 - Ferramente de busca: 
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+Permite a inserir termos como nome do pet, raça oupalavras-chave. Aciona uma busca textual que pode ser combinada com filtros.
 
 * **Instruções de acesso:**
   * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Acesse o menu principal e vá na barra de busca
+  * Em seguida, escreva o que procura ou utilize os filtros para facilitar sua busca
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![Tela de Funcionalidade](images/Funcinalidades_busca.png)
 
 
 
