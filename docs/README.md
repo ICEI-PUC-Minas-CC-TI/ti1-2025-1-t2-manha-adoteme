@@ -227,15 +227,17 @@ Permite a inclusão, leitura, alteração e exclusão de pets para o sistema
 
 ##### Funcionalidade 2 - Cadastro de ONG's
 
-Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+Permite a inclusão, leitura, alteração e exclusão de ONGS para o sistema
+
 
 * **Instruções de acesso:**
   * Abra o site e efetue o login
   * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção Contatos
+  * Em seguida, escolha a opção ONGS
+  * Cadastre a sua ONG
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+![Tela de Funcionalidade](images/funcionalidade_ongs.jpg)
 
 ##### Funcionalidade 1 - Ferramente de busca: 
 
@@ -286,22 +288,19 @@ Pets da aplicação
 
 ```json
     {
-      "nome": "Pipoca",
-      "especie": "Cachorro",
-      "raca": "Border Collie ",
-      "idade": "5",
-      "sexo": "Fêmea",
-      "porte": "Grande",
-      "peso": "19",
-      "vacinado": "Sim",
-      "vermifugado": "Sim",
-      "castrado": "Sim",
-      "condicao": "Nenhuma",
-      "temperamento": "Dócil",
-      "criancas": "Sim",
-      "outrosPets": "Sim",
-      "localizacao": "Rua Montanha Branca, 89",
-      "id": "1"
+      
+      "id": 1,
+      "nome": "Amigos dos Animais",
+      "telefone": "(31) 99999-0001",
+      "email": "contato@amigosanimais.org",
+      "cidade": "Belo Horizonte",
+      "categoria": "Adoção",
+      "site": "https://www.amigosanimais.org",
+      "responsavel": "Carla Souza",
+      "cnpj": "12.345.678/0001-90",
+      "fundacao": "2012-05-10",
+      "descricao": "Trabalhamos com a adoção responsável de cães e gatos resgatados."
+    
     }
   
 ```

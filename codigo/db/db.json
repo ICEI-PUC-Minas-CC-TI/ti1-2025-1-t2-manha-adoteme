@@ -216,5 +216,72 @@
       "localizacao": "Rua do Luar, 88",
       "id": "12"
     }
+  ],
+  "ongs": [
+    {
+      "id": 1,
+      "nome": "Amigos dos Animais",
+      "telefone": "(31) 99999-0001",
+      "email": "contato@amigosanimais.org",
+      "cidade": "Belo Horizonte",
+      "categoria": "Adoção",
+      "site": "https://www.amigosanimais.org",
+      "responsavel": "Carla Souza",
+      "cnpj": "12.345.678/0001-90",
+      "fundacao": "2012-05-10",
+      "descricao": "Trabalhamos com a adoção responsável de cães e gatos resgatados."
+    },
+    {
+      "id": 2,
+      "nome": "Projeto Patinhas Felizes",
+      "telefone": "(11) 98888-1234",
+      "email": "contato@patinhasfelizes.org",
+      "cidade": "São Paulo",
+      "categoria": "Resgate",
+      "site": "https://www.patinhasfelizes.org",
+      "responsavel": "João Mendes",
+      "cnpj": "98.765.432/0001-11",
+      "fundacao": "2015-08-22",
+      "descricao": "Resgatamos animais em situação de abandono e maus-tratos."
+    },
+    {
+      "id": 3,
+      "nome": "Lar dos Peludos",
+      "telefone": "(31) 97777-4567",
+      "email": "larpeludos@abrigo.org",
+      "cidade": "Betim",
+      "categoria": "Abrigo",
+      "site": "https://www.larpeludos.org",
+      "responsavel": "Fernanda Lima",
+      "cnpj": "56.789.012/0001-33",
+      "fundacao": "2018-03-15",
+      "descricao": "Oferecemos abrigo temporário e assistência veterinária a cães abandonados."
+    },
+    {
+      "id": 4,
+      "nome": "SOS Bichinhos",
+      "telefone": "(21) 96543-7890",
+      "email": "sos@bichinhos.org",
+      "cidade": "Rio de Janeiro",
+      "categoria": "Resgate",
+      "site": "https://www.sosbichinhos.org",
+      "responsavel": "Ricardo Alves",
+      "cnpj": "10.112.334/0001-55",
+      "fundacao": "2010-11-01",
+      "descricao": "Atuação rápida no resgate de animais em risco."
+    },
+    {
+      "id": 5,
+      "nome": "Cãopanheiros",
+      "telefone": "(41) 91234-5678",
+      "email": "contato@caopanheiros.org",
+      "cidade": "Curitiba",
+      "categoria": "Adoção",
+      "site": "https://www.caopanheiros.org",
+      "responsavel": "Marina Silva",
+      "cnpj": "45.678.901/0001-66",
+      "fundacao": "2019-06-30",
+      "descricao": "Promovemos feiras de adoção e campanhas de castração."
+    }
   ]
 }

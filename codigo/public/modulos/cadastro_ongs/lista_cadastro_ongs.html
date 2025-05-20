@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Listagem de ONGs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap, Font Awesome e Google Fonts -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --laranja-principal: #FF6F00;
+      --laranja-claro: #FFA726;
+      --cinza-fundo: #fdf6f0;
+      --branco: #ffffff;
+    }
+
+    body {
+      background-color: var(--cinza-fundo);
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+    }
+
+    h1 {
+      color: var(--laranja-principal);
+      font-weight: 700;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .container {
+      background-color: var(--branco);
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+    }
+
+    .btn-primary {
+      background-color: var(--laranja-principal);
+      border-color: var(--laranja-principal);
+      border-radius: 30px;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--laranja-claro);
+      border-color: var(--laranja-claro);
+    }
+
+    .form-inline select {
+      border-radius: 30px;
+      padding-left: 15px;
+    }
+
+    .table {
+      background-color: var(--branco);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .table thead {
+      background-color: var(--laranja-principal);
+      color: white;
+    }
+
+    .fa-paw {
+      color: var(--laranja-claro);
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1><i class="fas fa-paw"></i>Listagem de ONGs de Pets</h1>
+
+    <div class="text-right">
+      <a href="ongs.html" class="btn btn-primary mb-3">
+        <i class="fas fa-arrow-left"></i> Voltar ao Cadastro
+      </a>
+    </div>
+
+    <form class="form-inline mb-3">
+      <select id="filtro_cidade" class="form-control mr-2">
+        <option value="">Filtrar por Cidade</option>
+        <option value="Belo Horizonte">Belo Horizonte</option>
+        <option value="Betim">Betim</option>
+        <option value="São Paulo">São Paulo</option>
+      </select>
+      <select id="filtro_categoria" class="form-control mr-2">
+        <option value="">Filtrar por Categoria</option>
+        <option value="Resgate">Resgate</option>
+        <option value="Adoção">Adoção</option>
+        <option value="Abrigo">Abrigo</option>
+      </select>
+    </form>
+
+    <table class="table table-striped" id="grid-contatos">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nome</th>
+          <th>Telefone</th>
+          <th>Email</th>
+          <th>Cidade</th>
+          <th>Categoria</th>
+          <th>Website</th>
+        </tr>
+      </thead>
+      <tbody id="table-contatos"></tbody>
+    </table>
+  </div>
+
+  <script src="ongs.js"></script>
+</body>
+</html>
