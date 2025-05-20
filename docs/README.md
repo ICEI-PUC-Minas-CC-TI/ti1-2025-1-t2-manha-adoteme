@@ -22,7 +22,7 @@ A documentação do projeto é estruturada da seguinte forma:
 6. Solução
 7. Referências Bibliográficas
 
-✅ [Documentação de Design Thinking (MIRO)](files/processo-dt.pdf)
+
 
 # Contexto
 
@@ -43,10 +43,10 @@ Nesse cenário, surge a necessidade de uma solução digital que promova a aprox
 
 
 
-Objetivo Geral:
+* Objetivo Geral:
 Desenvolver uma plataforma digital que facilite e incentive a adoção responsável de pets, conectando adotantes a abrigos, ONGs e protetores independentes, de forma acessível, segura e intuitiva.
 
-Objetivos Específicos:
+* Objetivos Específicos:
 
 Centralizar informações de animais disponíveis para adoção e instituições parceiras.
 
@@ -133,15 +133,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | --- | --- | --- |
 | RF-001 | Permitir o cadastro de usuários (adotantes, protetores e ONGs) | ALTA |
 | RF-002 | Permitir o cadastro de pets com informações detalhadas (nome, idade, raça, histórico, fotos) | ALTA |
-| RF-003 | Fornecer um formulário de avaliação para os adotantes | MÉDIA |
-| RF-004 | Permitir busca e recomendação de pets com base no perfil do adotante | ALTA |
-| RF-005 | Oferecer um chat interno para comunicação entre adotantes e protetores | ALTA |
-| RF-006 | Possibilitar o acompanhamento pós-adoção com relatórios e envio de fotos | MÉDIA |
-| RF-007 | Incluir funcionalidades sociais como postagens, curtidas e comentários | MÉDIA |
-| RF-008 | Permitir moderação de usuários e postagens para garantir a segurança | ALTA |
-| RF-009 | Integrar eventos de adoção e campanhas organizadas por ONGs | MÉDIA |
-| RF-010 | Permitir doações e financiamento coletivo para ONGs e abrigos | MÉDIA |
-
+| RF-003 | Permitir busca de pets | ALTA |
+| RF-004 | Permitir moderação de usuários e postagens para garantir a segurança | ALTA |
 
 
 ### Requisitos não Funcionais
@@ -152,13 +145,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RNF-001 | O sistema deve ser responsivo e acessível em dispositivos móveis e desktops | ALTA |
 | RNF-002 | O sistema deve garantir alta disponibilidade e segurança dos dados | ALTA |
 | RNF-003 | O sistema deve ser intuitivo e de fácil usabilidade | ALTA |
-| RNF-004 | O sistema deve utilizar autenticação segura (OAuth, Firebase ou JWT) | ALTA |
-| RNF-005 | O sistema deve suportar um grande número de usuários simultaneamente | MÉDIA |
-| RNF-006 | O sistema deve garantir a proteção dos dados pessoais dos usuários | MÉDIA |
-| RNF-007 | O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais | MÉDIA |
-| RNF-008 | O sistema deve ser escalável para futuras atualizações e melhorias | MÉDIA |
-| RNF-009 | O sistema deve oferecer suporte a múltiplos idiomas | BAIXA |
-| RNF-010 | O sistema deve utilizar tecnologias modernas para backend e frontend | MÉDIA |
+| RNF-004 | O sistema deve garantir a proteção dos dados pessoais dos usuários | MÉDIA |
+| RNF-005 | O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais | MÉDIA |
+| RNF-006 | O sistema deve ser escalável para futuras atualizações e melhorias | MÉDIA |
+| RNF-007 | O sistema deve utilizar tecnologias modernas para backend e frontend | MÉDIA |
 
 
 ## Projeto de Interface
@@ -194,7 +184,6 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | --------------------------- | ---------- | -------------------------------------------------- |
 | Processo de Design Thinking | Miro       | https://www.canva.com/design/DAGjiSz5Dq0/Vdoa-w5IkelpkL5FbgK9zQ/edit?utm_content=DAGjiSz5Dq0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton        |
 | Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-CC-TI/ti1-2025-1-t2-manha-adoteme.git      |
-| Hospedagem do site          | Render     | https://site.render.com/XXXXXXX ⚠️ EXEMPLO ⚠️ |
 | Protótipo Interativo       | MarvelApp  | https://www.figma.com/proto/9nqgkjLYdcLDgqU3qD0Ys5/TI-1--?node-id=1-1130&p=f&t=zol3TUu77AKOu688-1&scaling=contain&content-scaling=fixed&page-id=0%3A1   |
 |                             |            |                                                    |
 
@@ -223,11 +212,23 @@ O vídeo a seguir traz uma apresentação do problema que a equipe está tratand
 
 Esta seção apresenta as funcionalidades da solução.Info
 
-##### Funcionalidade 1 - Cadastro de Contatos ⚠️ EXEMPLO ⚠️
+##### Funcionalidade 1 - Cadastro de Pets 
+
+Permite a inclusão, leitura, alteração e exclusão de pets para o sistema
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Entre no seu perfil
+  * Clique em "Meus Pets"
+  * Clique em "Registrar um Pet"
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/funcionalidade_pets.png)
+
+##### Funcionalidade 2 - Cadastro de ONG's
 
 Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
 
-* **Estrutura de dados:** [Contatos](#ti_ed_contatos)
 * **Instruções de acesso:**
   * Abra o site e efetue o login
   * Acesse o menu principal e escolha a opção Cadastros
@@ -236,88 +237,122 @@ Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
 
 ![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
 
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente cada uma das funcionalidades que a aplicação fornece tanto para os usuários quanto aos administradores da solução.
->
-> Inclua, para cada funcionalidade, itens como: (1) titulos e descrição da funcionalidade; (2) Estrutura de dados associada; (3) o detalhe sobre as instruções de acesso e uso.
+##### Funcionalidade 1 - Ferramente de busca: 
+
+Permite a inclusão, leitura, alteração e exclusão de contatos para o sistema
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Acesse o menu principal e escolha a opção Cadastros
+  * Em seguida, escolha a opção Contatos
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/exemplo-funcionalidade.png)
+
+
 
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
 
-##### Estrutura de Dados - Contatos   ⚠️ EXEMPLO ⚠️
+##### Estrutura de Dados - Pets   
 
-Contatos da aplicação
+Pets da aplicação
 
 ```json
-  {
-    "id": 1,
-    "nome": "Leanne Graham",
-    "cidade": "Belo Horizonte",
-    "categoria": "amigos",
-    "email": "Sincere@april.biz",
-    "telefone": "1-770-736-8031",
-    "website": "hildegard.org"
-  }
+    {
+      "nome": "Pipoca",
+      "especie": "Cachorro",
+      "raca": "Border Collie ",
+      "idade": "5",
+      "sexo": "Fêmea",
+      "porte": "Grande",
+      "peso": "19",
+      "vacinado": "Sim",
+      "vermifugado": "Sim",
+      "castrado": "Sim",
+      "condicao": "Nenhuma",
+      "temperamento": "Dócil",
+      "criancas": "Sim",
+      "outrosPets": "Sim",
+      "localizacao": "Rua Montanha Branca, 89",
+      "id": "1"
+    }
+  
+```
+##### Estrutura de Dados - ONG's   
+
+Pets da aplicação
+
+```json
+    {
+      "nome": "Pipoca",
+      "especie": "Cachorro",
+      "raca": "Border Collie ",
+      "idade": "5",
+      "sexo": "Fêmea",
+      "porte": "Grande",
+      "peso": "19",
+      "vacinado": "Sim",
+      "vermifugado": "Sim",
+      "castrado": "Sim",
+      "condicao": "Nenhuma",
+      "temperamento": "Dócil",
+      "criancas": "Sim",
+      "outrosPets": "Sim",
+      "localizacao": "Rua Montanha Branca, 89",
+      "id": "1"
+    }
+  
+```
+##### Estrutura de Dados - Busca  
+
+Pets da aplicação
+
+```json
+    {
+      "nome": "Pipoca",
+      "especie": "Cachorro",
+      "raca": "Border Collie ",
+      "idade": "5",
+      "sexo": "Fêmea",
+      "porte": "Grande",
+      "peso": "19",
+      "vacinado": "Sim",
+      "vermifugado": "Sim",
+      "castrado": "Sim",
+      "condicao": "Nenhuma",
+      "temperamento": "Dócil",
+      "criancas": "Sim",
+      "outrosPets": "Sim",
+      "localizacao": "Rua Montanha Branca, 89",
+      "id": "1"
+    }
   
 ```
 
-##### Estrutura de Dados - Usuários  ⚠️ EXEMPLO ⚠️
-
-Registro dos usuários do sistema utilizados para login e para o perfil do sistema
-
-```json
-  {
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    email: "admin@abc.com",
-    id: "eed55b91-45be-4f2c-81bc-7686135503f9",
-    login: "admin",
-    nome: "Administrador do Sistema",
-    senha: "123"
-  }
-```
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente as estruturas de dados utilizadas na solução tanto para dados utilizados na essência da aplicação quanto outras estruturas que foram criadas para algum tipo de configuração
->
-> Nomeie a estrutura, coloque uma descrição sucinta e apresente um exemplo em formato JSON.
->
-> **Orientações:**
->
-> * [JSON Introduction](https://www.w3schools.com/js/js_json_intro.asp)
-> * [Trabalhando com JSON - Aprendendo desenvolvimento web | MDN](https://developer.mozilla.org/pt-BR/docs/Learn/JavaScript/Objects/JSON)
 
 ## Módulos e APIs
 
 Esta seção apresenta os módulos e APIs utilizados na solução
 
-**Images**:
-
-* Unsplash - [https://unsplash.com/](https://unsplash.com/) ⚠️ EXEMPLO ⚠️
-
 **Fonts:**
 
-* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) ⚠️ EXEMPLO ⚠️
+* Icons Font Face - [https://fontawesome.com/](https://fontawesome.com/) 
 
 **Scripts:**
 
-* jQuery - [http://www.jquery.com/](http://www.jquery.com/) ⚠️ EXEMPLO ⚠️
-* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) ⚠️ EXEMPLO ⚠️
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> Apresente os módulos e APIs utilizados no desenvolvimento da solução. Inclua itens como: (1) Frameworks, bibliotecas, módulos, etc. utilizados no desenvolvimento da solução; (2) APIs utilizadas para acesso a dados, serviços, etc.
+* jQuery - [http://www.jquery.com/](http://www.jquery.com/) 
+* Bootstrap 4 - [http://getbootstrap.com/](http://getbootstrap.com/) 
 
 # Referências
 
-https://www.adotepetz.com.br/
-https://www.amigonaosecompra.com.br/
-https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/
-https://resultadosdigitais.com.br/blog/persona-o-que-e/
-https://rockcontent.com/blog/personas/
-https://blog.hotmart.com/pt-br/como-criar-persona-negocio/
-https://www.atlassian.com/br/agile/project-management/user-stories
-https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac
-https://codificar.com.br/requisitos-funcionais-nao-funcionais/
+* https://www.adotepetz.com.br/
+* https://www.amigonaosecompra.com.br/
+* https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/
+* https://resultadosdigitais.com.br/blog/persona-o-que-e/
+* https://rockcontent.com/blog/personas/
+* https://blog.hotmart.com/pt-br/como-criar-persona-negocio/
+* https://www.atlassian.com/br/agile/project-management/user-stories
+* https://medium.com/vertice/como-escrever-boas-users-stories-hist%C3%B3rias-de-usu%C3%A1rios-b29c75043fac
+* https://codificar.com.br/requisitos-funcionais-nao-funcionais/
