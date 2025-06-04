@@ -304,7 +304,7 @@ Pets da aplicação
 ```
 ##### Estrutura de Dados - ONG's   
 
-Pets da aplicação
+Instituições
 
 ```json
     {
@@ -326,7 +326,6 @@ Pets da aplicação
 ```
 ##### Estrutura de Dados - Busca  
 
-Pets da aplicação
 
 ```json
     {
