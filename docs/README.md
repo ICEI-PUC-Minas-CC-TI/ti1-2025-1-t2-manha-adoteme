@@ -262,6 +262,16 @@ Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o 
 
 ![Tela de Funcionalidade](images/Funcinalidades_busca.png)
 
+##### Funcionalidade 5 - Home do Site:
+
+Tela inicial que os usuários logados estarão permitidos a ver e utilizar
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Será direcionado para a Home do nosso site
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/HOME.ADOTEME.jpg)
+
 
 ## Estruturas de Dados
 
