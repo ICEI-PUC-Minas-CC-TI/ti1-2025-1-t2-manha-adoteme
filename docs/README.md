@@ -341,6 +341,26 @@ Pets da aplicação
   
 ```
 
+##### Estrutura de Dados - Meu Perfil 
+
+
+```json
+ "users": [
+    {
+      "id": 1,
+      "nome": "Matheus Silva",
+      "email": "matheus@email.com",
+      "endereco": "Rua das Flores, 123",
+      "celular": "(31) 98765-4321",
+      "cpf": "123.456.789-00",
+      "nomeUsuario": "matheus123",
+      "senha": "senhaSegura",
+      "fotoPerfil": "https://i.pravatar.cc/160?img=5",
+      "petIDs": [1, 2]
+    }
+  ],
+```
+
 
 ## Módulos e APIs
 
