@@ -241,12 +241,23 @@ Permite a inclusão, leitura, alteração e exclusão de ONGS para o sistema
 
 ##### Funcionalidade 3 - Ferramenta de busca: 
 
-Permite a inserir termos como nome do pet, raça oupalavras-chave. Aciona uma busca textual que pode ser combinada com filtros.
+Permite a inserir termos como nome do pet, raça ou palavras-chave. Aciona uma busca textual que pode ser combinada com filtros.
 
 * **Instruções de acesso:**
   * Abra o site e efetue o login
   * Acesse o menu principal e vá na barra de busca
   * Em seguida, escreva o que procura ou utilize os filtros para facilitar sua busca
+* **Tela da funcionalidade**:
+
+![Tela de Funcionalidade](images/Funcinalidades_busca.png)
+
+##### Funcionalidade 4 - Perfil do usuário com suas respectivas informações: 
+
+Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o pets cadastros em seu usuário
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Acesse o menu principal e vá na aba meu perfil
 * **Tela da funcionalidade**:
 
 ![Tela de Funcionalidade](images/Funcinalidades_busca.png)
