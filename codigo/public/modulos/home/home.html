@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adote um Pet</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --laranja: #ff7f00;
+      --laranja-escuro: #e66f00;
+      --fundo: #fffaf3;
+    }
+
+    body {
+      background-color: var(--fundo);
+    }
+
+    .navbar {
+      background-color: var(--laranja);
+    }
+
+    .navbar-brand, .nav-link, .footer a {
+      color: white !important;
+    }
+
+    .btn-orange {
+      background-color: var(--laranja);
+      color: white;
+    }
+
+    .btn-orange:hover {
+      background-color: var(--laranja-escuro);
+    }
+
+    .hero {
+      background-color: var(--laranja);
+      color: white;
+      padding: 60px 20px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .footer {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">AdoteMe</a>
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pets">Pets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero text-center">
+    <div class="container">
+      <h1 class="display-5 fw-bold">Encontre seu novo melhor amigo</h1>
+      <p class="lead">Conectamos pets abandonados com pessoas que querem amar e adotar.</p>
+      <a href="#pets" class="btn btn-light fw-bold">Ver pets disponíveis</a>
+    </div>
+  </section>
+
+  <!-- Seção Como Funciona -->
+  <section id="como-funciona" class="py-5 text-center">
+    <div class="container">
+      <h2 class="mb-4">Como funciona</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <h5>1. Explore os pets</h5>
+          <p>Veja os perfis dos pets disponíveis para adoção perto de você.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>2. Escolha seu pet</h5>
+          <p>Leia as descrições, veja fotos e escolha aquele que conquistou seu coração.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>3. Fale com a instituição</h5>
+          <p>Entre em contato e agende a visita ou adoção diretamente com a ONG.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pets em destaque -->
+  <section id="pets" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Pets para adoção</h2>
+      <div class="row" id="listaPets">
+        <!-- Pets serão inseridos aqui via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre nós -->
+  <section id="sobre" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Sobre nós</h2>
+      <p class="text-center">Somos uma plataforma que conecta ONGs de proteção animal com pessoas dispostas a adotar. Nosso objetivo é garantir que cada pet encontre um lar cheio de amor e carinho.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <p>&copy; 2025 Adote um Pet - Todos os direitos reservados</p>
+      <p>
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a> |
+        <a href="#">Contato</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -263,7 +263,6 @@ Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o 
 ![Tela de Funcionalidade](images/Funcinalidades_busca.png)
 
 
-
 ## Estruturas de Dados
 
 Descrição das estruturas de dados utilizadas na solução com exemplos no formato JSON.Info
