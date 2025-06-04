@@ -369,6 +369,21 @@ Instituições
   ],
 ```
 
+##### Estrutura de Dados - Home 
+
+```json
+
+    {
+      "nome": "Pipoca",
+      "especie": "Cachorro",
+      "raca": "Border Collie ",
+      "idade": "5",
+      "id": "1",
+
+    }
+  
+```
+
 
 ## Módulos e APIs
 
