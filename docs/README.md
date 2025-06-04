@@ -239,7 +239,7 @@ Permite a inclusão, leitura, alteração e exclusão de ONGS para o sistema
 
 ![Tela de Funcionalidade](images/funcionalidade_ongs.jpg)
 
-##### Funcionalidade 1 - Ferramente de busca: 
+##### Funcionalidade 3 - Ferramenta de busca: 
 
 Permite a inserir termos como nome do pet, raça oupalavras-chave. Aciona uma busca textual que pode ser combinada com filtros.
 
