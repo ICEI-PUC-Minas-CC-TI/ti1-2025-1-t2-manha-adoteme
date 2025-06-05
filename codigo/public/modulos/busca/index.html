@@ -1,448 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADOTE.ME - Busca de Pets</title>
+  <meta charset="UTF-8">
+  <title>Buscar Pets</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f5f5f5;
-    color: #333;
-}
-
-header {
-    background-color: #4a6fa5;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.search-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.search-input {
-    flex: 1;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-.search-button {
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.3s;
-}
-
-.search-button:hover {
-    background-color: #556b2f;
-}
-
-.filter-container {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 4px;
-    margin-top: 10px;
-    border: 1px solid #eee;
-}
-
-.filter-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 600;
-    color: #4a6fa5;
-}
-
-.filter-content {
-    display: none;
-    margin-top: 15px;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 15px;
-}
-
-.filter-content.active {
-    display: grid;
-}
-
-.filter-group {
-    margin-bottom: 15px;
-}
-
-.filter-group h4 {
-    margin-bottom: 8px;
-    color: #555;
-    font-size: 15px;
-}
-
-.filter-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-.filter-item input {
-    margin-right: 8px;
-}
-
-#results-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.pet-card {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-
-.pet-card:hover {
-    transform: translateY(-5px);
-}
-
-.pet-image {
-    height: 200px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-.pet-info {
-    padding: 15px;
-}
-
-.pet-name {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #4a6fa5;
-}
-
-.pet-breed {
-    color: #777;
-    margin-bottom: 12px;
-    font-size: 15px;
-}
-
-.pet-details {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.pet-detail-item {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #555;
-}
-
-.pet-detail-item i {
-    margin-right: 5px;
-    color: #6b8e23;
-    font-size: 16px;
-}
-
-.pet-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 10px;
-    margin-bottom: 12px;
-}
-
-.pet-tag {
-    background-color: #edf5e1;
-    color: #6b8e23;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.pet-location {
-    margin-top: 12px;
-    padding-top: 12px;
-    border-top: 1px solid #eee;
-    font-size: 14px;
-    color: #666;
-    display: flex;
-    align-items: center;
-}
-
-.pet-location i {
-    margin-right: 5px;
-    color: #4a6fa5;
-}
-
-.tag-yes {
-    background-color: #e8f5e9;
-    color: #2e7d32;
-}
-
-.tag-no {
-    background-color: #ffebee;
-    color: #c62828;
-}
-
-.tag-condition {
-    background-color: #fff8e1;
-    color: #f57f17;
-}
-
-.no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 40px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.loading {
-    text-align: center;
-    padding: 20px;
-    grid-column: 1 / -1;
-}
-
-.error-message {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 20px;
-    background-color: #ffeeee;
-    border: 1px solid #ffcccc;
-    border-radius: 8px;
-    color: #cc0000;
-}
-
-/* Pseudo-ícones usando caracteres Unicode */
-.icon-dog::before {
-    content: "🐕";
-    margin-right: 5px;
-}
-
-.icon-cat::before {
-    content: "🐈";
-    margin-right: 5px;
-}
-
-.icon-rabbit::before {
-    content: "🐇";
-    margin-right: 5px;
-}
-
-.icon-paw::before {
-    content: "🐾";
-    margin-right: 5px;
-}
-
-.icon-location::before {
-    content: "📍";
-    margin-right: 5px;
-}
-
-.icon-age::before {
-    content: "🎂";
-    margin-right: 5px;
-}
-
-.icon-weight::before {
-    content: "⚖️";
-    margin-right: 5px;
-}
-
-.icon-pet::before {
-    content: "🏠";
-    margin-right: 5px;
-}
-
-@media (max-width: 768px) {
-    .search-box {
-        flex-direction: column;
-    }
-    
-    .filter-content {
-        grid-template-columns: 1fr;
-    }
-    
-    #results-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .pet-details {
-        grid-template-columns: 1fr;
-    }
-}
-    </style>
 <body>
-    <header>
-        <h1>ADOTE.ME</h1>
-        <p>Encontre o pet ideal para você!</p>
-    </header>
-    
-    <div class="container">
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="search-input" class="search-input" placeholder="Busque por nome, raça ou palavra-chave...">
-                <button id="search-button" class="search-button">Buscar</button>
-            </div>
-            
-            <div class="filter-container">
-                <div class="filter-title" id="filter-toggle">
-                    <span>Filtros de Busca</span>
-                    <span>+</span>
-                </div>
-                
-                <div class="filter-content" id="filter-content">
-                    <div class="filter-group">
-                        <h4>Espécie</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-cachorro" class="pet-especie" value="Cachorro">
-                            <label for="filter-cachorro">Cachorro</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-gato" class="pet-especie" value="Gato">
-                            <label for="filter-gato">Gato</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-coelho" class="pet-especie" value="Coelho">
-                            <label for="filter-coelho">Coelho</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-outros" class="pet-especie" value="Outros">
-                            <label for="filter-outros">Outros</label>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Porte</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-pequeno" class="pet-porte" value="Pequeno">
-                            <label for="filter-pequeno">Pequeno</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-medio" class="pet-porte" value="Médio">
-                            <label for="filter-medio">Médio</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-grande" class="pet-porte" value="Grande">
-                            <label for="filter-grande">Grande</label>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Sexo</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-macho" class="pet-sexo" value="Macho">
-                            <label for="filter-macho">Macho</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-femea" class="pet-sexo" value="Fêmea">
-                            <label for="filter-femea">Fêmea</label>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Características</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-vacinado" class="pet-status" value="vacinado">
-                            <label for="filter-vacinado">Vacinado</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-vermifugado" class="pet-status" value="vermifugado">
-                            <label for="filter-vermifugado">Vermifugado</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-castrado" class="pet-status" value="castrado">
-                            <label for="filter-castrado">Castrado</label>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Convivência</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-criancas" class="pet-convivencia" value="criancas">
-                            <label for="filter-criancas">Com crianças</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-outros-pets" class="pet-convivencia" value="outros_pets">
-                            <label for="filter-outros-pets">Com outros pets</label>
-                        </div>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h4>Temperamento</h4>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-docil" class="pet-temperamento" value="Dócil">
-                            <label for="filter-docil">Dócil</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-brincalhao" class="pet-temperamento" value="Brincalhão">
-                            <label for="filter-brincalhao">Brincalhão</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-calmo" class="pet-temperamento" value="Calmo">
-                            <label for="filter-calmo">Calmo</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-protetor" class="pet-temperamento" value="Protetor">
-                            <label for="filter-protetor">Protetor</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-timido" class="pet-temperamento" value="Tímido">
-                            <label for="filter-timido">Tímido</label>
-                        </div>
-                        <div class="filter-item">
-                            <input type="checkbox" id="filter-independente" class="pet-temperamento" value="Independente">
-                            <label for="filter-independente">Independente</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="results-container">
-            <!-- Os resultados da busca serão exibidos aqui -->
-        </div>
-    </div>
-    
-    <script src="../../assets/js/busca.js"></script>
+
+  <h1>Buscar Pets</h1>
+
+  <form onsubmit="buscarPets(); return false;">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Ex: Pipoca">
+
+    <label for="especie">Espécie:</label>
+    <select id="especie">
+      <option value="">Todas</option>
+      <option value="Cachorro">Cachorro</option>
+      <option value="Gato">Gato</option>
+    </select>
+
+    <label for="porte">Porte:</label>
+    <select id="porte">
+      <option value="">Todos</option>
+      <option value="Pequeno">Pequeno</option>
+      <option value="Médio">Médio</option>
+      <option value="Grande">Grande</option>
+    </select>
+
+    <label for="temperamento">Temperamento:</label>
+    <input type="text" id="temperamento" placeholder="Ex: Dócil">
+
+    <label for="castrado">Castrado:</label>
+    <select id="castrado">
+      <option value="">Todos</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+
+    <label for="vacinado">Vacinado:</label>
+    <select id="vacinado">
+      <option value="">Todos</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+
+    <button type="submit">Buscar</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script src="../../assets/js/busca.js"></script>
 </body>
 </html>
