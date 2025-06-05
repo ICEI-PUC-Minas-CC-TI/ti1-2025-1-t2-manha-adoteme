@@ -3,184 +3,141 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil do Usuário - Adoção de Pets</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <title>Perfil do Usuário</title>
   <style>
+    /* Paleta laranja moderna */
+    :root {
+      --laranja-claro: #ffb347;
+      --laranja: #ff6f00;
+      --laranja-escuro: #e65100;
+      --cinza-claro: #f5f5f5;
+      --cinza-medio: #ccc;
+      --cinza-escuro: #555;
+      --branco: #fff;
+      --sombra: rgba(255, 111, 0, 0.2);
+    }
+
     body {
-      background-color: #fff;
-      color: #4a4a4a;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      min-height: 100vh;
-      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 30px auto;
+      background: var(--cinza-claro);
+      color: var(--cinza-escuro);
+      padding: 0 20px 40px;
     }
-    .container-profile {
-      max-width: 900px;
-      margin: 0 auto 3rem auto;
-      background: #fff;
-      padding: 2.5rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(255, 111, 0, 0.2);
-      transition: box-shadow 0.3s ease;
-    }
-    .container-profile:hover {
-      box-shadow: 0 8px 24px rgba(255, 111, 0, 0.35);
-    }
+
     h2 {
-      color: #ff6f00;
+      color: var(--laranja-escuro);
+      margin-bottom: 20px;
       font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-      letter-spacing: 1px;
+      text-shadow: 1px 1px 3px var(--laranja-claro);
     }
-    .btn-laranja {
-      background-color: #ff6f00;
-      color: white;
-      border: none;
-      font-weight: 600;
-      padding: 0.5rem 1.3rem;
-      border-radius: 6px;
-      box-shadow: 0 4px 10px rgba(255, 111, 0, 0.4);
-      transition: background-color 0.25s ease;
+
+    .perfil, .pets {
+      background: var(--branco);
+      padding: 25px 30px;
+      border-radius: 15px;
+      box-shadow: 0 6px 15px var(--sombra);
+      margin-bottom: 40px;
     }
-    .btn-laranja:hover, .btn-laranja:focus {
-      background-color: #e65c00;
-      color: white;
-      box-shadow: 0 6px 16px rgba(230, 92, 0, 0.6);
-      outline: none;
-    }
-    .profile-image {
+
+    img {
+      border-radius: 50%;
       width: 160px;
       height: 160px;
       object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #ff6f00;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 0 6px rgba(255, 111, 0, 0.6);
-    }
-    .profile-image:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 12px rgba(255, 111, 0, 0.9);
-    }
-    .input-label {
-      font-weight: 600;
-      margin-top: 1rem;
-      margin-bottom: 0.3rem;
-      color: #cc6600;
+      border: 4px solid var(--laranja);
+      box-shadow: 0 4px 10px var(--laranja-claro);
+      margin-bottom: 15px;
       display: block;
-      font-size: 0.95rem;
-      letter-spacing: 0.03em;
     }
-    input[readonly] {
-      background-color: #fef7ef;
-      border-color: #ffb84d;
-      color: #6b4b00;
-      cursor: not-allowed;
-      box-shadow: inset 0 0 6px #ffd38c;
-      transition: background-color 0.3s ease;
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin: 8px 0;
     }
-    input:not([readonly]) {
-      background-color: #fff;
-      border-color: #ff6f00;
-      color: #333;
-      box-shadow: 0 0 5px #ff6f00;
-      transition: box-shadow 0.3s ease;
+
+    strong {
+      color: var(--laranja-escuro);
     }
-    input:not([readonly]):focus {
-      outline: none;
-      box-shadow: 0 0 10px #e65c00;
-    }
-    .form-section {
+
+    #petsContainer {
       display: flex;
-      gap: 2rem;
       flex-wrap: wrap;
-      align-items: flex-start;
+      gap: 20px;
     }
-    .form-group {
-      flex: 1 1 320px;
-      min-width: 280px;
-    }
-    .pets-section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1rem 2rem 1rem;
-    }
-    .pets-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .card {
+
+    .pet-card {
+      background: var(--laranja-claro);
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(255, 111, 0, 0.15);
-      transition: box-shadow 0.3s ease;
+      box-shadow: 0 4px 8px rgba(255, 111, 0, 0.25);
+      padding: 15px 20px;
+      flex: 1 1 calc(50% - 20px);
+      color: var(--branco);
+      font-weight: 600;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
     }
-    .card:hover {
-      box-shadow: 0 8px 25px rgba(255, 111, 0, 0.35);
+    .pet-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(255, 111, 0, 0.45);
     }
-    .card img {
-      height: 210px;
-      object-fit: cover;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
-    .card-title {
-      color: #cc6600;
+
+    /* Botão cadastrar pet */
+    #btnCadastrarPet {
+      display: inline-block;
+      background: var(--laranja);
+      color: var(--branco);
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-size: 1.1rem;
       font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 12px var(--laranja-escuro);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 25px;
+      user-select: none;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    #btnCadastrarPet:hover {
+      background: var(--laranja-escuro);
+      box-shadow: 0 7px 16px var(--laranja-escuro);
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      #petsContainer {
+        flex-direction: column;
+      }
+      .pet-card {
+        flex: 1 1 100%;
+      }
     }
   </style>
 </head>
 <body>
-
-  <main class="container-profile" aria-label="Seção do perfil do usuário">
-    <h2>Meu Perfil</h2>
-
-    <div class="text-end mb-4">
-      <button id="btnAlterarPerfil" class="btn btn-laranja" aria-pressed="false">Alterar perfil</button>
-    </div>
-
-    <div class="form-section">
-      <div>
-        <img src="https://i.pravatar.cc/160?img=5" alt="Foto de perfil do usuário" id="profileImage" class="profile-image" title="Clique para alterar a foto" tabindex="0" role="button" />
-        <input type="file" id="inputFotoPerfil" style="display:none" accept="image/*" aria-label="Selecionar nova foto de perfil" />
-      </div>
-
-      <div class="flex-grow-1">
-        <label for="nomeUsuario" class="input-label">Nome Completo</label>
-        <input type="text" class="form-control" id="nomeUsuario" readonly autocomplete="name" />
-
-        <label for="emailUsuario" class="input-label">Email</label>
-        <input type="email" class="form-control" id="emailUsuario" readonly autocomplete="email" />
-
-        <label for="enderecoUsuario" class="input-label">Endereço</label>
-        <input type="text" class="form-control" id="enderecoUsuario" readonly autocomplete="street-address" />
-
-        <label for="celularUsuario" class="input-label">Número de Celular</label>
-        <input type="tel" class="form-control" id="celularUsuario" readonly autocomplete="tel" />
-
-        <label for="cpfUsuario" class="input-label">CPF</label>
-        <input type="text" class="form-control" id="cpfUsuario" readonly autocomplete="off" />
-
-        <label for="nomeUsuarioLogin" class="input-label">Nome de Usuário</label>
-        <input type="text" class="form-control" id="nomeUsuarioLogin" readonly autocomplete="username" />
-
-        <label for="senhaUsuario" class="input-label">Senha</label>
-        <input type="password" class="form-control" id="senhaUsuario" readonly autocomplete="current-password" />
-      </div>
-    </div>
-  </main>
-
-  <section class="pets-section" aria-label="Seção dos pets do usuário">
-    <div class="pets-header">
-      <h3>Meus Pets</h3>
-      <button class="btn btn-laranja" id="btnCadastrarPet">Cadastrar novo pet</button>
-    </div>
-    <div class="row g-4">
-      <!-- Cards dos pets serão inseridos aqui pelo JS -->
-    </div>
+  <section class="perfil">
+    <h2>Perfil do Usuário</h2>
+    <img id="fotoPerfil" src="" alt="Foto de perfil" />
+    <p><strong>Nome:</strong> <span id="nome"></span></p>
+    <p><strong>Email:</strong> <span id="email"></span></p>
+    <p><strong>Endereço:</strong> <span id="endereco"></span></p>
+    <p><strong>Celular:</strong> <span id="celular"></span></p>
+    <p><strong>CPF:</strong> <span id="cpf"></span></p>
+    <p><strong>Nome de usuário:</strong> <span id="nomeUsuario"></span></p>
   </section>
 
-  <script src="profile.js"></script>
+  <section class="pets">
+    <h2>Meus Pets</h2>
+    <button id="btnCadastrarPet" type="button">Cadastrar novo pet</button>
+    <div id="petsContainer"></div>
+  </section>
+
+  <script src="../../assets/js/profile.js"></script>
 </body>
 </html>

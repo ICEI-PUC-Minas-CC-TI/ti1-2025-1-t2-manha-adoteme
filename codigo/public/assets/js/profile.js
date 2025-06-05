@@ -1,130 +1,69 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const usuarioLogadoId = 1; 
-  const apiBaseUrl = 'http://localhost:3000'; 
+async function carregarPerfil() {
+  try {
+    // Buscar todo o db.json (pois você tem /db que retorna o json completo)
+    const response = await fetch('/db');
+    if (!response.ok) throw new Error('Erro ao buscar db.json');
 
-  const btnAlterarPerfil = document.getElementById('btnAlterarPerfil');
-  const campos = [
-    'nomeUsuario', 'emailUsuario', 'enderecoUsuario',
-    'celularUsuario', 'cpfUsuario', 'nomeUsuarioLogin', 'senhaUsuario'
-  ];
+    const data = await response.json();
 
-  const profileImage = document.getElementById('profileImage');
-  const inputFotoPerfil = document.getElementById('inputFotoPerfil');
-  let novaFotoBase64 = null;
+    // Pegar o usuário (aqui estou pegando o primeiro usuário do array)
+    const usuario = data.users[0];
 
-  // Carregar dados do backend (db.json via backend)
-  fetch(`${apiBaseUrl}/db.json`)
-    .then(res => res.json())
-    .then(data => {
-      const usuario = data.usuarios.find(u => u.id === usuarioLogadoId);
-      if (!usuario) {
-        alert('Usuário não encontrado');
-        return;
-      }
-      preencherPerfil(usuario);
-
-      const petsDoUsuario = data.pets.filter(pet => usuario.pets.includes(pet.id));
-      preencherPets(petsDoUsuario);
-    })
-    .catch(err => console.error('Erro ao carregar dados:', err));
-
-  // Preenche o formulário com os dados do usuário
-  function preencherPerfil(usuario) {
-    document.getElementById('nomeUsuario').value = usuario.nome;
-    document.getElementById('emailUsuario').value = usuario.email;
-    document.getElementById('enderecoUsuario').value = usuario.endereco;
-    document.getElementById('celularUsuario').value = usuario.celular;
-    document.getElementById('cpfUsuario').value = usuario.cpf;
-    document.getElementById('nomeUsuarioLogin').value = usuario.nomeUsuario;
-    document.getElementById('senhaUsuario').value = usuario.senha;
-    profileImage.src = usuario.fotoPerfil;
-  }
-
-  // Renderiza os cards dos pets
-  function preencherPets(pets) {
-    const petsContainer = document.querySelector('.row.g-4');
-    petsContainer.innerHTML = '';
-
-    pets.forEach(pet => {
-      const card = document.createElement('div');
-      card.classList.add('col-md-4');
-      card.innerHTML = `
-        <div class="card h-100 shadow-sm">
-          <img src="${pet.foto}" class="card-img-top" alt="Foto do pet ${pet.nome}" />
-          <div class="card-body">
-            <h5 class="card-title fw-bold">${pet.nome}</h5>
-            <p class="card-text">Raça: ${pet.raca}</p>
-            <p class="card-text">Idade: ${pet.idade}</p>
-            <p class="card-text">Sexo: ${pet.sexo}</p>
-          </div>
-        </div>
-      `;
-      petsContainer.appendChild(card);
-    });
-  }
-
-  // Foto de perfil: abrir seletor e salvar base64
-  profileImage.addEventListener('click', () => inputFotoPerfil.click());
-
-  inputFotoPerfil.addEventListener('change', () => {
-    const file = inputFotoPerfil.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      novaFotoBase64 = reader.result;
-      profileImage.src = novaFotoBase64;
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // Botão alterar perfil: ativa edição ou salva no backend
-  btnAlterarPerfil.addEventListener('click', () => {
-    const estaEditando = btnAlterarPerfil.textContent === 'Salvar alterações';
-
-    if (!estaEditando) {
-      campos.forEach(id => {
-        document.getElementById(id).removeAttribute('readonly');
-      });
-      btnAlterarPerfil.textContent = 'Salvar alterações';
-    } else {
-      // Montar objeto com dados atualizados
-      const dadosAtualizados = {
-        nome: document.getElementById('nomeUsuario').value,
-        email: document.getElementById('emailUsuario').value,
-        endereco: document.getElementById('enderecoUsuario').value,
-        celular: document.getElementById('celularUsuario').value,
-        cpf: document.getElementById('cpfUsuario').value,
-        nomeUsuario: document.getElementById('nomeUsuarioLogin').value,
-        senha: document.getElementById('senhaUsuario').value,
-      };
-
-      if (novaFotoBase64) dadosAtualizados.fotoPerfil = novaFotoBase64;
-
-      fetch(`${apiBaseUrl}/usuario/${usuarioLogadoId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dadosAtualizados),
-      })
-        .then(res => {
-          if (!res.ok) throw new Error('Erro ao salvar usuário');
-          return res.text();
-        })
-        .then(msg => {
-          alert(msg);
-          campos.forEach(id => {
-            document.getElementById(id).setAttribute('readonly', 'readonly');
-          });
-          btnAlterarPerfil.textContent = 'Alterar perfil';
-          novaFotoBase64 = null;
-        })
-        .catch(err => {
-          alert('Erro: ' + err.message);
-        });
+    if (!usuario) {
+      console.error('Usuário não encontrado');
+      return;
     }
-  });
 
-  // Botão cadastrar pet só alerta por enquanto
-  document.getElementById('btnCadastrarPet').addEventListener('click', () => {
-    alert('Função cadastrar novo pet ainda não implementada.');
-  });
-});
+    // Preencher dados do usuário na tela
+    document.getElementById('fotoPerfil').src = usuario.fotoPerfil;
+    document.getElementById('nome').textContent = usuario.nome;
+    document.getElementById('email').textContent = usuario.email;
+    document.getElementById('endereco').textContent = usuario.endereco;
+    document.getElementById('celular').textContent = usuario.celular;
+    document.getElementById('cpf').textContent = usuario.cpf;
+    document.getElementById('nomeUsuario').textContent = usuario.nomeUsuario;
+
+    // Filtrar pets do usuário comparando petIDs com pets do banco
+    const meusPets = data.pets.filter(pet => usuario.petIDs.includes(Number(pet.id)));
+
+    // Exibir pets
+    const petsContainer = document.getElementById('petsContainer');
+    petsContainer.innerHTML = ''; // limpa antes
+
+    if (meusPets.length === 0) {
+      petsContainer.textContent = 'Nenhum pet cadastrado.';
+      return;
+    }
+
+    meusPets.forEach(pet => {
+      const div = document.createElement('div');
+      div.classList.add('pet-card');
+
+      div.innerHTML = `
+        <p><strong>Nome:</strong> ${pet.nome}</p>
+        <p><strong>Espécie:</strong> ${pet.especie}</p>
+        <p><strong>Raça:</strong> ${pet.raca}</p>
+        <p><strong>Idade:</strong> ${pet.idade} anos</p>
+        <p><strong>Sexo:</strong> ${pet.sexo}</p>
+        <p><strong>Porte:</strong> ${pet.porte}</p>
+        <p><strong>Peso:</strong> ${pet.peso} kg</p>
+        <p><strong>Vacinado:</strong> ${pet.vacinado}</p>
+        <p><strong>Vermifugado:</strong> ${pet.vermifugado}</p>
+        <p><strong>Castrado:</strong> ${pet.castrado}</p>
+        <p><strong>Condição:</strong> ${pet.condicao}</p>
+        <p><strong>Temperamento:</strong> ${pet.temperamento}</p>
+        <p><strong>Convive com crianças:</strong> ${pet.criancas}</p>
+        <p><strong>Convive com outros pets:</strong> ${pet.outrosPets}</p>
+        <p><strong>Localização:</strong> ${pet.localizacao}</p>
+      `;
+
+      petsContainer.appendChild(div);
+    });
+
+  } catch (error) {
+    console.error('Erro ao carregar dados:', error);
+  }
+}
+
+// Chama a função quando a página carregar
+window.onload = carregarPerfil;
