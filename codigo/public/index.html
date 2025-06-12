@@ -1,78 +1,308 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="pt-BR">
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script src="./assets/js/login.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="banner">
-        <img src="./assets/images/banner_ti.png" alt="" />
-      </div>
-      <div class="barra-info">
-        <nav class="menu">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">Sobre nós</a></li>
-          </ul>
-        </nav>
-        <div class="dados-usuario">
-          <span id="userInfo"></span>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Adote um Pet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --laranja: #ff7f00;
+            --laranja-escuro: #e66f00;
+            --fundo: #fffaf3;
+        }
+
+        body {
+            background-color: var(--fundo);
+        }
+
+        .navbar {
+            background-color: var(--laranja);
+        }
+
+        .navbar-brand, .nav-link, .footer a {
+            color: white !important;
+        }
+
+        /* Ajuste para o campo de busca na navbar */
+        .navbar .form-control {
+            border-radius: 0.25rem; /* Bordas arredondadas */
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Borda mais clara */
+            background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente */
+            color: white;
+        }
+        .navbar .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7); /* Cor do placeholder */
+        }
+        .navbar .form-control:focus {
+            background-color: white;
+            color: #333;
+            border-color: var(--laranja-escuro);
+            box-shadow: none; /* Remover sombra padrão do focus se desejar */
+        }
+        .navbar .btn-outline-light {
+            border-color: white;
+            color: white;
+        }
+        .navbar .btn-outline-light:hover {
+            background-color: white;
+            color: var(--laranja);
+        }
+
+        .btn-orange {
+            background-color: var(--laranja);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            background-color: var(--laranja-escuro);
+        }
+
+        .hero {
+            background-color: var(--laranja);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .card img {
+            height: 250px; /* Ajuste para melhor visualização no carrossel */
+            object-fit: cover;
+        }
+
+        /* Estilos adicionais para o carrossel */
+        #petsCarousel .carousel-item {
+            padding: 20px; /* Espaçamento interno para os cards */
+        }
+
+        #petsCarousel .carousel-inner {
+            display: flex;
+        }
+
+        #petsCarousel .carousel-item.active,
+        #petsCarousel .carousel-item-next,
+        #petsCarousel .carousel-item-prev {
+            display: flex;
+        }
+
+        /* Para exibir múltiplos cards por slide */
+        @media (min-width: 768px) {
+            #petsCarousel .carousel-inner .carousel-item-right.active,
+            #petsCarousel .carousel-inner .carousel-item-next,
+            #petsCarousel .carousel-inner .carousel-item-prev {
+                display: flex;
+            }
+            #petsCarousel .carousel-inner .carousel-item-right:not(.carousel-item-start),
+            #petsCarousel .carousel-inner .carousel-item-next:not(.carousel-item-start),
+            #petsCarousel .carousel-inner .carousel-item-prev:not(.carousel-item-start) {
+                transform: translateX(0);
+            }
+            #petsCarousel .carousel-inner .carousel-item-right.active,
+            #petsCarousel .carousel-inner .carousel-item-next.active {
+                transform: translateX(33.333%); /* Exibir 3 cards, ajuste conforme o número de cards */
+            }
+            #petsCarousel .carousel-inner .carousel-item-prev.active {
+                transform: translateX(-33.333%); /* Exibir 3 cards, ajuste conforme o número de cards */
+            }
+            #petsCarousel .carousel-item-right:not(.active) {
+                transform: translateX(-100%);
+            }
+            #petsCarousel .carousel-item-left:not(.active) {
+                transform: translateX(100%);
+            }
+            #petsCarousel .carousel-item {
+                flex: 0 0 33.333%; /* Ocupa 1/3 do carrossel para 3 cards */
+                margin-right: 0;
+            }
+        }
+
+
+        .footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">AdoteMe</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pets">Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li> 
+                </ul>
+                
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-none" id="myProfileLink">
+                        <a class="nav-link" href="/meu-perfil.html">Meu Perfil</a>
+                    </li>
+                    <li class="nav-item d-none" id="loginRegisterLinks">
+                        <a class="nav-link" href="/modulos/login/login.html">Login/Registrar</a>
+                    </li>
+                    <li class="nav-item" id="userInfoContainer">
+                        </li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </header>
-    <main>
-        <h3>Boas vindas</h3>
-        <p>Sejam bem-vindos à home-page do projeto de TI 1 - Trabalho
-        Interdisciplinar</p>
-        <p>Esse conteúdo que você está lendo foi criado para exemplificar como
-        criar o seu site integrado com o ambiente de login e o back end que
-        utiliza o JSON Server.</p>
-        <p>Ao criar o seu site, você deve adaptar esse código para sua neessidade ou começar do zero, excluindo todo esse conteúdo.
-        </p>
+    </nav>
 
-        <h3>Arquivos do site (Front End)</h3>
-        <p>Para montar seu site, edite os arquivos existentes e crie novos arquivos na pasta <code>public</code> que mantem todos os arquivos da parte de Front End do site, a interface que é vista pelo usuário no navegador.</p>
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="display-5 fw-bold">Encontre seu novo melhor amigo</h1>
+            <p class="lead">Conectamos pets abandonados com pessoas que querem amar e adotar.</p>
+            <a href="#pets" class="btn btn-light fw-bold">Ver pets disponíveis</a>
+        </div>
+    </section>
 
-        <p>Nesta pasta <code>public</code>, sugerimos que você organize os arquivos do seu site da seguinte maneira:</p>
-        <ul>
-            <li><strong>Pasta <code>assets</code></strong>: os arquivos de formatação (CSS), os scripts (JS), as imagens utilizadas no site (JPG, PNG, GIF, SVG, etc), fontes (TTF) e outros arquivos gerais utilizados por todo o site.</li>
-            <li><strong>Pasta <code>modulos</code></strong>: os arquivos utilizados na implementação das funcionalidades do site. Separe uma sub-pasta para cada novo módulo ou funcionalidade. Pode também ser utilizado para dividir o trabalho de cada membro do grupo.</li>
-            <li><strong>Arquivo <code>index.html</code></strong>: arquivo que representa a "home page" do site.</li>
-        </ul>
+    <section id="como-funciona" class="py-5 text-center">
+        <div class="container">
+            <h2 class="mb-4">Como funciona</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>1. Explore os pets</h5>
+                    <p>Veja os perfis dos pets disponíveis para adoção perto de você.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>2. Escolha seu pet</h5>
+                    <p>Leia as descrições, veja fotos e escolha aquele que conquistou seu coração.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>3. Fale com a instituição</h5>
+                    <p>Entre em contato e agende a visita ou adoção diretamente com a ONG.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <h3>Módulo de Login</h3>
-        <p>O módulo de login de usuário traz uma funcionalidade completa de registro de usuários e validação de login e senha.</p>
-        <h4>Integração do site com módulo de Login</h4>
-        <p>Para utilizar o módulo de login, basta incluir o script na sua página colocando a seguinte tag no HEAD</p>
-        <pre>&lt;script src="./assets/js/login.js"&gt&lt;script&gt;</pre>
-        <p>Ao incluir o script de login na sua página, caso o usuário ainda não tenha efetuado login, ao acessar a home-page do site, o navegador será direcionado para o formulário de <strong>Identificação de Usuário</strong>. Se o usuário informar corretamente o login e a senha, o navegador será direcionado para a Home-Page.</p>
-        <h4>Sessão do usuário logado</h4>
-        <p>Assim que o usuário se identifica e acessa a parte privada do site, o módulo de login cria uma chave do sessionStorage do navegador com o título <strong>usuarioCorrente</strong> e cujo conteúdo é um objeto com os atributos: id, nome, login, senha e email. </p>
-        <h4>Base de dados de usuários</h4>
-        <p>Inicialmente o módulo de login é configurado com dois usuários: </p>
-        <ul>
-            <li>admin - Senha: 123</li>
-            <li>user - Senha: 123</li>
-        </ul>
+    <section id="pets" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="mb-4 text-center">Pets para adoção</h2>
+            <div id="petsCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner" id="carouselPetsInner">
+                    </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
 
-        <h3>Servidor Web e API baseada no JSON Server (Back end)</h3>
-        <p>O ambiente de trabalho disponibilizado para suportar o Trabalho Interdisciplinar 1 é baseado no Node.js. A aplicação de back end utiliza o módulo JSON Server para criar um Servidor Web que prove duas estruturas separadas:
-        <ul>
-            <li><strong>Arquivos estáticos (Pasta <code>public</code>)</strong>: da acesso aos arquivos utilizados no front end (HTML, CSS e JavaScript).</li>
-            <li><strong>API RESTful (pasta <code>db</code>)</strong>: uma interface para acesso aos dados definidos no arquivo db.json.</li>
-        </ul></p>
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <h2 class="mb-4 text-center">Sobre nós</h2>
+            <p class="text-center">Somos uma plataforma que conecta ONGs de proteção animal com pessoas dispostas a adotar. Nosso objetivo é garantir que cada pet encontre um lar cheio de amor e carinho.</p>
+        </div>
+    </section>
 
-        <h4>Arquitetura do site</h4>
-        <p>A imagem que se segue apresenta a arquitetura desse ambiente, mostrando as duas refletindo as pastas desse ambiente.</p>
-        <p><img class="img-fluid d-block w-75 m-auto" src="./assets/images/servidor.png" alt=""></p>
+    <footer class="footer text-center">
+        <div class="container">
+            <p>&copy; 2025 Adote um Pet - Todos os direitos reservados</p>
+            <p>
+                <a href="#">Instagram</a> |
+                <a href="#">Facebook</a> |
+                <a href="#">Contato</a>
+            </p>
+        </div>
+    </footer>
 
-        <h4>Arquivo db.json</h4>
-        <p>O arquivo JSON utilizado para definição das estruturas dos dados providos pela aplicação é localizado na pasta db e tem um formato como o mostrado no exemplo da figura a seguir. Esse arquivo define uma estrutura hipotética de contatos que descreve itens com os seguintes atributos: <code>id</code>, <code>nome</code> e <code>cidade</code>. para o JSON Server, é fundamental que toda estrutura tenha um atributo de identificador de nome <code>id</code>.</p>
-        <p><img class="img-fluid d-block w-50 m-auto" src="./assets/images/arquivo_json.png" alt=""></p>
-    </main>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/login.js"></script> 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos da Navbar
+            const myProfileLink = document.getElementById('myProfileLink');
+            const loginRegisterLinks = document.getElementById('loginRegisterLinks');
+            const userInfoContainer = document.getElementById('userInfoContainer');
+
+            const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+
+            if (usuarioCorrenteJSON) {
+                const usuario = JSON.parse(usuarioCorrenteJSON);
+                // AGORA INJETAMOS DENTRO DE UM NAV-LINK PARA MELHOR ALINHAMENTO
+                userInfoContainer.innerHTML = `
+                    <a class="nav-link text-white" href="#">
+                        Olá, ${usuario.nome}!
+                        <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
+                    </a>
+                `;
+                
+                if (myProfileLink) myProfileLink.classList.remove('d-none');
+                if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
+            } else {
+                userInfoContainer.innerHTML = ''; // Limpa o conteúdo quando não logado
+                if (myProfileLink) myProfileLink.classList.add('d-none');
+                if (loginRegisterLinks) loginRegisterLinks.classList.remove('d-none');
+            }
+
+            // Lógica para carregar e popular o carrossel de pets
+            const API_PETS_URL = 'http://localhost:3000/pets';
+            const carouselPetsInner = document.getElementById('carouselPetsInner');
+
+            fetch(API_PETS_URL)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(pets => {
+                    if (pets.length === 0) {
+                        carouselPetsInner.innerHTML = '<p class="text-center">Nenhum pet disponível no momento.</p>';
+                        return;
+                    }
+
+                    pets.forEach((pet, index) => {
+                        const carouselItem = document.createElement('div');
+                        carouselItem.classList.add('carousel-item');
+                        if (index === 0) {
+                            carouselItem.classList.add('active');
+                        }
+
+                        carouselItem.innerHTML = `
+                            <div class="col-md-4 mx-auto">
+                                <div class="card shadow-sm">
+                                    <img src="${pet.foto}" class="card-img-top" alt="${pet.nome}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${pet.nome}</h5>
+                                        <p class="card-text">
+                                            ${pet.especie} - ${pet.raca}<br>
+                                            Idade: ${pet.idade} ano(s)
+                                        </p>
+                                        <a href="/detalhes-pet.html?id=${pet.id}" class="btn btn-orange">Saiba mais</a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        carouselPetsInner.appendChild(carouselItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Erro ao carregar pets para o carrossel:', error);
+                    carouselPetsInner.innerHTML = '<p class="text-center text-danger">Não foi possível carregar os pets. Tente novamente mais tarde.</p>';
+                });
+        });
+    </script>
+</body>
 </html>
