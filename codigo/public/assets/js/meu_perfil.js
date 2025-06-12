@@ -1,4 +1,4 @@
-// Este arquivo agora será assets/js/meu_perfil.js
+// Este arquivo: assets/js/meu_perfil.js
 
 const API_BASE_URL = 'http://localhost:3000'; // Base URL para seu json-server
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
@@ -73,7 +73,8 @@ async function carregarPerfil() {
 
     } catch (error) {
         console.error('Erro ao carregar dados do perfil:', error);
-        document.getElementById('petsContainer').innerHTML = '<div class="col-12"><p class="text-danger">Erro ao carregar informações do perfil ou pets.</p></div>';
+        // Exibe uma mensagem de erro na UI, caso ocorra um problema
+        document.getElementById('petsContainer').innerHTML = '<div class="col-12"><p class="text-danger">Erro ao carregar informações do perfil ou pets. Verifique o console.</p></div>';
     }
 }
 
@@ -82,10 +83,12 @@ window.onload = carregarPerfil;
 
 // Event listener para o botão "Editar Perfil"
 document.getElementById("btnEditarPerfil").addEventListener("click", () => {
+    // Redireciona para a página de edição de perfil
     window.location.href = "editar_perfil.html"; // Caminho relativo, pois estão na mesma pasta
 });
 
 // Event listener para o botão "Cadastrar novo pet" (apenas um placeholder)
 document.getElementById("btnCadastrarPet").addEventListener("click", () => {
     alert("Funcionalidade de cadastrar novo pet ainda não implementada!");
+    // window.location.href = "cadastrar_pet.html"; // Exemplo de redirecionamento futuro
 });

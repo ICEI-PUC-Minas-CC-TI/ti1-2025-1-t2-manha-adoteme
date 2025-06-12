@@ -2,13 +2,13 @@
   "usuarios": [
     {
       "id": "1",
-      "login": "joao123",  
-      "senha": "senha123", 
-      "nome": "João Silva",
+      "nome": "João Lucas",
       "email": "joao@email.com",
+      "senha": "senha123", 
       "endereco": "Rua das Flores, 123",
       "celular": "(31) 98765-4321",
       "cpf": "123.456.789-00",
+      "login": "joao123",
       "fotoPerfil": "https://images.pexels.com/photos/60778/pexels-photo-60778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "petIDs": [
         1,
@@ -33,6 +33,7 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Montanha Branca, 89",
+      "foto": "https://placedog.net/500",
       "id": 1
     },
     {
@@ -51,7 +52,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Alameda, 23 ",
-      "id": "2"
+      "foto": "https://placedog.net/500",
+      "id": 2
     },
     {
       "nome": "Thor",
@@ -69,7 +71,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua das Palmeiras, 45",
-      "id": "3"
+      "foto": "https://placedog.net/500",
+      "id": 3
     },
     {
       "nome": "Luna",
@@ -87,7 +90,8 @@
       "criancas": "Sim",
       "outrosPets": "Não",
       "localizacao": "Av. Central, 100",
-      "id": "4"
+      "foto": "https://placedog.net/500",
+      "id": 4
     },
     {
       "nome": "Max",
@@ -105,7 +109,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Flor do Campo, 300",
-      "id": "5"
+      "foto": "https://placedog.net/500",
+      "id": 5
     },
     {
       "nome": "Mel",
@@ -123,7 +128,8 @@
       "criancas": "Sim",
       "outrosPets": "Não",
       "localizacao": "Rua Ipê Roxo, 78",
-      "id": "6"
+      "foto": "https://placedog.net/500",
+      "id": 6
     },
     {
       "nome": "Zeus",
@@ -141,7 +147,8 @@
       "criancas": "Não",
       "outrosPets": "Não",
       "localizacao": "Rua do Cedro, 12",
-      "id": "7"
+      "foto": "https://placedog.net/500",
+      "id": 7
     },
     {
       "nome": "Nina",
@@ -159,7 +166,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua das Hortênsias, 5",
-      "id": "8"
+      "foto": "https://placedog.net/500",
+      "id": 8
     },
     {
       "nome": "Apollo",
@@ -177,7 +185,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Sol Poente, 67",
-      "id": "9"
+      "foto": "https://placedog.net/500",
+      "id": 9
     },
     {
       "nome": "Mimi",
@@ -195,7 +204,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Azul Marinho, 201",
-      "id": "10"
+      "foto": "https://placedog.net/500",
+      "id": 10
     },
     {
       "nome": "Fred",
@@ -213,7 +223,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua do Girassol, 150",
-      "id": "11"
+      "foto": "https://placedog.net/500",
+      "id": 11
     },
     {
       "nome": "Bela",
@@ -231,7 +242,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua do Luar, 88",
-      "id": "12"
+      "foto": "https://placedog.net/500",
+      "id": 12
     }
   ],
   "ongs": [

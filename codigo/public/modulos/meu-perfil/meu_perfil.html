@@ -5,18 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Meu Perfil</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-      <link rel="stylesheet" href="../../assets/js/meu_perfil.js"> <style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <link rel="stylesheet" href="meu_perfil.css"> 
     <style>
-        /* Estilos do seu CSS inline ou main.css para o perfil, se desejar */
+        /* Cores personalizadas, copiadas da sua home/navbar */
+        :root {
+            --laranja: #ff7f00;
+            --laranja-escuro: #e66f00;
+            --fundo: #fffaf3;
+        }
+
         body {
-            background-color: var(--fundo); /* Se o --fundo estiver definido globalmente */
+            background-color: var(--fundo);
+            padding-top: 70px; /* Compensa a navbar fixa */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
+
+        /* Navbar e Footer herdados do site */
         .navbar {
-            background-color: #ff7f00; /* Cor laranja da sua navbar principal */
+            background-color: var(--laranja);
         }
-        .navbar-brand, .nav-link {
+
+        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
             color: white !important;
         }
+
+        /* Estilos dos botões gerais */
+        .btn-custom-orange { 
+            background-color: var(--laranja);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none; /* Para links estilizados como botão */
+        }
+        .btn-custom-orange:hover {
+            background-color: var(--laranja-escuro);
+            color: white;
+        }
+
+        /* Outros estilos do perfil */
         .card.perfil {
             margin-top: 20px;
             padding: 20px;
@@ -34,7 +66,7 @@
             border-radius: 50%;
             object-fit: cover;
             margin-right: 20px;
-            border: 2px solid #ff7f00;
+            border: 2px solid var(--laranja);
         }
         .perfil-header .info p {
             margin-bottom: 5px;
@@ -45,38 +77,47 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .pet-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+        .card-img-top {
+            max-width: 100%;
+            display: block;
         }
-        .pet-card img {
-            width: 60px;
-            height: 60px;
-            border-radius: 4px;
-            object-fit: cover;
-            margin-right: 10px;
-        }
-        .btn-custom-orange { /* Para botões laranja consistentes */
-            background-color: #ff7f00;
+
+        /* Estilos do Rodapé (copiados) */
+        .footer {
+            background-color: #333;
             color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
+            padding-top: 30px;
+            margin-top: auto;
         }
-        .btn-custom-orange:hover {
-            background-color: #e66f00;
+
+        .footer h5 {
+            color: var(--laranja);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
         }
     </style>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">AdoteMe</a>
+            <a class="navbar-brand fw-bold" href="/index.html">AdoteMe</a>
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -85,9 +126,9 @@
                     <li class="nav-item"><a class="nav-link" href="/index.html#como-funciona">Como funciona</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.html#pets">Pets</a></li>
                     <li class="nav-item"><a class="nav-link" href="/index.html#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li> 
+                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li>
                 </ul>
-                
+
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
                     <button class="btn btn-outline-light" type="submit">Buscar</button>
@@ -107,19 +148,20 @@
         </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="container mt-5 flex-grow-1">
         <main>
             <section class="card perfil">
                 <h2>Minhas Informações</h2>
                 <div class="perfil-header">
-                    <img id="fotoPerfil" src="" alt="Foto de perfil" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #ff7f00;" />
+                    <img id="fotoPerfil" src="" alt="Foto de perfil" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid var(--laranja);" />
                     <div class="info ms-3">
                         <p>Nome: <span id="nome"></span></p>
                         <p>Email: <span id="email"></span></p>
                         <p>Endereço: <span id="endereco"></span></p>
                         <p>Celular: <span id="celular"></span></p>
                         <p>CPF: <span id="cpf"></span></p>
-                        <p>Login: <span id="login"></span></p> <div class="actions mt-3">
+                        <p>Login: <span id="login"></span></p>
+                        <div class="actions mt-3">
                             <button class="btn btn-primary btn-custom-orange" id="btnEditarPerfil">Editar Perfil</button>
                         </div>
                     </div>
@@ -128,25 +170,65 @@
 
             <section class="card pets mt-4">
                 <h2>Meus Pets</h2>
-                <button class="btn btn-primary btn-custom-orange" id="btnCadastrarPet" style="margin-bottom: 16px;">Cadastrar novo pet</button>
-                <div id="petsContainer" class="row mt-3"></div> </section>
+                <a href="/modulos/cadastro_pets/pets.html" class="btn btn-primary btn-custom-orange" style="margin-bottom: 16px;">Cadastrar novo pet</a>
+                <div id="petsContainer" class="row mt-3"></div>
+            </section>
         </main>
     </div>
 
-    <footer class="footer text-center mt-5">
+    <footer class="footer text-center text-md-start">
         <div class="container">
-            <p>&copy; 2025 Adote um Pet - Todos os direitos reservados</p>
-            <p>
-                <a href="#">Instagram</a> |
-                <a href="#">Facebook</a> |
-                <a href="#">Contato</a>
-            </p>
+            <div class="row pt-4 pb-4">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">AdoteMe</h5>
+                    <p>Conectando corações e patinhas, garantindo um lar feliz para cada pet abandonado.</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Navegação</h5>
+                    <p><a href="/index.html#como-funciona">Como funciona</a></p>
+                    <p><a href="/index.html#pets">Pets disponíveis</a></p>
+                    <p><a href="/adocoes.html">Histórias de Adoção</a></p>
+                    <p><a href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a></p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Suporte</h5>
+                    <p><a href="#">Perguntas Frequentes</a></p>
+                    <p><a href="#">Como Adotar</a></p>
+                    <p><a href="#">Seja um Voluntário</a></p>
+                    <p><a href="#">Reportar Problema</a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
+                    <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> contato@adoteme.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +55 (31) 98765-4321</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">© 2025 Copyright:
+                        <a href="#" class="text-white fw-bold" style="text-decoration: none;">AdoteMe</a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-end">
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/login.js"></script>
+    <script src="../../assets/js/login.js"></script>
     <script>
+        // Script para gerenciar a visibilidade da navbar (copiado da index.html)
         document.addEventListener('DOMContentLoaded', function() {
             const myProfileLink = document.getElementById('myProfileLink');
             const loginRegisterLinks = document.getElementById('loginRegisterLinks');
@@ -166,11 +248,11 @@
                 if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
             } else {
                 // Se não houver usuário logado, redireciona para a página de login
-                // Este é um ponto crucial para proteger a página de perfil
                 window.location.href = '/modulos/login/login.html'; 
             }
         });
     </script>
     <script src="../../assets/js/meu_perfil.js"></script>
 </body>
+
 </html>
