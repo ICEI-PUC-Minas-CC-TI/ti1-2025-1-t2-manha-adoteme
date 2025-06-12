@@ -14,7 +14,7 @@ async function carregarPerfil() {
             return;
         }
         const usuarioCorrente = JSON.parse(usuarioCorrenteJSON);
-        const userId = usuarioCorrente.id;
+        const userId = usuarioCorrente.id; // <-- Ponto crucial: pega o ID do usuário logado
 
         if (!userId) {
             console.error('ID do usuário não encontrado no sessionStorage.');
@@ -22,8 +22,8 @@ async function carregarPerfil() {
             return;
         }
 
-        // 1. Carregar dados do usuário logado
-        const userResponse = await fetch(`${API_USUARIOS_URL}/${userId}`);
+        // 1. Carregar dados do usuário logado usando o ID específico
+        const userResponse = await fetch(`${API_USUARIOS_URL}/${userId}`); // <-- Ponto crucial: requisita APENAS o usuário com esse ID
         if (!userResponse.ok) {
             throw new Error(`Erro ao buscar perfil do usuário: ${userResponse.status}`);
         }
@@ -73,7 +73,6 @@ async function carregarPerfil() {
 
     } catch (error) {
         console.error('Erro ao carregar dados do perfil:', error);
-        // Opcional: mostrar mensagem de erro na UI
         document.getElementById('petsContainer').innerHTML = '<div class="col-12"><p class="text-danger">Erro ao carregar informações do perfil ou pets.</p></div>';
     }
 }
@@ -83,12 +82,10 @@ window.onload = carregarPerfil;
 
 // Event listener para o botão "Editar Perfil"
 document.getElementById("btnEditarPerfil").addEventListener("click", () => {
-    // Redireciona para a página de edição de perfil
     window.location.href = "editar_perfil.html"; // Caminho relativo, pois estão na mesma pasta
 });
 
 // Event listener para o botão "Cadastrar novo pet" (apenas um placeholder)
 document.getElementById("btnCadastrarPet").addEventListener("click", () => {
     alert("Funcionalidade de cadastrar novo pet ainda não implementada!");
-    // window.location.href = "cadastrar_pet.html"; // Exemplo de redirecionamento futuro
 });
