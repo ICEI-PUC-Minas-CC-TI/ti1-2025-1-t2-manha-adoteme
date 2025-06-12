@@ -8,11 +8,9 @@ Com uma navegação intuitiva e filtros personalizados, o Adote.ME busca tornar 
 ## Alunos integrantes da equipe
 
 * Gabriel Mendonça Almeida Magalhães
-* Gisele Câmara Xavier
 * Matheus Gouvêa Ramalho
 * Pedro Augusto Gomes de Araújo
-* Phillipe Wallace Rodrigues Sodré
-* Thalita Ágata Domingos
+
 
 ## Professores responsáveis
 

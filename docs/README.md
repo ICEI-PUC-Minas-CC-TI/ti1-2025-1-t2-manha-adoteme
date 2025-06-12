@@ -6,11 +6,8 @@ Informações básicas do projeto.
 * **Repositório GitHub:** https://github.com/ICEI-PUC-Minas-CC-TI/ti1-2025-1-t2-manha-adoteme
 * **Membros da equipe:**
   * [Gabriel Mendonça Almeida Magalhães](https://github.com/)
-  * [Gisele Câmara Xavier](https://github.com/giselecx) 
   * [Matheus Gouvêa Ramalho](https://github.com/matheussgr) 
   * [Pedro Augusto Gomes de Araújo](https://github.com/PedroAugustoPucMG) 
-  * [Phillipe Wallace Rodrigues Sodré](https://github.com/)
-  * [Thalita Ágata Domingos](https://github.com/)
 
 A documentação do projeto é estruturada da seguinte forma:
 
