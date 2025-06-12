@@ -248,7 +248,7 @@ Permite a inserir termos como nome do pet, raça ou palavras-chave. Aciona uma b
 
 ![Tela de Funcionalidade](images/Funcinalidades_busca.png)
 
-##### Funcionalidade 4 - Perfil do usuário com suas respectivas informações: 
+##### Funcionalidade 4 - Gerenciamento de Perfil
 
 Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o pets cadastros em seu usuário
 
@@ -257,7 +257,8 @@ Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o 
   * Acesse o menu principal e vá na aba meu perfil
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/Funcinalidades_busca.png)
+![Tela de Funcionalidade](images/Meu_Perfil.png)
+![Tela de Funcionalidade](images/Edição_Perfil.png)
 
 ##### Funcionalidade 5 - Home do Site:
 
