@@ -1,16 +1,25 @@
 {
-  "users": [
+  "usuarios": [
     {
-      "id": 1,
-      "nome": "Matheus Silva",
-      "email": "matheus@email.com",
-      "endereco": "Rua das Flores, 123",
-      "celular": "(31) 98765-4321",
-      "cpf": "123.456.789-00",
-      "nomeUsuario": "matheus123",
-      "senha": "senhaSegura",
-      "fotoPerfil": "https://i.pravatar.cc/160?img=5",
-      "petIDs": [1,2]
+      "id": "187cb7e5-e097-4224-8bc7-b610c855e2b1",
+      "login": "admin",
+      "senha": "123",
+      "nome": "Administrador do Sistema",
+      "email": "admin@abc.com"
+    },
+    {
+      "id": "ec37c83d-4b7f-458d-9e10-3fda7d37cd3e",
+      "login": "user",
+      "senha": "123",
+      "nome": "Usuario Comum",
+      "email": "user@abc.com"
+    },
+    {
+      "id": "171022ee-09b0-468a-962a-9c0772753cd0",
+      "login": "rommelcarneiro",
+      "senha": "12345",
+      "nome": "Rommel Carneiro",
+      "email": "rommel@abc.com"
     }
   ],
   "pets": [
