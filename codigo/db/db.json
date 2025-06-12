@@ -5,7 +5,15 @@
       "login": "admin",
       "senha": "123",
       "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "email": "admin@abc.com",
+      "endereco": "Rua das Flores, 123",
+      "celular": "(31) 98765-4321",
+      "cpf": "123.456.789-00",
+      "fotoPerfil": "https://images.pexels.com/photos/60778/pexels-photo-60778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "petIDs": [
+        1,
+        2
+      ]
     },
     {
       "id": "ec37c83d-4b7f-458d-9e10-3fda7d37cd3e",
