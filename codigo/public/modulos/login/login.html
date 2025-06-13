@@ -1,154 +1,434 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Desenvolvimento de Interfaces Web | Login de Usuário</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adote.me | Login de Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Cores personalizadas do seu site */
+        :root {
+            --laranja: #ff7f00;
+            --laranja-escuro: #e66f00;
+            --fundo: #fffaf3;
+
+            /* Cores para o gradiente da seção de boas-vindas (inspiradas na imagem) */
+            --gradiente-azul-claro: rgba(76, 175, 80, 0.7); /* Verde amigável para pets com transparência */
+            --gradiente-azul-escuro: rgba(33, 150, 243, 0.7); /* Azul vibrante com transparência */
+            --texto-gradiente: #ffffff;
+        }
+
+        body {
+            background-color: var(--fundo); /* Cor de fundo principal do site */
+            padding-top: 70px; /* Compensa a navbar fixa */
+            min-height: 100vh; /* Garante que o body ocupa a altura total da viewport */
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Estilo da Navbar */
+        .navbar {
+            background-color: var(--laranja);
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        /* Estilo para o container principal do login (o "card" dividido) */
+        .login-card-container {
+            background-color: white;
+            border-radius: 15px; /* Bordas mais arredondadas */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
+            max-width: 900px; /* Largura máxima do card dividido */
+            width: 100%;
+            display: flex; /* Para que as colunas fiquem lado a lado */
+            overflow: hidden; /* Garante que o radius se aplique às colunas internas */
+            min-height: 500px; /* Altura mínima para o card */
+        }
+
+        /* Seção de Boas-Vindas (esquerda) - APENAS A FOTO DO CACHORRO COM GRADIENTE */
+        .welcome-section {
+            /* Gradiente com sobreposição na imagem do doguinho */
+            background:  url('https://placedog.net/500/750?id=123') no-repeat center center; /* URL da foto do doguinho */
+            background-size: cover; /* Faz a imagem cobrir toda a área */
+            color: var(--texto-gradiente); /* Cor do texto (embora não haja texto aqui, é bom ter) */
+            padding: 40px; /* Padding interno */
+            display: flex; /* Para centralizar o conteúdo se houvesse */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* Para garantir que o conteúdo fique acima do gradiente */
+        }
+        /* Este pseudo-elemento é para o "efeito montanha/onda" que você tinha na imagem de referência */
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            bottom: -50px; /* Posição para o efeito "montanha" */
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.1); /* Transparência para a onda */
+            border-radius: 50%;
+            transform: rotate(-5deg);
+            z-index: 0;
+            filter: blur(10px); /* Suaviza o efeito */
+        }
+
+        /* Seção do Formulário de Login (direita) */
+        .login-form-section {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-form-section h3 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .login-form-section .form-control {
+            border-radius: 8px;
+            padding: 12px 15px;
+            border-color: #e0e0e0;
+        }
+        .login-form-section .form-control:focus {
+            border-color: var(--laranja);
+            box-shadow: 0 0 0 0.25rem rgba(255, 127, 0, 0.25);
+        }
+        .login-form-section .btn-login {
+            background-color: var(--laranja);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .login-form-section .btn-login:hover {
+            background-color: var(--laranja-escuro);
+        }
+        .login-form-section .form-check-label,
+        .login-form-section .forgot-password-link {
+            font-size: 0.9rem;
+        }
+        .login-form-section .forgot-password-link {
+            color: #6c757d;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .login-form-section .forgot-password-link:hover {
+            color: var(--laranja);
+        }
+        
+        /* Estilo para o link "Registre-se" */
+        .link-register {
+            color: var(--laranja-escuro) !important;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .link-register:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para botões personalizados */
+        .btn-custom-orange {
+            background-color: var(--laranja);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .btn-custom-orange:hover {
+            background-color: var(--laranja-escuro);
+            color: white;
+        }
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .btn-secondary-custom:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+
+
+        /* Estilos do Rodapé */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding-top: 30px;
+            margin-top: auto;
+        }
+
+        .footer h5 {
+            color: var(--laranja);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 767.98px) {
+            .login-card-container {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .welcome-section {
+                padding: 30px 20px;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                border-top-left-radius: 15px;
+                border-top-right-radius: 15px;
+                height: 300px; /* Altura fixa para a seção de boas-vindas em mobile */
+            }
+            .welcome-section::before {
+                display: none; /* Esconde o efeito de onda em mobile */
+            }
+            .login-form-section {
+                padding: 30px 20px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-left-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
+            .navbar-brand.mx-auto {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+        }
+    </style>
 </head>
 
-<body class="">
-  <div id="login">
-    <div class="container">
-      <div id="login-row" class="row justify-content-center align-items-center bg-secondary m-5 p-5">
-        <div id="login-column" class="col-md-6">
-          <div id="login-box" class="col-md-12">
-            <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
-              <h3 class="text-center text-light">Identificação de Usuário</h3>
-              <div class="form-group">
-                <label for="username" class="text-info text-light">Login</label><br>
-                <input type="text" name="username" id="username" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="password" class="text-info text-light">Senha</label><br>
-                <input type="password" name="password" id="password" class="form-control">
-              </div>
-              <div class="form-group text-center mt-3">
-                <button type="button" class="btn btn-primary text-light" data-toggle="modal" data-target="#loginModal">Registrar</button>
-                <input type="submit" name="submit" class="btn btn-primary text-light" value="Login"> 
-              </div>
-            </form>
-          </div>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container d-flex">
+            <button class="navbar-toggler order-0 me-auto d-lg-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand fw-bold mx-auto order-1 order-lg-0" href="/index.html">AdoteMe</a>
+
+            <div class="collapse navbar-collapse order-2" id="navbarNav">
+                </div>
         </div>
-      </div>
+    </nav>
+
+    <div class="container d-flex flex-grow-1 justify-content-center align-items-center py-4">
+        <div class="login-card-container">
+            <div class="col-md-6 welcome-section">
+                </div>
+
+            <div class="col-md-6 login-form-section">
+                <h3>Login</h3>
+                <form id="login-form" class="form w-100">
+                    <div class="mb-3">
+                        <label for="username" class="form-label text-muted">Login</label><br>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Digite Seu Login" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label text-muted">Senha</label><br>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Digite Sua Senha" required>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">Login</button>
+                </form>
+            
+                <p class="text-center mt-3 text-dark">
+                    Não tem uma conta? 
+                    <a href="#" class="link-register" data-bs-toggle="modal" data-bs-target="#loginModal">Registre-se</a>
+                </p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel">Login App</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Registro de Novo Usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="register-form" class="form" method="post">
+                        <h3 class="text-center">Novo usuário</h3>
+                        <div class="mb-3">
+                            <label for="txt_login" class="form-label">Usuário</label><br>
+                            <input type="text" name="txt_login" id="txt_login" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_nome" class="form-label">Nome completo</label><br>
+                            <input type="text" name="txt_nome" id="txt_nome" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_email" class="form-label">Email</label><br>
+                            <input type="email" name="txt_email" id="txt_email" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_senha" class="form-label">Senha</label><br>
+                            <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_senha2" class="form-label">Confirmação de Senha</label><br>
+                            <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary-custom" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" id="btn_salvar" class="btn btn-custom-orange">Salvar</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div id="login-box" class="col-md-12">
-            <form id="login-form" class="form" method="post" onsubmit="loginUser (this)">
-              <h3 class="text-center text-info">Novo usuário</h3>
-              <div class="form-group">
-                <label for="login" class="text-info">Usuário</label><br>
-                <input type="text" name="txt_login" id="txt_login" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="nome" class="text-info">Nome completo</label><br>
-                <input type="text" name="txt_nome" id="txt_nome" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="email" class="text-info">email</label><br>
-                <input type="text" name="txt_email" id="txt_email" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="senha" class="text-info">Senha</label><br>
-                <input type="password" name="txt_senha" id="txt_senha" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="senha2" class="text-info">Confirmação de Senha</label><br>
-                <input type="password" name="txt_senha2" id="txt_senha2" class="form-control">
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" id="btn_salvar" class="btn btn-info">Salvar</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <script src="../../assets/js/login.js"></script>
-  <script>
-
-    // Declara uma função para processar o formulário de login
-    function processaFormLogin(event) {
-      // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-      event.preventDefault();
-
-      // Obtem os dados de login e senha a partir do formulário de login
-      var username = document.getElementById('username').value;
-      var password = document.getElementById('password').value;
-
-      // Valida login e se estiver ok, redireciona para tela inicial da aplicação
-      resultadoLogin = loginUser(username, password);
-      if (resultadoLogin) {
-        window.location.href = RETURN_URL;
-      }
-      else { // Se login falhou, avisa ao usuário
-        alert('Usuário ou senha incorretos');
-      }
-    }
-
-    function salvaLogin(event) {
-      // Cancela a submissão do formulário para tratar sem fazer refresh da tela
-      event.preventDefault();
-
-      // Obtem os dados do formulário
-      let login = document.getElementById('txt_login').value;
-      let nome = document.getElementById('txt_nome').value;
-      let email = document.getElementById('txt_email').value;
-      let senha = document.getElementById('txt_senha').value;
-      let senha2 = document.getElementById('txt_senha2').value;
-      if (senha != senha2) {
-        alert('As senhas informadas não conferem.');
-        return
-      }
-
-      // Adiciona o usuário no banco de dados
-      addUser(nome, login, senha, email);
-      alert('Usuário salvo com sucesso. Proceda com o login para ');
-
-      // Oculta a div modal do login
-      //document.getElementById ('loginModal').style.display = 'none';
-      $('#loginModal').modal('hide');
-    }
-
-    // Associa a funçao processaFormLogin  formulário adicionado um manipulador do evento submit
-    document.getElementById('login-form').addEventListener('submit', processaFormLogin);
+    <footer class="footer text-center text-md-start">
+        <div class="container">
+            <div class="row pt-4 pb-4">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Adote.Me</h5>
+                    <p>Conectando corações e patinhas, garantindo um lar feliz para cada pet abandonado.</p>
+                </div>
 
 
-    // Associar salvamento ao botao
-    document.getElementById('btn_salvar').addEventListener('click', salvaLogin);        
-  </script>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
+                    <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> contato@adoteme.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +55 (31) 98765-4321</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">© 2025 Copyright:
+                        <a href="#" class="text-white fw-bold" style="text-decoration: none;">Adote.Me</a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-end">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script src="../../assets/js/login.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Se o usuário já estiver logado, redireciona para a home.
+            const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+            if (usuarioCorrenteJSON) {
+                console.log("Página de login: Usuário já logado. Redirecionando para /index.html");
+                window.location.href = "/index.html"; 
+            }
+        });
+
+        // Event Listeners (permanecem os mesmos)
+        // Certifique-se que o formulário de login NÃO tem onsubmit="loginUser(this)" no HTML
+        // Apenas este addEventListener deve controlar o submit
+        document.getElementById('login-form').addEventListener('submit', processaFormLogin);
+        document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
+
+        // FUNÇÕES processaFormLogin e salvaLogin (precisam estar no assets/js/login.js para boa prática)
+        // Mantenho-as aqui APENAS para referência, se você as tem no HTML.
+        // Se já estão no login.js, REMOVA estas definições duplicadas daqui.
+
+        async function processaFormLogin(event) { // Tornar async é crucial se loginUser é async
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            console.log("processaFormLogin: Tentando fazer login com:", username);
+
+            try {
+                const resultadoLogin = await loginUser(username, password); // Await para esperar a Promise de loginUser
+
+                console.log("processaFormLogin: Resultado do loginUser:", resultadoLogin);
+
+                if (resultadoLogin) {
+                    console.log("processaFormLogin: Login bem-sucedido. Redirecionando para /index.html");
+                    window.location.href = "/index.html"; // <-- Linha de redirecionamento
+                } else {
+                    console.log("processaFormLogin: Login falhou. Exibindo alerta.");
+                    alert('Usuário ou senha incorretos');
+                }
+            } catch (error) {
+                console.error("processaFormLogin: Erro durante o processo de login:", error);
+                alert("Ocorreu um erro durante o login. Verifique o console.");
+            }
+        }
+
+        async function salvaLogin(event) { // Tornar async também
+            event.preventDefault();
+            let login = document.getElementById('txt_login').value;
+            let nome = document.getElementById('txt_nome').value;
+            let email = document.getElementById('txt_email').value;
+            let senha = document.getElementById('txt_senha').value;
+            let senha2 = document.getElementById('txt_senha2').value;
+
+            if (senha != senha2) {
+                alert('As senhas informadas não conferem.');
+                return;
+            }
+
+            console.log("salvaLogin: Tentando registrar novo usuário:", login);
+            try {
+                await addUser(nome, login, senha, email); // Await para esperar a Promise de addUser
+                alert('Usuário salvo com sucesso. Proceda com o login.');
+                const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal')) || new bootstrap.Modal(document.getElementById('loginModal'));
+                loginModal.hide();
+                // Recarrega usuários para que o recém-registrado seja reconhecido
+                carregarUsuarios(() => {
+                    console.log('salvaLogin: Usuários recarregados após novo registro.');
+                });
+            } catch (error) {
+                console.error('salvaLogin: Erro ao registrar usuário:', error);
+                alert('Erro ao salvar usuário. Tente novamente.');
+            }
+        }
+    </script>
 </body>
 
 </html>
