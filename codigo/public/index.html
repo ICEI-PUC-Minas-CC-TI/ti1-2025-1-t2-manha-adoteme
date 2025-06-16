@@ -1,308 +1,309 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+  
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Adote um Pet</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <style>
-        :root {
-            --laranja: #ff7f00;
-            --laranja-escuro: #e66f00;
-            --fundo: #fffaf3;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdoteMe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-        body {
-            background-color: var(--fundo);
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
 
-        .navbar {
-            background-color: var(--laranja);
-        }
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-        .navbar-brand, .nav-link, .footer a {
-            color: white !important;
-        }
+  <!-- AOS (animações ao rolar) -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-        /* Ajuste para o campo de busca na navbar */
-        .navbar .form-control {
-            border-radius: 0.25rem; /* Bordas arredondadas */
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Borda mais clara */
-            background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente */
-            color: white;
-        }
-        .navbar .form-control::placeholder {
-            color: rgba(255, 255, 255, 0.7); /* Cor do placeholder */
-        }
-        .navbar .form-control:focus {
-            background-color: white;
-            color: #333;
-            border-color: var(--laranja-escuro);
-            box-shadow: none; /* Remover sombra padrão do focus se desejar */
-        }
-        .navbar .btn-outline-light {
-            border-color: white;
-            color: white;
-        }
-        .navbar .btn-outline-light:hover {
-            background-color: white;
-            color: var(--laranja);
-        }
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="home.css">
+  
 
-        .btn-orange {
-            background-color: var(--laranja);
-            color: white;
-        }
+  <style>
+    :root {
+      --laranja: #ff7f50;
+      --laranja-escuro: #e66f00;
+      --fundo: #fffefc;
+    }
 
-        .btn-orange:hover {
-            background-color: var(--laranja-escuro);
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--fundo);
+    }
 
-        .hero {
-            background-color: var(--laranja);
-            color: white;
-            padding: 60px 20px;
-            border-radius: 0 0 30px 30px;
-        }
+    .navbar-nav .nav-link:hover {
+      text-decoration: underline;
+      color: #fffbd1 !important;
+    }
 
-        .card img {
-            height: 250px; /* Ajuste para melhor visualização no carrossel */
-            object-fit: cover;
-        }
+    .navbar .btn-light:hover {
+      background-color: #fff3cd;
+      color: #000;
+    }
 
-        /* Estilos adicionais para o carrossel */
-        #petsCarousel .carousel-item {
-            padding: 20px; /* Espaçamento interno para os cards */
-        }
+    .text-orange {
+      color: var(--laranja);
+    }
 
-        #petsCarousel .carousel-inner {
-            display: flex;
-        }
+    .btn-orange {
+      background-color: var(--laranja);
+      color: white;
+    }
 
-        #petsCarousel .carousel-item.active,
-        #petsCarousel .carousel-item-next,
-        #petsCarousel .carousel-item-prev {
-            display: flex;
-        }
+    .btn-orange:hover {
+      background-color: var(--laranja-escuro);
+    }
 
-        /* Para exibir múltiplos cards por slide */
-        @media (min-width: 768px) {
-            #petsCarousel .carousel-inner .carousel-item-right.active,
-            #petsCarousel .carousel-inner .carousel-item-next,
-            #petsCarousel .carousel-inner .carousel-item-prev {
-                display: flex;
-            }
-            #petsCarousel .carousel-inner .carousel-item-right:not(.carousel-item-start),
-            #petsCarousel .carousel-inner .carousel-item-next:not(.carousel-item-start),
-            #petsCarousel .carousel-inner .carousel-item-prev:not(.carousel-item-start) {
-                transform: translateX(0);
-            }
-            #petsCarousel .carousel-inner .carousel-item-right.active,
-            #petsCarousel .carousel-inner .carousel-item-next.active {
-                transform: translateX(33.333%); /* Exibir 3 cards, ajuste conforme o número de cards */
-            }
-            #petsCarousel .carousel-inner .carousel-item-prev.active {
-                transform: translateX(-33.333%); /* Exibir 3 cards, ajuste conforme o número de cards */
-            }
-            #petsCarousel .carousel-item-right:not(.active) {
-                transform: translateX(-100%);
-            }
-            #petsCarousel .carousel-item-left:not(.active) {
-                transform: translateX(100%);
-            }
-            #petsCarousel .carousel-item {
-                flex: 0 0 33.333%; /* Ocupa 1/3 do carrossel para 3 cards */
-                margin-right: 0;
-            }
-        }
+    .hero {
+      background-color: var(--laranja);
+      color: white;
+      padding: 60px 20px;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .pet-card img {
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .pet-card {
+      transition: transform 0.2s;
+    }
+
+    .pet-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer {
+      background-color: #f8f9fa;
+      color: #555;
+    }
 
 
-        .footer {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-        }
+    .footer a {
+      color: var(--laranja);
+      text-decoration: none;
+    }
 
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .footer a:hover {
+      color: #ffaa33;
+    }
+  </style>
 </head>
-<body>
 
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">AdoteMe</a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="#como-funciona">Como funciona</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pets">Pets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li> 
-                </ul>
-                
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form>
+<body class="d-flex flex-column min-vh-100">
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-    <li class="nav-item d-none" id="myProfileLink">
-        <a class="nav-link" href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a>
-    </li>
-                    <li class="nav-item d-none" id="loginRegisterLinks">
-                        <a class="nav-link" href="/modulos/login/login.html">Login/Registrar</a>
-                    </li>
-                    <li class="nav-item" id="userInfoContainer">
-                        </li>
-                </ul>
-            </div>
+  <!-- NAVBAR -->
+
+ <nav class="navbar navbar-expand-lg shadow-sm" style="background: linear-gradient(90deg, #ff7f50 0%, #e66f00 100%); padding: 1.5rem 0;">
+  <div class="container-fluid px-5 d-flex justify-content-between align-items-center">
+    
+    <!-- Logo maior à esquerda -->
+    <a class="navbar-brand d-flex align-items-center gap-3" href="#" style="font-size: 2.8rem;">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo" width="90" height="90" class="rounded-circle bg-white p-2 shadow-sm">
+      <span class="fw-bold text-white">Adote</span><span style="color: #222;">Me</span>
+    </a>
+
+    <!-- Botão para mobile -->
+    <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Itens à direita (form + nav) -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <div class="d-flex align-items-center flex-wrap gap-3">
+        
+        <!-- Campo de busca -->
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet" aria-label="Buscar" id="busca-pet">
+          <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
+        </form>
+
+        <!-- Links de navegação -->
+        <ul class="navbar-nav flex-row gap-2">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold px-3" href="#como-funciona">❓ Como funciona</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold px-3" href="#pets">🐾 Pets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold px-3" href="#sobre">ℹ️ Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold px-3" href="#perfil">👤 Meu perfil</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+  <!-- HERO -->
+  <section class="hero text-center py-5" style="background: linear-gradient(135deg, #fff4e5 0%,  #fff4e5 100%);">
+  <div class="container px-4 px-md-5">
+    <h1 class="fw-extrabold display-3 text-dark mb-4" style="letter-spacing: 1.2px; font-weight: 800;">
+      Encontre seu <span style="color: #e65100;">novo melhor Amigo!</span>
+    </h1>
+    <p class="lead text-dark mb-5" style="font-size: 1.3rem; max-width: 600px; margin: 0 auto;">
+      Conectamos pets abandonados com pessoas prontas para amar e adotar. Dê uma nova chance, um novo lar.
+    </p>
+    <a href="#pets" class="btn btn-warning btn-lg fw-bold d-inline-flex align-items-center gap-3 px-5 py-3 shadow-sm"
+       style="transition: background-color 0.3s ease, transform 0.2s ease;">
+      Ver pets disponíveis
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+        class="bi bi-arrow-down-circle" viewBox="0 0 16 16" style="transition: transform 0.3s;">
+        <path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z" />
+        <path fill-rule="evenodd"
+          d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.147 2.147a.5.5 0 0 0 .707-.707l-3-3a.5.5 0 0 0-.707 0l-3 3a.5.5 0 1 0 .707.707L7.5 5.707V11.5A.5.5 0 0 0 8 12z" />
+      </svg>
+    </a>
+  </div>
+</section>
+
+  <!-- CARROSSEL -->
+   <section class="carousel-container">
+  <div class="container mt-4" data-aos="fade-up">
+    <div id="carouselPets" class="carousel slide rounded shadow-sm" data-bs-ride="carousel">
+      <div class="carousel-inner rounded">
+        <div class="carousel-item active">
+          <img src="Your paragraph text.jpg" class="d-block w-100" alt="Cachorro 1">
         </div>
-    </nav>
-
-    <section class="hero text-center">
-        <div class="container">
-            <h1 class="display-5 fw-bold">Encontre seu novo melhor amigo</h1>
-            <p class="lead">Conectamos pets abandonados com pessoas que querem amar e adotar.</p>
-            <a href="#pets" class="btn btn-light fw-bold">Ver pets disponíveis</a>
+        <div class="carousel-item">
+          <img src="dog.jpg" class="d-block w-100"
+            alt="Cachorro 2">
         </div>
-    </section>
-
-    <section id="como-funciona" class="py-5 text-center">
-        <div class="container">
-            <h2 class="mb-4">Como funciona</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>1. Explore os pets</h5>
-                    <p>Veja os perfis dos pets disponíveis para adoção perto de você.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>2. Escolha seu pet</h5>
-                    <p>Leia as descrições, veja fotos e escolha aquele que conquistou seu coração.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>3. Fale com a instituição</h5>
-                    <p>Entre em contato e agende a visita ou adoção diretamente com a ONG.</p>
-                </div>
-            </div>
+        <div class="carousel-item">
+          <img src="gato.jpg" class="d-block w-100" alt="Gato">
         </div>
-    </section>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselPets" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-2"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselPets" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-2"></span>
+      </button>
+    </div>
+  </div>
+  </section>
 
-    <section id="pets" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="mb-4 text-center">Pets para adoção</h2>
-            <div id="petsCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner" id="carouselPetsInner">
-                    </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#petsCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#petsCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
+  <!-- COMO FUNCIONA -->
+<section id="como-funciona" class="py-5 text-center" style="background: #fff4e5;">
+  <div class="container">
+    <h2 class="mb-5 fw-bold position-relative d-inline-block" data-aos="fade-up" style="color: #e65100; font-size: 2.8rem; letter-spacing: 1px;">
+      Como funciona
+      <span style="
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #ff6d00, #e65100);
+        border-radius: 2px;
+        margin-top: 8px;
+        margin-left: auto;
+        margin-right: auto;
+      "></span>
+    </h2>
+    <div class="row g-4 justify-content-center">
+      
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="p-4 shadow-sm bg-white rounded-5 h-100 card-hover">
+          <div class="mb-4">
+            <i class="bi bi-search-heart fs-1" style="color: #ff6d00;"></i>
+          </div>
+          <h5 class="fw-bold" style="color: #e65100;">1. Explore os pets</h5>
+          <p class="text-secondary fs-6">Veja os perfis dos pets disponíveis para adoção perto de você.</p>
         </div>
-    </section>
-
-    <section id="sobre" class="py-5">
-        <div class="container">
-            <h2 class="mb-4 text-center">Sobre nós</h2>
-            <p class="text-center">Somos uma plataforma que conecta ONGs de proteção animal com pessoas dispostas a adotar. Nosso objetivo é garantir que cada pet encontre um lar cheio de amor e carinho.</p>
+      </div>
+      
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="p-4 shadow-sm bg-white rounded-5 h-100 card-hover">
+          <div class="mb-4">
+            <i class="bi bi-heart-pulse fs-1" style="color: #ff6d00;"></i>
+          </div>
+          <h5 class="fw-bold" style="color: #e65100;">2. Escolha seu pet</h5>
+          <p class="text-secondary fs-6">Leia as descrições, veja fotos e escolha aquele que conquistou seu coração.</p>
         </div>
-    </section>
-
-    <footer class="footer text-center">
-        <div class="container">
-            <p>&copy; 2025 Adote um Pet - Todos os direitos reservados</p>
-            <p>
-                <a href="#">Instagram</a> |
-                <a href="#">Facebook</a> |
-                <a href="#">Contato</a>
-            </p>
+      </div>
+      
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="p-4 shadow-sm bg-white rounded-5 h-100 card-hover">
+          <div class="mb-4">
+            <i class="bi bi-chat-dots fs-1" style="color: #ff6d00;"></i>
+          </div>
+          <h5 class="fw-bold" style="color: #e65100;">3. Fale com a instituição</h5>
+          <p class="text-secondary fs-6">Entre em contato e agende a visita ou adoção diretamente com a ONG.</p>
         </div>
-    </footer>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/login.js"></script> 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elementos da Navbar
-            const myProfileLink = document.getElementById('myProfileLink');
-            const loginRegisterLinks = document.getElementById('loginRegisterLinks');
-            const userInfoContainer = document.getElementById('userInfoContainer');
+    </div>
+  </div>
+</section>
 
-            const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+    <!-- PETS -->
+    <section id="pets" class="container my-5">
+  <div class="text-center mb-5" data-aos="fade-up">
+    <p class="text-muted fs-5 mb-1">🐶🐱 Eles estão prontos para um novo lar</p>
+    <h2 class="fw-bold display-5">
+      <span class="text-orange">Conheça</span> alguns <span class="text-orange">pets adoráveis</span> disponíveis para <span class="text-orange">adoção</span>
+    </h2>
+  </div>
 
-            if (usuarioCorrenteJSON) {
-                const usuario = JSON.parse(usuarioCorrenteJSON);
-                // AGORA INJETAMOS DENTRO DE UM NAV-LINK PARA MELHOR ALINHAMENTO
-                userInfoContainer.innerHTML = `
-                    <a class="nav-link text-white" href="#">
-                        Olá, ${usuario.nome}!
-                        <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
-                    </a>
-                `;
-                
-                if (myProfileLink) myProfileLink.classList.remove('d-none');
-                if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
-            } else {
-                userInfoContainer.innerHTML = ''; // Limpa o conteúdo quando não logado
-                if (myProfileLink) myProfileLink.classList.add('d-none');
-                if (loginRegisterLinks) loginRegisterLinks.classList.remove('d-none');
-            }
+  <div id="pets-container" class="row g-4" data-aos="fade-up" data-aos-delay="100">
+    <!-- Cards dos pets serão inseridos via JS -->
+  </div>
+</section>
 
-            // Lógica para carregar e popular o carrossel de pets
-            const API_PETS_URL = 'http://localhost:3000/pets';
-            const carouselPetsInner = document.getElementById('carouselPetsInner');
+  <!-- SOBRE -->
+  <section id="sobre" class="py-5 bg-light text-center">
+  <div class="container">
+    <h2 class="mb-4 fw-bold text-orange" data-aos="fade-up">Sobre nós</h2>
+    <div class="mx-auto" style="max-width: 700px;">
+      <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">
+        Somos uma plataforma que conecta <strong>ONGs de proteção animal</strong> com pessoas dispostas a adotar.
+        Nosso objetivo é garantir que cada pet encontre um <strong>lar cheio de amor, cuidado e carinho</strong>.
+        Acreditamos que a adoção transforma duas vidas: a do pet e a sua. 🧡
+      </p>
+    </div>
+    <div class="mt-4" data-aos="fade-up" data-aos-delay="200">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" width="80" alt="Pata" class="opacity-50">
+    </div>
+  </div>
+</section>
+  <!-- FOOTER -->
+  <!-- Footer corrigido -->
+<footer id="footer" class="footer py-4 text-white bg-orange mt-auto">
+  <div class="container text-center">
+    <p class="mb-2 fw-semibold fs-5">© 2025 <span class="text-white">AdoteMe</span> — Amor que transforma vidas 🐾</p>
+    <div class="d-flex justify-content-center gap-4 fs-5">
+      <a href="#" class="text-white text-decoration-none d-inline-flex align-items-center gap-1">
+        <i class="bi bi-instagram"></i> Instagram
+      </a>
+      <a href="#" class="text-white text-decoration-none d-inline-flex align-items-center gap-1">
+        <i class="bi bi-facebook"></i> Facebook
+      </a>
+      <a href="#" class="text-white text-decoration-none d-inline-flex align-items-center gap-1">
+        <i class="bi bi-envelope-fill"></i> Contato
+      </a>
+    </div>
+  </div>
+</footer>
 
-            fetch(API_PETS_URL)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(pets => {
-                    if (pets.length === 0) {
-                        carouselPetsInner.innerHTML = '<p class="text-center">Nenhum pet disponível no momento.</p>';
-                        return;
-                    }
-
-                    pets.forEach((pet, index) => {
-                        const carouselItem = document.createElement('div');
-                        carouselItem.classList.add('carousel-item');
-                        if (index === 0) {
-                            carouselItem.classList.add('active');
-                        }
-
-                        carouselItem.innerHTML = `
-                            <div class="col-md-4 mx-auto">
-                                <div class="card shadow-sm">
-                                    <img src="${pet.foto}" class="card-img-top" alt="${pet.nome}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">${pet.nome}</h5>
-                                        <p class="card-text">
-                                            ${pet.especie} - ${pet.raca}<br>
-                                            Idade: ${pet.idade} ano(s)
-                                        </p>
-                                        <a href="/detalhes-pet.html?id=${pet.id}" class="btn btn-orange">Saiba mais</a>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                        carouselPetsInner.appendChild(carouselItem);
-                    });
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar pets para o carrossel:', error);
-                    carouselPetsInner.innerHTML = '<p class="text-center text-danger">Não foi possível carregar os pets. Tente novamente mais tarde.</p>';
-                });
-        });
-    </script>
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="home.js"></script>
 </body>
+
 </html>
