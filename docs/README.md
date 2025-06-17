@@ -268,7 +268,7 @@ Tela inicial que os usuários logados estarão permitidos a ver e utilizar
   * Abra o site e efetue o login
   * Será direcionado para a Home do nosso site
 * **Tela da funcionalidade**:
-![Tela de Funcionalidade](images/HOME.ADOTEME.jpg)
+![Tela de Funcionalidade](images/adoteme.home.jpg)
 
 
 ## Estruturas de Dados
