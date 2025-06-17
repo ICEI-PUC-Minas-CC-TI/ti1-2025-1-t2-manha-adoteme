@@ -1,0 +1,106 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+.text-orange {
+  color: #ff6b00;
+}
+
+.card-pet {
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.card-pet:hover {
+  transform: scale(1.03);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.text-orange {
+  color: #ff7b00;
+}
+
+.btn-warning {
+  background-color: #ff7b00;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #e06f00;
+}
+
+.pet-card img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.pet-card {
+  transition: transform 0.2s ease-in-out;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+}
+
+.text-orange {
+  color: #ff6600 !important;
+}
+
+.bg-orange {
+  background-color: #ff6600 !important;
+}
+.btn-warning:hover {
+  background-color: #e65100 !important;
+  color: #fff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(230, 111, 0, 0.4);
+}
+
+.btn-warning:hover svg {
+  transform: translateY(4px);
+}
+
+.hero p {
+  font-weight: 500;
+  line-height: 1.5;
+}
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.card-hover:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(255, 109, 0, 0.3);
+}
+.carousel-container {
+  background-color:  #fff4e5; /* tom bege alaranjado */
+  padding: 2rem 0;
+}
+.carousel-container {
+  background: linear-gradient(180deg, #fff4e5 0%, #fff4e5 100%);
+  padding: 2rem 0;
+}
+.text-orange {
+  color: #ff7f50;
+}
+
+#pets h2 span {
+  transition: all 0.3s ease-in-out;
+}
+
+#pets h2 span:hover {
+  text-decoration: underline;
+}
+
+.carousel-inner img {
+  height: 450px; /* ajuste conforme desejar */
+  object-fit: cover;
+}
