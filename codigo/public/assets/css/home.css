@@ -101,6 +101,6 @@ body {
 }
 
 .carousel-inner img {
-  height: 450px; /* ajuste conforme desejar */
+  height: 450px; 
   object-fit: cover;
 }
