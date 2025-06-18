@@ -120,10 +120,21 @@ function logoutUser () {
     window.location = LOGIN_URL;
 }
 
-// Função para adicionar um novo usuário
-async function addUser (nome, login, senha, email) {
+// Função para adicionar um novo usuário (AGORA RECEBE TODOS OS NOVOS PARÂMETROS)
+async function addUser (nome, login, senha, email, endereco, celular, cpf, fotoPerfil) { // NOVOS PARÂMETROS AQUI
     console.log("addUser: Tentando adicionar novo usuário:", login);
-    let usuario = { "login": login, "senha": senha, "nome": nome, "email": email };
+    // Objeto usuário agora inclui os novos campos
+    let usuario = { 
+        "login": login, 
+        "senha": senha, 
+        "nome": nome, 
+        "email": email,
+        "endereco": endereco, // NOVO
+        "celular": celular,   // NOVO
+        "cpf": cpf,           // NOVO
+        "fotoPerfil": fotoPerfil, // NOVO
+        "petIDs": [] // Inicializa com array vazio para pets
+    };
 
     try {
         const response = await fetch(API_URL, {

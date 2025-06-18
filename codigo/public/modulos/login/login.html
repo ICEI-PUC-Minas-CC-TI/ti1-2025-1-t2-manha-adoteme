@@ -53,7 +53,7 @@
         /* Seção de Boas-Vindas (esquerda) - APENAS A FOTO DO CACHORRO COM GRADIENTE */
         .welcome-section {
             /* Gradiente com sobreposição na imagem do doguinho */
-            background:  url('https://placedog.net/500/750?id=123') no-repeat center center; /* URL da foto do doguinho */
+            background: url('https://placedog.net/500/750?id=123') no-repeat center center; /* URL da foto do doguinho */
             background-size: cover; /* Faz a imagem cobrir toda a área */
             color: var(--texto-gradiente); /* Cor do texto (embora não haja texto aqui, é bom ter) */
             padding: 40px; /* Padding interno */
@@ -298,10 +298,26 @@
                             <input type="password" name="txt_senha" id="txt_senha" class="form-control" required>
                         </div>
                         <div class="mb-3">
-                            <label for="txt_senha2" class="form-label">Confirmação de Senha</label><br>
+                            <label for="txt_senha2" class="form-label">Confirmação de Senha</</label><br>
                             <input type="password" name="txt_senha2" id="txt_senha2" class="form-control" required>
                         </div>
-                    </form>
+                        <div class="mb-3">
+                            <label for="txt_endereco" class="form-label">Endereço</label><br>
+                            <input type="text" name="txt_endereco" id="txt_endereco" class="form-control" placeholder="Rua, número, bairro..." required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_celular" class="form-label">Celular</label><br>
+                            <input type="tel" name="txt_celular" id="txt_celular" class="form-control" placeholder="(XX) XXXXX-XXXX" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_cpf" class="form-label">CPF</label><br>
+                            <input type="text" name="txt_cpf" id="txt_cpf" class="form-control" placeholder="XXX.XXX.XXX-XX" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txt_fotoPerfil" class="form-label">URL da Foto de Perfil</label><br>
+                            <input type="url" name="txt_fotoPerfil" id="txt_fotoPerfil" class="form-control" placeholder="URL da sua foto de perfil" required>
+                        </div>
+                        </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary-custom" data-bs-dismiss="modal">Cancelar</button>
@@ -413,9 +429,17 @@
                 return;
             }
 
+            // NOVOS CAMPOS AQUI
+            let endereco = document.getElementById('txt_endereco').value;
+            let celular = document.getElementById('txt_celular').value;
+            let cpf = document.getElementById('txt_cpf').value;
+            let fotoPerfil = document.getElementById('txt_fotoPerfil').value;
+
+
             console.log("salvaLogin: Tentando registrar novo usuário:", login);
             try {
-                await addUser(nome, login, senha, email); // Await para esperar a Promise de addUser
+                // Passa os novos campos para addUser
+                await addUser(nome, login, senha, email, endereco, celular, cpf, fotoPerfil); 
                 alert('Usuário salvo com sucesso. Proceda com o login.');
                 const loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal')) || new bootstrap.Modal(document.getElementById('loginModal'));
                 loginModal.hide();
