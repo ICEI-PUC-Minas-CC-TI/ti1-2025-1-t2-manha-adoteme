@@ -1,87 +1,54 @@
 // Este arquivo: assets/js/pets.js
+// Finalidade: Exclusivamente para cadastro de novos pets e associação ao usuário logado.
 
-// URL da API JSONServer
 const API_BASE_URL = 'http://localhost:3000';
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
-let usuarioCorrente = null; // Para armazenar o usuário logado
+// Acessamos 'usuarioCorrente' que é declarado e gerenciado por 'login.js' no escopo global (window)
 
 // --- Funções de Utilitário ---
 
-// Função para exibir mensagens de sucesso ou erro (agora com tipo de alerta)
-function displayMessage(mensagem, tipo = 'warning') { // tipo pode ser 'success', 'danger', 'warning', 'info'
+// Função para exibir mensagens de sucesso ou erro
+function displayMessage(mensagem, tipo = 'warning') {
+    console.log(`displayMessage: Exibindo mensagem - Tipo: ${tipo}, Mensagem: ${mensagem}`);
     const msgDiv = document.getElementById('msg');
-    msgDiv.innerHTML = `<div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
-        ${mensagem}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>`;
+    if (msgDiv) {
+        msgDiv.innerHTML = `<div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensagem}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>`;
+    } else {
+        console.error("displayMessage: Elemento #msg não encontrado no DOM. Exibindo alerta padrão.");
+        alert(mensagem); // Fallback para alerta se div de mensagem não existir
+    }
 }
 
 // Função para limpar o formulário
 function clearForm() {
     document.getElementById('form-pet').reset();
-    document.getElementById('inputId').value = ''; // Limpa o ID também
-    document.getElementById('btnInserir').style.display = 'inline';
-    document.getElementById('btnAlterar').style.display = 'none';
-    displayMessage(''); // Limpa mensagens anteriores
+    document.getElementById('inputId').value = ''; // O ID do formulário de cadastro nunca será preenchido
+    document.getElementById('btnInserir').style.display = 'inline'; // Botão 'Adicionar' visível
+    document.getElementById('btnAlterar').style.display = 'none'; // Botão 'Editar' escondido nesta página
+    displayMessage(''); // Limpa mensagens anteriores ao resetar
 }
 
-// --- Funções CRUD ---
+// --- Função Principal de Cadastro de Pet ---
 
-// Função para ler (exibir) todos os pets cadastrados
-async function readPets() {
-    try {
-        const response = await fetch(API_PETS_URL);
-        if (!response.ok) {
-            throw new Error(`Erro ao buscar pets: ${response.status}`);
-        }
-        const pets = await response.json();
-        const tableBody = document.getElementById('table-pets');
-        tableBody.innerHTML = ''; // Limpa a tabela antes de preencher
-
-        if (pets.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="10" class="text-center">Nenhum pet cadastrado ainda.</td></tr>';
-            return;
-        }
-
-        pets.forEach(pet => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${pet.id}</td>
-                <td>${pet.nome}</td>
-                <td>${pet.especie}</td>
-                <td>${pet.raca || '-'}</td>
-                <td>${pet.idade || '-'}</td>
-                <td>${pet.sexo || '-'}</td>
-                <td>${pet.porte || '-'}</td>
-                <td>${pet.localizacao || '-'}</td>
-                <td>
-                    ${pet.foto ? `<img src="${pet.foto}" alt="${pet.nome}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">` : 'N/A'}
-                </td>
-                <td>
-                    <button class="btn btn-editar btn-sm me-2" onclick="editPet(${pet.id})"><i class="bi bi-pencil-square"></i></button>
-                    <button class="btn btn-excluir btn-sm" onclick="deletePet(${pet.id})"><i class="bi bi-trash"></i></button>
-                </td>
-            `;
-            tableBody.appendChild(row);
-        });
-    } catch (error) {
-        console.error('Erro ao carregar os pets:', error);
-        displayMessage('Erro ao carregar os pets.', 'danger');
-    }
-}
-
-// Função para adicionar um novo pet
 async function createPet(pet) {
-    if (!usuarioCorrente || !usuarioCorrente.id) {
+    console.log('createPet: Iniciando processo de cadastro do pet.');
+    
+    // Verifica se o usuário está logado usando window.usuarioCorrente
+    if (!window.usuarioCorrente || !window.usuarioCorrente.id) {
         displayMessage('Você precisa estar logado para cadastrar um pet.', 'danger');
+        console.error('createPet: Usuário não logado ou sem ID em window.usuarioCorrente.');
         return;
     }
 
-    pet.ownerId = usuarioCorrente.id; // Associa o pet ao usuário logado
+    pet.ownerId = window.usuarioCorrente.id; // Associa o pet ao ID do usuário logado
 
     try {
+        console.log('createPet: Enviando pet para a API (POST /pets):', pet);
         const response = await fetch(API_PETS_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -89,152 +56,61 @@ async function createPet(pet) {
         });
 
         if (!response.ok) {
-            throw new Error(`Erro ao adicionar o pet: ${response.status}`);
+            const errorData = await response.json().catch(() => ({ message: 'Erro desconhecido ao parsear resposta do POST' }));
+            throw new Error(`Erro HTTP ao adicionar o pet (POST /pets): ${response.status} - ${errorData.message || response.statusText}`);
         }
 
         const newPet = await response.json();
-        displayMessage('Pet inserido com sucesso!', 'success');
-        clearForm(); // Limpa o formulário
-        await readPets(); // Recarrega a lista de pets
-
-        // Agora, atualiza o perfil do usuário para incluir o ID do novo pet
-        const userResponse = await fetch(`${API_USUARIOS_URL}/${usuarioCorrente.id}`);
-        if (!userResponse.ok) throw new Error(`Erro ao buscar usuário para atualização de petIDs: ${userResponse.status}`);
-        const user = await userResponse.json();
-
-        const updatedPetIDs = [...(user.petIDs || []), Number(newPet.id)]; // Adiciona o novo ID
+        console.log('createPet: Pet cadastrado com sucesso no servidor:', newPet);
         
-        const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${usuarioCorrente.id}`, {
-            method: 'PATCH', // Usamos PATCH para atualizar apenas uma parte do recurso
+        displayMessage('Pet cadastrado com sucesso!', 'success'); // Mensagem de sucesso para o usuário
+        clearForm(); // Limpa o formulário após o sucesso
+
+        // Passo CRUCIAL: Atualiza o perfil do usuário para incluir o ID do novo pet
+        console.log('createPet: Buscando perfil do usuário para atualizar petIDs (GET /usuarios/id)...');
+        const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`);
+        if (!userResponse.ok) {
+            throw new Error(`Erro ao buscar usuário para atualização de petIDs (GET /usuarios/id): ${userResponse.status}`);
+        }
+        const user = await userResponse.json();
+        console.log('createPet: Usuário atual antes de atualizar petIDs:', user);
+
+        // Adiciona o novo ID do pet ao array petIDs do usuário
+        const updatedPetIDs = [...(user.petIDs || []), Number(newPet.id)];
+        
+        console.log('createPet: Enviando atualização de petIDs para o usuário (PATCH /usuarios/id):', updatedPetIDs);
+        const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`, {
+            method: 'PATCH', // Usamos PATCH para atualizar apenas a propriedade petIDs
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ petIDs: updatedPetIDs }),
         });
 
         if (!updateUserResponse.ok) {
-            throw new Error(`Erro ao atualizar petIDs do usuário: ${updateUserResponse.status}`);
+            const errorData = await updateUserResponse.json().catch(() => ({ message: 'Erro desconhecido ao parsear resposta do PATCH' }));
+            throw new Error(`Erro ao atualizar petIDs do usuário (PATCH /usuarios/id): ${updateUserResponse.status} - ${errorData.message || updateUserResponse.statusText}`);
         }
         
-        // Atualiza o usuarioCorrente no sessionStorage para refletir o novo petID
         const updatedUser = await updateUserResponse.json();
-        sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser));
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser)); // Atualiza o sessionStorage
+        console.log('createPet: petIDs do usuário atualizados no db.json e sessionStorage:', updatedUser);
+
+        // Opcional: Redirecionar para a página "Meus Pets" após o cadastro
+        // window.location.href = '/modulos/meu-perfil/meu_perfil.html';
         
     } catch (error) {
-        console.error('Erro ao adicionar o pet:', error);
-        displayMessage(`Erro ao adicionar o pet: ${error.message}`, 'danger');
+        console.error('createPet: Erro GERAL no processo de cadastro do pet:', error);
+        displayMessage(`Erro ao adicionar o pet: ${error.message}. Verifique o console.`, 'danger');
     }
 }
 
-// Função para atualizar um pet
-async function updatePet(id, pet) {
-    try {
-        const response = await fetch(`${API_PETS_URL}/${id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(pet),
-        });
+// --- Funções Removidas ou Simplificadas (Não Usadas na Página de Cadastro) ---
+// readPets(), updatePet(), deletePet(), editPet() não são mais necessárias nesta página
 
-        if (!response.ok) {
-            throw new Error(`Erro ao atualizar o pet: ${response.status}`);
-        }
-
-        displayMessage('Pet atualizado com sucesso!', 'success');
-        clearForm();
-        readPets();
-    } catch (error) {
-        console.error('Erro ao atualizar o pet:', error);
-        displayMessage(`Erro ao atualizar o pet: ${error.message}`, 'danger');
-    }
-}
-
-// Função para excluir um pet
-async function deletePet(id) {
-    if (!confirm('Tem certeza que deseja excluir este pet?')) {
-        return;
-    }
-
-    try {
-        const response = await fetch(`${API_PETS_URL}/${id}`, {
-            method: 'DELETE',
-        });
-
-        if (!response.ok) {
-            throw new Error(`Erro ao excluir o pet: ${response.status}`);
-        }
-
-        displayMessage('Pet excluído com sucesso!', 'success');
-        readPets();
-
-        // Agora, remove o ID do pet do perfil do usuário
-        const userResponse = await fetch(`${API_USUARIOS_URL}/${usuarioCorrente.id}`);
-        if (!userResponse.ok) throw new Error(`Erro ao buscar usuário para remoção de petIDs: ${userResponse.status}`);
-        const user = await userResponse.json();
-
-        const updatedPetIDs = (user.petIDs || []).filter(petId => petId !== Number(id));
-        
-        const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${usuarioCorrente.id}`, {
-            method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ petIDs: updatedPetIDs }),
-        });
-
-        if (!updateUserResponse.ok) {
-            throw new Error(`Erro ao remover petID do usuário: ${updateUserResponse.status}`);
-        }
-
-        // Atualiza o usuarioCorrente no sessionStorage
-        const updatedUser = await updateUserResponse.json();
-        sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser));
-
-    } catch (error) {
-        console.error('Erro ao excluir o pet:', error);
-        displayMessage(`Erro ao excluir o pet: ${error.message}`, 'danger');
-    }
-}
-
-// Função para preencher o formulário com as informações do pet a ser editado
-async function editPet(id) {
-    try {
-        const response = await fetch(`${API_PETS_URL}/${id}`);
-        if (!response.ok) {
-            throw new Error(`Erro ao carregar o pet para edição: ${response.status}`);
-        }
-        const pet = await response.json();
-
-        document.getElementById('inputId').value = pet.id;
-        document.getElementById('inputNome').value = pet.nome;
-        document.getElementById('inputEspecie').value = pet.especie;
-        document.getElementById('inputRaca').value = pet.raca || '';
-        document.getElementById('inputIdade').value = pet.idade || '';
-        document.getElementById('inputSexo').value = pet.sexo || '';
-        document.getElementById('inputPorte').value = pet.porte || '';
-        document.getElementById('inputPeso').value = pet.peso || '';
-        document.getElementById('inputVacinado').value = pet.vacinado || 'Não';
-        document.getElementById('inputVermifugado').value = pet.vermifugado || 'Não';
-        document.getElementById('inputCastrado').value = pet.castrado || 'Não';
-        document.getElementById('inputCondicao').value = pet.condicao || '';
-        document.getElementById('inputTemperamento').value = pet.temperamento || '';
-        document.getElementById('inputCriancas').value = pet.criancas || 'Não';
-        document.getElementById('inputOutrosPets').value = pet.outrosPets || 'Não';
-        document.getElementById('inputLocalizacao').value = pet.localizacao || '';
-        document.getElementById('inputFoto').value = pet.foto || ''; // Preenche o campo da foto
-
-        // Altera a visibilidade dos botões
-        document.getElementById('btnInserir').style.display = 'none';
-        document.getElementById('btnAlterar').style.display = 'inline-block'; // Use inline-block para btn
-
-        displayMessage(''); // Limpa mensagens de alerta ao editar
-    } catch (error) {
-        console.error('Erro ao carregar o pet para edição:', error);
-        displayMessage(`Erro ao carregar o pet para edição: ${error.message}`, 'danger');
-    }
-}
-
-// --- Manipulação de Eventos e Inicialização ---
-
-// Função para enviar o formulário (inserir ou atualizar)
+// Função para enviar o formulário (apenas inserir nesta página)
 async function handleSubmit(event) {
     event.preventDefault(); // Impede o envio padrão do formulário
 
+    // Coleta todos os dados do formulário
     const pet = {
         nome: document.getElementById('inputNome').value,
         especie: document.getElementById('inputEspecie').value,
@@ -251,7 +127,7 @@ async function handleSubmit(event) {
         criancas: document.getElementById('inputCriancas').value,
         outrosPets: document.getElementById('inputOutrosPets').value,
         localizacao: document.getElementById('inputLocalizacao').value,
-        foto: document.getElementById('inputFoto').value // Pega a URL da foto
+        imagem: document.getElementById('inputFoto').value // Usa 'imagem' conforme db.json
     };
 
     // Validação básica dos campos obrigatórios
@@ -260,31 +136,32 @@ async function handleSubmit(event) {
         return;
     }
 
-    const petId = document.getElementById('inputId').value;
-
-    if (petId) {
-        await updatePet(petId, pet); // Se houver ID, faz uma atualização
-    } else {
-        await createPet(pet); // Se não houver ID, cria um novo pet
-    }
+    // Apenas cria o pet, pois esta página é só de cadastro
+    await createPet(pet);
 }
+
+// --- Inicialização da Página ---
 
 // Função para verificar o status de login ao carregar a página
 async function checkLoginStatus() {
+    console.log('checkLoginStatus: Verificando status de login para pets.js...');
     const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
     if (!usuarioCorrenteJSON) {
-        // Se não há usuário logado, redireciona para a página de login
+        console.log('checkLoginStatus: Usuário não logado. Redirecionando para página de login.');
         window.location.href = '/modulos/login/login.html';
         return;
     }
-    usuarioCorrente = JSON.parse(usuarioCorrenteJSON); // Armazena o usuário logado
-    readPets(); // Carrega os pets após confirmar o login
+    // Atribui à propriedade global do objeto window. Isso é seguro e garante que 'usuarioCorrente' esteja disponível.
+    window.usuarioCorrente = JSON.parse(usuarioCorrenteJSON); 
+    console.log('checkLoginStatus: Usuário logado:', window.usuarioCorrente);
 }
 
-// Adiciona eventos aos botões de ações
+// Adiciona evento ao botão "Adicionar"
 document.getElementById('btnInserir').addEventListener('click', handleSubmit);
-document.getElementById('btnAlterar').addEventListener('click', handleSubmit);
-document.getElementById('btnLimpar').addEventListener('click', clearForm); // Evento para botão Limpar
+// Os botões 'Alterar' e 'Limpar' não são mais usados para fluxo de edição principal nesta página
+document.getElementById('btnAlterar').style.display = 'none'; // Esconde o botão 'Editar' no carregamento
+document.getElementById('btnLimpar').addEventListener('click', clearForm);
 
-// Carrega a lista de pets e verifica login ao carregar a página
-document.addEventListener('DOMContentLoaded', checkLoginStatus); // Chama a função que verifica login e depois carrega pets
+
+// Verifica login ao carregar a página
+document.addEventListener('DOMContentLoaded', checkLoginStatus);
