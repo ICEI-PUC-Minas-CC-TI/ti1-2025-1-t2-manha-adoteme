@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Adoção</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #ff7e29;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .pet-info-summary {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-left: 5px solid #ff7e29;
+            border-radius: 5px;
+        }
+        .pet-info-summary img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .pet-info-summary div strong {
+            color: #e86c1a;
+        }
+        .btn-submit-adoption {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        .btn-submit-adoption:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+        .alert-message {
+            margin-top: 20px;
+            display: none; /* Inicia escondido */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Formulário de Solicitação de Adoção</h1>
+
+        <div id="petInfoSummary" class="pet-info-summary">
+            Carregando detalhes do pet...
+        </div>
+
+        <form id="adoptionForm">
+            <h2>Seus Dados de Contato</h2>
+            <div class="mb-3">
+                <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nomeCompleto" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="telefone" placeholder="(XX) XXXXX-XXXX" required>
+            </div>
+            <div class="mb-3">
+                <label for="endereco" class="form-label">Endereço Completo</label>
+                <input type="text" class="form-control" id="endereco" required>
+            </div>
+
+            <h2>Sobre Sua Experiência com Pets</h2>
+            <div class="mb-3">
+                <label for="tipoMoradia" class="form-label">Tipo de Moradia</label>
+                <select class="form-select" id="tipoMoradia" required>
+                    <option value="">Selecione...</option>
+                    <option value="casa">Casa com quintal</option>
+                    <option value="apartamento_com_area">Apartamento com área externa</option>
+                    <option value="apartamento_sem_area">Apartamento sem área externa</option>
+                    <option value="sitio">Sítio/Chácara</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="outrosPets" class="form-label">Você possui outros pets?</label>
+                <textarea class="form-control" id="outrosPets" rows="3" placeholder="Se sim, quais e quantos?"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="experiencia" class="form-label">Conte-nos sobre sua experiência prévia com pets</label>
+                <textarea class="form-control" id="experiencia" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="motivoAdocao" class="form-label">Por que você quer adotar este pet?</label>
+                <textarea class="form-control" id="motivoAdocao" rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-submit-adoption w-100">Enviar Solicitação de Adoção</button>
+
+            <div id="alertMessage" class="alert alert-success alert-message" role="alert">
+                Sua solicitação de adoção foi enviada com sucesso!
+            </div>
+            <div id="errorMessage" class="alert alert-danger alert-message" role="alert">
+                Erro ao enviar sua solicitação. Por favor, tente novamente.
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <script src="../../assets/js/formulario_adocao.js"></script>
+</body>
+</html>
