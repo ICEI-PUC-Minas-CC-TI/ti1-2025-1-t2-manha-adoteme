@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p class="card-text text-muted">
                 <i class="bi bi-info-circle-fill text-warning"></i> ${pet.descricao.length > 80 ? pet.descricao.substring(0, 80) + "..." : pet.descricao}
               </p>
-              <a href="detalhes.html?id=${pet.id}" class="btn btn-warning w-100 fw-semibold mt-3">
+              <a href="./modulos/busca/detalhes.html?id=${pet.id}" class="btn btn-warning w-100 fw-semibold mt-3">
                 Ver detalhes
               </a>
             </div>
