@@ -32,3 +32,5 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Erro ao buscar pets:", error);
     });
 });
+
+

@@ -37,7 +37,8 @@
       "outrosPets": "Sim",
       "localizacao": "Rua Montanha Branca, 89",
       "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
-      "ownerId": "1"
+      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
+      "ownerId": 1
     },
     {
       "id": 2,
@@ -50,13 +51,14 @@
       "porte": "Grande",
       "peso": "30",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua das Palmeiras, 22",
       "descricao": "Labrador dócil e inteligente, ideal para famílias ativas.",
-      "ownerId": "1"
+      "ownerId": 1
     },
     {
       "id": 3,
@@ -69,6 +71,7 @@
       "porte": "Pequeno",
       "peso": "4",
       "vacinado": "Sim",
+      "vermifugado": "Sim",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "criancas": "Sim",
@@ -87,6 +90,7 @@
       "porte": "Grande",
       "peso": "28",
       "vacinado": "Sim",
+      "vermifugado": "Sim",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "criancas": "Sim",
@@ -105,6 +109,7 @@
       "porte": "Pequeno",
       "peso": "3.5",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Não",
       "condicao": "Nenhuma",
       "criancas": "Sim",
@@ -123,6 +128,7 @@
       "porte": "Pequeno",
       "peso": "6",
       "vacinado": "Sim",
+      "vermifugado": "Sim",
       "castrado": "Sim",
       "condicao": "Alergia alimentar",
       "criancas": "Sim",
@@ -141,6 +147,7 @@
       "porte": "Pequeno",
       "peso": "4.2",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "criancas": "Sim",
@@ -159,6 +166,7 @@
       "porte": "Grande",
       "peso": "35",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Necessita espaço",
       "criancas": "Sim",
@@ -177,6 +185,7 @@
       "porte": "Médio",
       "peso": "15",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Resgatada",
       "criancas": "Sim",
@@ -195,6 +204,7 @@
       "porte": "Grande",
       "peso": "7.5",
       "vacinado": "Sim",
+      "vermifugado": "Sim",
       "castrado": "Sim",
       "condicao": "Pelagem longa",
       "criancas": "Sim",
@@ -207,8 +217,8 @@
       "especie": "Cachorro",
       "raca": "American Bully",
       "idade": "1",
-      "sexo": "",
-      "porte": "",
+      "sexo": "Fêmea",
+      "porte": "Médio",
       "peso": "7",
       "vacinado": "Sim",
       "vermifugado": "Sim",
@@ -219,8 +229,9 @@
       "outrosPets": "Sim",
       "localizacao": "Belo Horizonte",
       "imagem": "https://www.petz.com.br/blog/wp-content/uploads/2024/09/treinar-pitbull-filhote-8-scaled.jpg",
-      "ownerId": "1",
-      "id": 11
+      "ownerId": 1,
+      "id": 11,
+      "descricao": "Muito dócil e adora brincar com crianças. Precisa de espaço."
     },
     {
       "id": 12,
@@ -240,7 +251,8 @@
       "outrosPets": "Sim",
       "localizacao": "São Paulo",
       "imagem": "https://cachorrosderaca.com.br/wp-content/uploads/2017/01/doberman-893931_960_720.jpg",
-      "ownerId": "1"
+      "ownerId": 1,
+      "descricao": "Muito dócil e adora brincar com crianças. Precisa de espaço."
     }
   ],
   "ongs": [
