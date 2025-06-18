@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Pet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+   
+    <style>
+        /* Cores personalizadas, copiadas da sua home/navbar */
+        :root {
+            --laranja: #ff7f00;
+            --laranja-escuro: #e66f00;
+            --fundo: #fffaf3;
+        }
+
+        body {
+            background-color: var(--fundo);
+            padding-top: 70px; /* Compensa a navbar fixa */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background-color: var(--laranja);
+        }
+
+        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
+            color: white !important;
+        }
+
+        /* Estilos do container principal (para empurrar footer) */
+        .container {
+            flex-grow: 1; /* Permite que o container principal se expanda */
+        }
+
+        /* Estilos do formulário como um "card" */
+        .card-form {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            max-width: 800px; /* Largura um pouco maior para o formulário de pet */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-form h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        /* Estilos dos botões personalizados */
+        .btn-custom-orange { 
+            background-color: var(--laranja);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .btn-custom-orange:hover {
+            background-color: var(--laranja-escuro);
+            color: white;
+        }
+        .btn-secondary-custom {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+        .btn-secondary-custom:hover {
+            background-color: #5a6268;
+            color: white;
+        }
+        .btn-danger-custom { /* Novo estilo para botão de excluir */
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .btn-danger-custom:hover {
+            background-color: #c82333;
+            color: white;
+        }
+
+        #imgPreview {
+            max-width: 200px;
+            height: auto;
+            margin-top: 15px;
+            display: block;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            object-fit: cover;
+        }
+
+        /* Estilos do Rodapé Aprimorado */
+        .footer {
+            background-color: #333;
+            color: white;
+            padding-top: 30px;
+            margin-top: auto;
+        }
+
+        .footer h5 {
+            color: var(--laranja);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/index.html">AdoteMe</a>
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="/index.html#como-funciona">Como funciona</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index.html#pets">Pets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/index.html#sobre">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li>
+                </ul>
+
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Buscar</button>
+                </form>
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-none" id="myProfileLink">
+                        <a class="nav-link" href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a>
+                    </li>
+                    <li class="nav-item d-none" id="loginRegisterLinks">
+                        <a class="nav-link" href="/modulos/login/login.html">Login/Registrar</a>
+                    </li>
+                    <li class="nav-item" id="userInfoContainer">
+                        </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="card-form">
+            <h2>Editar Pet</h2>
+            <form id="formEditarPet">
+                <div class="row">
+                    <div class="col-md-2 mb-3">
+                        <label for="inputId" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="inputId" disabled />
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="inputNome" class="form-label">Nome do Pet (*)</label>
+                        <input type="text" class="form-control" id="inputNome" required />
+                    </div>
+                    <div class="col-md-5 mb-3">
+                        <label for="inputEspecie" class="form-label">Espécie (*)</label>
+                        <input type="text" class="form-control" id="inputEspecie" required />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label for="inputRaca" class="form-label">Raça</label>
+                        <input type="text" class="form-control" id="inputRaca" />
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="inputIdade" class="form-label">Idade (anos)</label>
+                        <input type="number" class="form-control" id="inputIdade" />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputSexo" class="form-label">Sexo</label>
+                        <select class="form-select" id="inputSexo">
+                            <option value="">Selecione</option>
+                            <option>Macho</option>
+                            <option>Fêmea</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputPorte" class="form-label">Porte</label>
+                        <select class="form-select" id="inputPorte">
+                            <option value="">Selecione</option>
+                            <option>Pequeno</option>
+                            <option>Médio</option>
+                            <option>Grande</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="inputPeso" class="form-label">Peso (kg)</label>
+                        <input type="number" class="form-control" id="inputPeso" />
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputVacinado" class="form-label">Vacinado?</label>
+                        <select class="form-select" id="inputVacinado">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputVermifugado" class="form-label">Vermifugado?</label>
+                        <select class="form-select" id="inputVermifugado">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputCastrado" class="form-label">Castrado?</label>
+                        <select class="form-select" id="inputCastrado">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="inputCondicao" class="form-label">Condição Especial</label>
+                        <input type="text" class="form-control" id="inputCondicao" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="inputTemperamento" class="form-label">Temperamento</label>
+                        <input type="text" class="form-control" id="inputTemperamento" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="inputCriancas" class="form-label">Dá-se bem com crianças?</label>
+                        <select class="form-select" id="inputCriancas">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="inputOutrosPets" class="form-label">Dá-se bem com outros pets?</label>
+                        <select class="form-select" id="inputOutrosPets">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="inputLocalizacao" class="form-label">Localização</label>
+                        <input type="text" class="form-control" id="inputLocalizacao" />
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputImagem" class="form-label">URL da Imagem do Pet</label>
+                    <input type="url" class="form-control" id="inputImagem" />
+                    <img id="imgPreview" src="" alt="Prévia da imagem do pet" class="mt-2 img-thumbnail" style="max-width: 200px; display: none;">
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <div>
+                        <a href="/modulos/meu-perfil/meu_perfil.html" class="btn btn-secondary-custom me-2">Voltar</a>
+                        <button type="submit" class="btn btn-custom-orange">Salvar Alterações</button>
+                    </div>
+                    <button type="button" class="btn btn-danger-custom" id="btnExcluirPet">Excluir Pet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer text-center text-md-start">
+        <div class="container">
+            <div class="row pt-4 pb-4">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">AdoteMe</h5>
+                    <p>Conectando corações e patinhas, garantindo um lar feliz para cada pet abandonado.</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Navegação</h5>
+                    <p><a href="/index.html#como-funciona">Como funciona</a></p>
+                    <p><a href="/index.html#pets">Pets disponíveis</a></p>
+                    <p><a href="/adocoes.html">Histórias de Adoção</a></p>
+                    <p><a href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a></p>
+                </div>
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Suporte</h5>
+                    <p><a href="#">Perguntas Frequentes</a></p>
+                    <p><a href="#">Como Adotar</a></p>
+                    <p><a href="#">Seja um Voluntário</a></p>
+                    <p><a href="#">Reportar Problema</a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
+                    <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> contato@adoteme.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +55 (31) 98765-4321</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">© 2025 Copyright:
+                        <a href="#" class="text-white fw-bold" style="text-decoration: none;">AdoteMe</a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-end">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const myProfileLink = document.getElementById('myProfileLink');
+            const loginRegisterLinks = document.getElementById('loginRegisterLinks');
+            const userInfoContainer = document.getElementById('userInfoContainer');
+
+            const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+
+            if (usuarioCorrenteJSON) {
+                const usuario = JSON.parse(usuarioCorrenteJSON);
+                userInfoContainer.innerHTML = `
+                    <a class="nav-link text-white" href="#">
+                        Olá, ${usuario.nome}!
+                        <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
+                    </a>
+                `;
+                if (myProfileLink) myProfileLink.classList.remove('d-none');
+                if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
+            } else {
+                window.location.href = '/modulos/login/login.html'; 
+            }
+        });
+    </script>
+    <script src="/assets/js/editar_pet.js"></script>
+</body>
+
+</html>

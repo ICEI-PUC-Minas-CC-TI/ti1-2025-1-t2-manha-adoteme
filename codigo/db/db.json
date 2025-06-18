@@ -2,9 +2,9 @@
   "usuarios": [
     {
       "id": "1",
-      "nome": "João Lucas",
-      "email": "joao@email.com",
       "senha": "senha123",
+      "nome": "João Miguel",
+      "email": "joao@email.com",
       "endereco": "Rua das Flores, 123",
       "celular": "(31) 98765-4321",
       "cpf": "123.456.789-00",
@@ -20,20 +20,22 @@
     {
       "id": "1",
       "nome": "Pipoca",
-      "imagem": "/assets/images/border.jpg",
       "especie": "Cachorro",
       "raca": "Border Collie",
       "idade": "5",
       "sexo": "Fêmea",
       "porte": "Médio",
-      "peso": "19",
+      "peso": "18",
       "vacinado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Nenhuma",
+      "temperamento": "Dócil",
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Montanha Branca, 89",
-      "descricao": "Muito brincalhona, adora correr e se dá bem com crianças."
+      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
+      "ownerId": "1"
     },
     {
       "id": "2",
@@ -51,7 +53,8 @@
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua das Palmeiras, 22",
-      "descricao": "Labrador dócil e inteligente, ideal para famílias ativas."
+      "descricao": "Labrador dócil e inteligente, ideal para famílias ativas.",
+      "ownerId": "2"
     },
     {
       "id": "3",
