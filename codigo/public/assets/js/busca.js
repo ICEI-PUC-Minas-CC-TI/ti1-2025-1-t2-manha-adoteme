@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/pets'; // Mude para o endpoint correto do seu JSON Server
+const API_URL = 'http://localhost:3000/pets';
 let petsCache = [];
 
 // Função para buscar todos os pets da API
@@ -7,6 +7,14 @@ async function buscarPets() {
     const response = await fetch(API_URL);
     if (!response.ok) throw new Error('Erro ao buscar pets');
     petsCache = await response.json();
+
+    // Pré-preencher campo de busca se tiver parâmetro q na URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if (q) {
+      document.getElementById('searchInput').value = q;
+    }
+
     mostrarPets(petsCache);
   } catch (error) {
     document.getElementById('petsList').textContent = 'Erro ao carregar pets.';
@@ -24,6 +32,7 @@ function mostrarPets(pets) {
 
   petsList.innerHTML = pets.map(pet => `
     <div class="pet-card">
+      <img src="${pet.imagem}" alt="${pet.nome}" class="img-fluid rounded mb-2" style="max-height: 200px; object-fit: cover;">
       <h3>${pet.nome} (${pet.especie})</h3>
       <div class="pet-info">
         <p><strong>Raça:</strong> ${pet.raca}</p>
@@ -39,7 +48,7 @@ function mostrarPets(pets) {
   document.querySelectorAll('.btn-saiba-mais').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = btn.getAttribute('data-id');
-      window.location.href = `detalhes.html?id=${id}`;
+      window.location.href = `../busca/detalhes.html?id=${id}`;
     });
   });
 }
@@ -96,6 +105,10 @@ async function carregarDetalhesPet() {
 
     const detalhesDiv = document.getElementById('petDetails');
     detalhesDiv.innerHTML = `
+  <div class="d-flex flex-column flex-md-row gap-4 align-items-start">
+    <img src="${pet.imagem}" alt="${pet.nome}" class="img-fluid rounded" style="max-width: 300px; height: auto; object-fit: cover;" />
+    
+    <div>
       <h2>${pet.nome} (${pet.especie})</h2>
       <p><strong>Raça:</strong> ${pet.raca}</p>
       <p><strong>Idade:</strong> ${pet.idade} anos</p>
@@ -103,21 +116,23 @@ async function carregarDetalhesPet() {
       <p><strong>Porte:</strong> ${pet.porte}</p>
       <p><strong>Peso:</strong> ${pet.peso} kg</p>
       <p><strong>Vacinado:</strong> ${pet.vacinado}</p>
-      <p><strong>Vermifugado:</strong> ${pet.vermifugado}</p>
       <p><strong>Castrado:</strong> ${pet.castrado}</p>
       <p><strong>Condição:</strong> ${pet.condicao}</p>
-      <p><strong>Temperamento:</strong> ${pet.temperamento}</p>
       <p><strong>Compatível com crianças:</strong> ${pet.criancas}</p>
       <p><strong>Compatível com outros pets:</strong> ${pet.outrosPets}</p>
       <p><strong>Localização:</strong> ${pet.localizacao}</p>
-    `;
+      <p><strong>Descrição:</strong> ${pet.descricao}</p>
+    </div>
+  </div>
+`;
+
   } catch (error) {
     document.getElementById('petDetails').textContent = 'Erro ao carregar detalhes do pet.';
     console.error(error);
   }
 }
 
-// Função principal para decidir o que carregar
+// Função principal
 function main() {
   if (document.getElementById('petsList')) {
     buscarPets();
@@ -127,5 +142,4 @@ function main() {
   }
 }
 
-// Chama a função main quando a página carregar
 window.addEventListener('DOMContentLoaded', main);

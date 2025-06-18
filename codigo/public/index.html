@@ -120,11 +120,12 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="d-flex align-items-center flex-wrap gap-3">
 
-          <form class="d-flex" role="search">
-            <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet"
-              aria-label="Buscar" id="busca-pet">
-            <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
+          <form class="d-flex" role="search" action="modulos/busca/busca.html" method="get">
+          <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet"
+            aria-label="Buscar" id="busca-pet" name="q">
+          <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
           </form>
+
 
           <ul class="navbar-nav flex-row gap-2">
             <li class="nav-item">
