@@ -10,7 +10,7 @@ const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 // --- Funções de Utilitário ---
 
 // Função para exibir mensagens de sucesso ou erro
-function displayMessage(mensagem, tipo = 'warning') {
+function displayMessage(mensagem, tipo = 'warning') { // tipo pode ser 'success', 'danger', 'warning', 'info'
     console.log(`displayMessage: Exibindo mensagem - Tipo: ${tipo}, Mensagem: ${mensagem}`);
     const msgDiv = document.getElementById('msg');
     if (msgDiv) {
@@ -30,7 +30,12 @@ function clearForm() {
     document.getElementById('inputId').value = ''; // O ID do formulário de cadastro nunca será preenchido
     document.getElementById('btnInserir').style.display = 'inline'; // Botão 'Adicionar' visível
     document.getElementById('btnAlterar').style.display = 'none'; // Botão 'Editar' escondido nesta página
-    displayMessage(''); // Limpa mensagens anteriores ao resetar
+    
+    // MUDANÇA AQUI: Para limpar a mensagem, basta esvaziar o innerHTML da div #msg
+    const msgDiv = document.getElementById('msg');
+    if (msgDiv) {
+        msgDiv.innerHTML = ''; // Limpa o conteúdo da div #msg
+    }
 }
 
 // --- Função Principal de Cadastro de Pet ---
@@ -39,7 +44,7 @@ async function createPet(pet) {
     console.log('createPet: Iniciando processo de cadastro do pet.');
     
     // Verifica se o usuário está logado usando window.usuarioCorrente
-    if (!window.usuarioCorrente || !window.usuarioCorrente.id) {
+    if (!window.usuarioCorrente || !window.usuarioCorrente.id) { // Usar window.usuarioCorrente para ser explícito
         displayMessage('Você precisa estar logado para cadastrar um pet.', 'danger');
         console.error('createPet: Usuário não logado ou sem ID em window.usuarioCorrente.');
         return;
@@ -64,38 +69,49 @@ async function createPet(pet) {
         console.log('createPet: Pet cadastrado com sucesso no servidor:', newPet);
         
         displayMessage('Pet cadastrado com sucesso!', 'success'); // Mensagem de sucesso para o usuário
-        clearForm(); // Limpa o formulário após o sucesso
+        
+        clearForm(); // Limpa o formulário APÓS a mensagem ser exibida
 
         // Passo CRUCIAL: Atualiza o perfil do usuário para incluir o ID do novo pet
         console.log('createPet: Buscando perfil do usuário para atualizar petIDs (GET /usuarios/id)...');
-        const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`);
+        const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`); // Usar window.usuarioCorrente
         if (!userResponse.ok) {
             throw new Error(`Erro ao buscar usuário para atualização de petIDs (GET /usuarios/id): ${userResponse.status}`);
         }
         const user = await userResponse.json();
         console.log('createPet: Usuário atual antes de atualizar petIDs:', user);
 
-        // Adiciona o novo ID do pet ao array petIDs do usuário
-        const updatedPetIDs = [...(user.petIDs || []), Number(newPet.id)];
+        let currentPetIDs = Array.isArray(user.petIDs) ? user.petIDs : [];
+        currentPetIDs = currentPetIDs.filter(id => id !== null && id !== undefined); 
+        
+        const newPetIdNumber = Number(newPet.id);
+        if (!isNaN(newPetIdNumber) && !currentPetIDs.includes(newPetIdNumber)) {
+            currentPetIDs.push(newPetIdNumber);
+        } else {
+            console.warn(`createPet: ID do novo pet (${newPet.id}) não é um número válido ou já existe. Não adicionado ao petIDs do usuário.`);
+        }
+        const updatedPetIDs = currentPetIDs;
         
         console.log('createPet: Enviando atualização de petIDs para o usuário (PATCH /usuarios/id):', updatedPetIDs);
         const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`, {
-            method: 'PATCH', // Usamos PATCH para atualizar apenas a propriedade petIDs
+            method: 'PATCH', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ petIDs: updatedPetIDs }),
         });
 
         if (!updateUserResponse.ok) {
             const errorData = await updateUserResponse.json().catch(() => ({ message: 'Erro desconhecido ao parsear resposta do PATCH' }));
-            throw new Error(`Erro ao atualizar petIDs do usuário (PATCH /usuarios/id): ${updateUserResponse.status} - ${errorData.message || updateUserResponse.statusText}`);
+            throw new Error(`Erro ao atualizar petIDs do usuário: ${updateUserResponse.status} - ${errorData.message || updateUserResponse.statusText}`);
         }
         
         const updatedUser = await updateUserResponse.json();
-        sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser)); // Atualiza o sessionStorage
+        sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser)); 
         console.log('createPet: petIDs do usuário atualizados no db.json e sessionStorage:', updatedUser);
 
-        // Opcional: Redirecionar para a página "Meus Pets" após o cadastro
-        // window.location.href = '/modulos/meu-perfil/meu_perfil.html';
+        // NOVO: Redirecionar para a página "Meu Perfil" após um pequeno delay para a mensagem ser lida
+        setTimeout(() => { 
+            window.location.href = '/modulos/meu-perfil/meu_perfil.html';
+        }, 2500); // Redireciona após 2.5 segundos
         
     } catch (error) {
         console.error('createPet: Erro GERAL no processo de cadastro do pet:', error);
@@ -103,7 +119,7 @@ async function createPet(pet) {
     }
 }
 
-// --- Funções Removidas ou Simplificadas (Não Usadas na Página de Cadastro) ---
+// Funções Removidas ou Simplificadas (Não Usadas na Página de Cadastro)
 // readPets(), updatePet(), deletePet(), editPet() não são mais necessárias nesta página
 
 // Função para enviar o formulário (apenas inserir nesta página)
@@ -151,7 +167,6 @@ async function checkLoginStatus() {
         window.location.href = '/modulos/login/login.html';
         return;
     }
-    // Atribui à propriedade global do objeto window. Isso é seguro e garante que 'usuarioCorrente' esteja disponível.
     window.usuarioCorrente = JSON.parse(usuarioCorrenteJSON); 
     console.log('checkLoginStatus: Usuário logado:', window.usuarioCorrente);
 }

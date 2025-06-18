@@ -13,7 +13,8 @@
       "petIDs": [
         1,
         2,
-        11
+        11,
+        12
       ]
     }
   ],
@@ -202,10 +203,31 @@
       "descricao": "Gato gigante e gentil, se dá bem com outros animais."
     },
     {
-      "nome": "Monstrão",
+      "nome": "Pandora",
       "especie": "Cachorro",
-      "raca": "Pitbull",
-      "idade": "5",
+      "raca": "American Bully",
+      "idade": "1",
+      "sexo": "",
+      "porte": "",
+      "peso": "7",
+      "vacinado": "Sim",
+      "vermifugado": "Sim",
+      "castrado": "Sim",
+      "condicao": "Não",
+      "temperamento": "Dócil",
+      "criancas": "Sim",
+      "outrosPets": "Sim",
+      "localizacao": "Belo Horizonte",
+      "imagem": "https://www.petz.com.br/blog/wp-content/uploads/2024/09/treinar-pitbull-filhote-8-scaled.jpg",
+      "ownerId": "1",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "nome": "Nero",
+      "especie": "Cachorro",
+      "raca": "Doberman",
+      "idade": "10",
       "sexo": "Macho",
       "porte": "Grande",
       "peso": "15",
@@ -213,13 +235,12 @@
       "vermifugado": "Sim",
       "castrado": "Sim",
       "condicao": "Nenhuma",
-      "temperamento": "Bravo",
+      "temperamento": "Dócil",
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "São Paulo",
-      "imagem": "https://www.estadao.com.br/resizer/v2/VRDP4INVR5A4FNQJB3YI36T7FE.jpg?auth=bad7e776f1379b8d9f860aba845a9978339e9ade6d3d9be5d9445192cd9f9c17",
-      "ownerId": "1",
-      "id": 11
+      "imagem": "https://cachorrosderaca.com.br/wp-content/uploads/2017/01/doberman-893931_960_720.jpg",
+      "ownerId": "1"
     }
   ],
   "ongs": [
