@@ -12,13 +12,14 @@
       "fotoPerfil": "https://images.pexels.com/photos/60778/pexels-photo-60778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "petIDs": [
         1,
-        2
+        2,
+        11
       ]
     }
   ],
   "pets": [
     {
-      "id": "1",
+      "id": 1,
       "nome": "Pipoca",
       "especie": "Cachorro",
       "raca": "Border Collie",
@@ -38,7 +39,7 @@
       "ownerId": "1"
     },
     {
-      "id": "2",
+      "id": 2,
       "nome": "Thor",
       "imagem": "/assets/images/labrador.jpg",
       "especie": "Cachorro",
@@ -57,7 +58,7 @@
       "ownerId": "1"
     },
     {
-      "id": "3",
+      "id": 3,
       "nome": "Mimi",
       "imagem": "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=600&q=80",
       "especie": "Gato",
@@ -75,7 +76,7 @@
       "descricao": "Gatinha carinhosa e calma, ótima para ambientes internos."
     },
     {
-      "id": "4",
+      "id": 4,
       "nome": "Luna",
       "imagem": "/assets/images/golden2.jpg",
       "especie": "Cachorro",
@@ -93,7 +94,7 @@
       "descricao": "Muito dócil e adora brincar com crianças. Precisa de espaço."
     },
     {
-      "id": "5",
+      "id": 5,
       "nome": "Frajola",
       "imagem": "https://images.unsplash.com/photo-1574158622682-e40e69881006",
       "especie": "Gato",
@@ -111,7 +112,7 @@
       "descricao": "Gato esperto e independente, gosta de explorar a casa."
     },
     {
-      "id": "6",
+      "id": 6,
       "nome": "Biscoito",
       "imagem": "/assets/images/poodle.jpg",
       "especie": "Cachorro",
@@ -129,7 +130,7 @@
       "descricao": "Calmo, muito leal e ótimo companheiro para idosos."
     },
     {
-      "id": "7",
+      "id": 7,
       "nome": "Jade",
       "imagem": "https://images.unsplash.com/photo-1618826411640-12ad6b5030f1?auto=format&fit=crop&w=600&q=80",
       "especie": "Gato",
@@ -147,7 +148,7 @@
       "descricao": "Gata muito apegada ao tutor, adora atenção e colo."
     },
     {
-      "id": "8",
+      "id": 8,
       "nome": "Rex",
       "imagem": "https://images.unsplash.com/photo-1578898884081-b48b9a131d8d?auto=format&fit=crop&w=600&q=80",
       "especie": "Cachorro",
@@ -165,7 +166,7 @@
       "descricao": "Protetor, inteligente e ideal para guarda ou companhia."
     },
     {
-      "id": "9",
+      "id": 9,
       "nome": "Mel",
       "imagem": "https://images.unsplash.com/photo-1619983254645-c1c917a44a7b?auto=format&fit=crop&w=600&q=80",
       "especie": "Cachorro",
@@ -183,7 +184,7 @@
       "descricao": "Resgatada recentemente, muito carinhosa e grata por atenção."
     },
     {
-      "id": "10",
+      "id": 10,
       "nome": "Tom",
       "imagem": "https://images.unsplash.com/photo-1592194996308-ded2dfbde3b2?auto=format&fit=crop&w=600&q=80",
       "especie": "Gato",
@@ -199,6 +200,26 @@
       "outrosPets": "Sim",
       "localizacao": "Av. Central, 102",
       "descricao": "Gato gigante e gentil, se dá bem com outros animais."
+    },
+    {
+      "nome": "Monstrão",
+      "especie": "Cachorro",
+      "raca": "Pitbull",
+      "idade": "5",
+      "sexo": "Macho",
+      "porte": "Grande",
+      "peso": "15",
+      "vacinado": "Sim",
+      "vermifugado": "Sim",
+      "castrado": "Sim",
+      "condicao": "Nenhuma",
+      "temperamento": "Bravo",
+      "criancas": "Sim",
+      "outrosPets": "Sim",
+      "localizacao": "São Paulo",
+      "imagem": "https://www.estadao.com.br/resizer/v2/VRDP4INVR5A4FNQJB3YI36T7FE.jpg?auth=bad7e776f1379b8d9f860aba845a9978339e9ade6d3d9be5d9445192cd9f9c17",
+      "ownerId": "1",
+      "id": 11
     }
   ],
   "ongs": [
