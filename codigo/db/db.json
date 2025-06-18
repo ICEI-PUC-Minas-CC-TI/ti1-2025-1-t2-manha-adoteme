@@ -20,7 +20,7 @@
     {
       "id": "1",
       "nome": "Pipoca",
-      "imagem": "assets/images/border.jpg",
+      "imagem": "/assets/images/border.jpg",
       "especie": "Cachorro",
       "raca": "Border Collie",
       "idade": "5",
@@ -38,7 +38,7 @@
     {
       "id": "2",
       "nome": "Thor",
-      "imagem": "assets/images/labrador.jpg",
+      "imagem": "/assets/images/labrador.jpg",
       "especie": "Cachorro",
       "raca": "Labrador",
       "idade": "3",
@@ -74,7 +74,7 @@
     {
       "id": "4",
       "nome": "Luna",
-      "imagem": "assets/images/golden2.jpg",
+      "imagem": "/assets/images/golden2.jpg",
       "especie": "Cachorro",
       "raca": "Golden Retriever",
       "idade": "4",
@@ -110,7 +110,7 @@
     {
       "id": "6",
       "nome": "Biscoito",
-      "imagem": "assets/images/poodle.jpg",
+      "imagem": "/assets/images/poodle.jpg",
       "especie": "Cachorro",
       "raca": "Poodle",
       "idade": "6",

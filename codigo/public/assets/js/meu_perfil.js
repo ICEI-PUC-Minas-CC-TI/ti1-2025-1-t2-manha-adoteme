@@ -59,7 +59,7 @@ async function carregarPerfil() {
             const div = document.createElement('div');
             div.className = 'col-md-6 col-lg-4 mb-4'; // Colunas para layout responsivo com Bootstrap
             div.innerHTML = `
-                <div class="card pet-card h-100"> <img src="${pet.foto}" class="card-img-top" alt="Foto do pet ${pet.nome}" style="height: 180px; object-fit: cover;" />
+                <div class="card pet-card h-100"> <img src="${pet.imagem}" class="card-img-top" alt="Foto do pet ${pet.nome}" style="height: 180px; object-fit: cover;" />
                     <div class="card-body">
                         <h5 class="card-title">${pet.nome}</h5>
                         <p class="card-text">${pet.especie} - ${pet.raca}</p>
