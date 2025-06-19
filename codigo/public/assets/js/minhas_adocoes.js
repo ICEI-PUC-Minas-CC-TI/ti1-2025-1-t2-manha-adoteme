@@ -1,21 +1,15 @@
-// Constantes
-const API_URL = 'http://localhost:3000/pets'; // A mesma URL da sua API de pets
-const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; // Chave para armazenar as solicitações no sessionStorage
+// Constantes (API_URL e ADOPTION_REQUESTS_KEY permanecem aqui)
+const API_URL = 'http://localhost:3000/pets';
+const ADOPTION_REQUESTS_KEY = 'adoptionRequests';
 
-// Elementos do Modal de Detalhes do Adotante (definidos globalmente para fácil acesso)
-const modalNomeCompleto = document.getElementById('modalNomeCompleto');
-const modalEmail = document.getElementById('modalEmail');
-const modalTelefone = document.getElementById('modalTelefone');
-const modalEndereco = document.getElementById('modalEndereco');
-const modalTipoMoradia = document.getElementById('modalTipoMoradia');
-const modalOutrosPets = document.getElementById('modalOutrosPets');
-const modalExperiencia = document.getElementById('modalExperiencia');
-const modalMotivoAdocao = document.getElementById('modalMotivoAdocao');
+// Removidas as declarações globais de const modalNomeCompleto, etc.
+// Elas serão obtidas dentro da função displayAdotanteDetails
 
-let currentAdoptionRequests = []; // Armazena as solicitações em memória, atualizada ao carregar e alterar
-let currentPetsDoUsuario = []; // Armazena os pets do usuário logado em memória
+let currentAdoptionRequests = []; 
+let currentPetsDoUsuario = []; 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // ... (Seus elementos de seção e mensagens: userNotLoggedInDiv, solicitacoesEnviadasSection, etc.) ...
     const userNotLoggedInDiv = document.getElementById('userNotLoggedIn');
     const solicitacoesEnviadasSection = document.getElementById('solicitacoesEnviadasSection');
     const solicitacoesRecebidasSection = document.getElementById('solicitacoesRecebidasSection');
@@ -43,20 +37,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!response.ok) throw new Error('Erro ao buscar pets.');
         const allPets = await response.json();
         currentPetsDoUsuario = allPets.filter(pet => pet.ownerId === parseInt(usuarioLogado.id)); 
-        console.log("Pets do usuário logado (inicial):", currentPetsDoUsuario);
+        console.log("Minhas Adoções: Pets do usuário logado (inicial):", currentPetsDoUsuario);
     } catch (error) {
-        console.error('Erro ao carregar pets para o usuário logado ou todos os pets:', error);
+        console.error('Minhas Adoções: Erro ao carregar pets para o usuário logado ou todos os pets:', error);
     }
 
     // 2. Carregar todas as solicitações de adoção
     currentAdoptionRequests = JSON.parse(sessionStorage.getItem(ADOPTION_REQUESTS_KEY) || '[]');
-    console.log("Solicitações de adoção carregadas (inicial):", currentAdoptionRequests);
+    console.log("Minhas Adoções: Solicitações de adoção carregadas (inicial):", currentAdoptionRequests);
 
     // --- Chamada inicial para renderizar as solicitações com os dados carregados ---
     renderAdoptionRequests(currentAdoptionRequests, currentPetsDoUsuario, usuarioLogado);
 
-    // Funções auxiliares (definidas aqui ou globalmente)
-    // Função para atualizar o status da solicitação
+    // Funções auxiliares (definidas aqui para serem acessíveis globalmente quando necessárias)
     window.updateAdoptionRequestStatus = function(requestId, newStatus) {
         const requestIndex = currentAdoptionRequests.findIndex(req => req.id === requestId);
 
@@ -70,7 +63,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
-    // Função para remover uma solicitação
     window.removeAdoptionRequest = function(requestId) {
         if (confirm('Tem certeza que deseja remover esta solicitação? Esta ação é irreversível.')) {
             currentAdoptionRequests = currentAdoptionRequests.filter(req => req.id !== requestId);
@@ -82,19 +74,48 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Função para exibir os detalhes do adotante no modal
     window.displayAdotanteDetails = function(requestId) {
+        console.log('Minhas Adoções: displayAdotanteDetails chamada para request ID:', requestId);
         const request = currentAdoptionRequests.find(req => req.id === requestId);
+        
         if (request) {
-            modalNomeCompleto.textContent = request.adotanteNome || 'Não informado';
-            modalEmail.textContent = request.adotanteEmail || 'Não informado';
-            modalTelefone.textContent = request.adotanteTelefone || 'Não informado';
-            modalEndereco.textContent = request.adotanteEndereco || 'Não informado';
-            modalTipoMoradia.textContent = request.tipoMoradia || 'Não informado';
-            modalOutrosPets.textContent = request.outrosPets || 'Não informado';
-            modalExperiencia.textContent = request.experiencia || 'Não informado';
-            modalMotivoAdocao.textContent = request.motivoAdocao || 'Não informado';
-            // O modal é aberto automaticamente pelo Bootstrap usando data-bs-toggle/data-bs-target
+            // Captura os elementos do modal AQUI DENTRO, quando a função é chamada
+            const modalNomeCompleto = document.getElementById('modalNomeCompleto');
+            const modalEmail = document.getElementById('modalEmail');
+            const modalTelefone = document.getElementById('modalTelefone');
+            const modalEndereco = document.getElementById('modalEndereco');
+            const modalTipoMoradia = document.getElementById('modalTipoMoradia');
+            const modalOutrosPets = document.getElementById('modalOutrosPets');
+            const modalExperiencia = document.getElementById('modalExperiencia');
+            const modalMotivoAdocao = document.getElementById('modalMotivoAdocao');
+
+            // Preenche os elementos do modal (com verificações para robustez)
+            if(modalNomeCompleto) modalNomeCompleto.textContent = request.adotanteNome || 'Não informado';
+            if(modalEmail) modalEmail.textContent = request.adotanteEmail || 'Não informado';
+            if(modalTelefone) modalTelefone.textContent = request.adotanteTelefone || 'Não informado';
+            if(modalEndereco) modalEndereco.textContent = request.adotanteEndereco || 'Não informado';
+            if(modalTipoMoradia) modalTipoMoradia.textContent = request.tipoMoradia || 'Não informado';
+            if(modalOutrosPets) modalOutrosPets.textContent = request.outrosPets || 'Não informado';
+            if(modalExperiencia) modalExperiencia.textContent = request.experiencia || 'Não informado';
+            if(modalMotivoAdocao) modalMotivoAdocao.textContent = request.motivoAdocao || 'Não informado';
+            
+            console.log('Minhas Adoções: Dados do Adotante preenchidos no modal:', request.adotanteNome);
+
+            // Abre o modal
+            try {
+                const modalElement = document.getElementById('adotanteDetailsModal');
+                if (modalElement) {
+                    var myModal = new bootstrap.Modal(modalElement);
+                    myModal.show();
+                    console.log('Minhas Adoções: Modal aberto via JS.');
+                } else {
+                    console.warn('Minhas Adoções: Elemento do modal #adotanteDetailsModal não encontrado.');
+                }
+            } catch (e) {
+                console.error('Minhas Adoções: Erro ao tentar abrir o modal Bootstrap via JS:', e);
+            }
+
         } else {
-            console.error('Solicitação não encontrada para exibir detalhes:', requestId);
+            console.error('Minhas Adoções: Solicitação não encontrada para exibir detalhes:', requestId);
         }
     };
 }); // Fim do DOMContentLoaded
@@ -107,7 +128,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
     const solicitacoesRecebidasDiv = document.getElementById('solicitacoesRecebidas');
     const noReceivedRequestsP = document.getElementById('noReceivedRequests');
     const solicitacoesEnviadasSection = document.getElementById('solicitacoesEnviadasSection');
-
 
     // --- Parte 1: Exibir Solicitações Enviadas pelo Usuário Logado ---
     const solicitacoesEnviadas = adoptionRequestsToRender.filter(req => req.adotanteEmail === loggedInUser.email);
@@ -129,11 +149,11 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
             </div>
         `).join('');
         noSentRequestsP.style.display = 'none';
-        solicitacoesEnviadasSection.style.display = 'block'; // Garante que a seção esteja visível
+        solicitacoesEnviadasSection.style.display = 'block'; 
     } else {
-        solicitacoesEnviadasDiv.innerHTML = '';
+        solicitacoesEnviadasDiv.innerHTML = ''; 
         noSentRequestsP.style.display = 'block';
-        solicitacoesEnviadasSection.style.display = 'block'; // Continua visível mesmo sem solicitações
+        solicitacoesEnviadasSection.style.display = 'block'; 
     }
 
     // --- Parte 2: Exibir Solicitações Recebidas para os Pets do Usuário Logado ---
@@ -185,7 +205,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
             button.addEventListener('click', (event) => {
                 const requestId = parseInt(event.target.closest('button').dataset.requestId);
                 const action = event.target.closest('button').dataset.action;
-                // Usa window.updateAdoptionRequestStatus porque a função é global
                 window.updateAdoptionRequestStatus(requestId, action); 
             });
         });
@@ -194,20 +213,18 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
         document.querySelectorAll('.btn-view-details').forEach(button => {
             button.addEventListener('click', (event) => {
                 const requestId = parseInt(event.target.closest('button').dataset.requestId);
-                // Usa window.displayAdotanteDetails porque a função é global
                 window.displayAdotanteDetails(requestId);
             });
         });
 
     } else {
-        solicitacoesRecebidasSection.style.display = 'none'; // Esconde a seção se não houver pets do usuário
+        solicitacoesRecebidasSection.style.display = 'none'; 
     }
 
     // Adicionar event listeners para os botões de remover (ambas as seções)
     document.querySelectorAll('.btn-remove-request').forEach(button => {
         button.addEventListener('click', (event) => {
             const requestId = parseInt(event.target.closest('button').dataset.requestId);
-            // Usa window.removeAdoptionRequest porque a função é global
             window.removeAdoptionRequest(requestId);
         });
     });

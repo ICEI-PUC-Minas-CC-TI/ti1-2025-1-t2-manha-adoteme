@@ -30,6 +30,7 @@
         /* Estilos da Navbar (mantendo do original, mas ajustando logo) */
         .navbar {
             padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+            background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%);
         }
         .navbar-brand {
             font-size: 2.2rem !important; /* Tamanho da fonte do logo */
@@ -49,6 +50,10 @@
         .navbar .btn-light:hover {
             background-color: #fff3cd;
             color: #000;
+        }
+        /* Cor dos links e placeholder na navbar */
+        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
+            color: white !important;
         }
 
         /* Estilos do Conteúdo Principal */
@@ -123,7 +128,7 @@
         }
 
         /* Estilos do Footer (copiados da sua home.html) */
-        .footer {
+          .footer {
             background-color: #333;
             color: white;
             padding-top: 30px;
@@ -188,13 +193,13 @@
                         <li class="nav-item">
                             <a class="nav-link text-white fw-semibold px-3" href="/index.html#sobre">ℹ️ Sobre</a>
                         </li>
-                        <li class="nav-item" id="navItemMeuPerfil">
+                        <li class="nav-item" id="navItemMeuPerfil" style="display: none;"> 
                             <a class="nav-link text-white fw-semibold px-3" href="/modulos/meu-perfil/meu_perfil.html">👤 Meu perfil</a>
                         </li>
-                        <li class="nav-item" id="navItemMinhasAdocoes">
+                        <li class="nav-item" id="navItemMinhasAdocoes" style="display: none;">
                             <a class="nav-link text-white fw-semibold px-3" href="/modulos/minhas_adocoes/minhas_adocoes.html">🧡 Minhas Adoções</a>
                         </li>
-                        <li class="nav-item" id="userInfoAndLogoutContainer">
+                        <li class="nav-item" id="userInfoAndLogoutContainer" style="display: none;">
                             </li>
                         <li class="nav-item" id="navItemLogin">
                             <a class="nav-link text-white fw-semibold px-3" href="/modulos/login/login.html">🔒 Login</a>
@@ -232,6 +237,30 @@
             </p>
         </section>
 
+    </div>
+
+    <div class="modal fade" id="adotanteDetailsModal" tabindex="-1" aria-labelledby="adotanteDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adotanteDetailsModalLabel">Detalhes do Adotante</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="adotanteModalBody">
+                    <p><strong>Nome:</strong> <span id="modalNomeCompleto"></span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <p><strong>Telefone:</strong> <span id="modalTelefone"></span></p>
+                    <p><strong>Endereço:</strong> <span id="modalEndereco"></span></p>
+                    <p><strong>Tipo de Moradia:</strong> <span id="modalTipoMoradia"></span></p>
+                    <p><strong>Outros Pets:</strong> <span id="modalOutrosPets"></span></p>
+                    <p><strong>Experiência:</strong> <span id="modalExperiencia"></span></p>
+                    <p><strong>Motivo da Adoção:</strong> <span id="modalMotivoAdocao"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="modalCloseButton" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer class="footer text-center text-md-start">
@@ -276,13 +305,14 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> 
+    <script>
         AOS.init(); 
 
         // Funções globais do sistema de login/logout
         function logoutUser() {
             sessionStorage.removeItem('usuarioCorrente');
-            window.location.href = '/modulos/login/login.html'; // Ajustado para caminho absoluto
+            window.location.href = '/modulos/login/login.html'; 
         }
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -316,8 +346,17 @@
                 
                 if (navItemLogin) navItemLogin.style.display = 'list-item';
             }
+
+            // Adiciona evento de clique ao botão de fechar do modal
+            const modalCloseButton = document.getElementById('modalCloseButton');
+            if (modalCloseButton) {
+                modalCloseButton.addEventListener('click', () => {
+                    // Recarrega a página ao fechar o modal
+                    window.location.reload(); 
+                });
+            }
         });
     </script>
-      <script src="../../assets/js/minhas_adocoes.js"></script>
+    <script src="../../assets/js/minhas_adocoes.js"></script>
 </body>
 </html>
