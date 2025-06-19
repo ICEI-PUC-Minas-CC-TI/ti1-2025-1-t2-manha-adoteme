@@ -4,51 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Meu Perfil</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-    <link rel="stylesheet" href="meu_perfil.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        /* Cores personalizadas, copiadas da sua home/navbar */
+        .btn-custom-orange {
+    background-color: var(--laranja);
+    color: white;
+    border: none;
+    padding: 10px 20px; /* Default larger padding */
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom-orange:hover {
+    background-color: var(--laranja-escuro);
+    color: white;
+}
+
+/* Add or adjust these styles for the small size specifically */
+.btn-sm.btn-custom-orange { /* Target .btn-custom-orange when it also has .btn-sm */
+    padding: 5px 10px; /* Smaller padding, typical for btn-sm */
+    font-size: 0.875rem; /* Smaller font size, typical for btn-sm */
+    /* You might also need to ensure a consistent height if that's the issue */
+    height: 32px; /* Example height if buttons are misaligned vertically */
+}
+        /* Variáveis de Cores (da sua home.html) */
         :root {
-            --laranja: #ff7f00;
+            --laranja: #ff7f50;
             --laranja-escuro: #e66f00;
-            --fundo: #fffaf3;
+            --fundo: #fffefc;
+            --navbar-height: 85px; /* Altura da navbar ajustada */
         }
 
         body {
+            font-family: 'Roboto', sans-serif;
             background-color: var(--fundo);
-            padding-top: 70px; /* Compensa a navbar fixa */
-            min-height: 100vh;
+            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Navbar e Footer herdados do site */
+        /* Estilos da Navbar (mantendo do original, mas ajustando logo) */
         .navbar {
-            background-color: var(--laranja);
+            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+        }
+        .navbar-brand {
+            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+        }
+        .navbar-brand img {
+            width: 70px; /* Largura do logo */
+            height: 70px; /* Altura do logo */
+            min-width: 70px; /* Garante tamanho mínimo */
+            min-height: 70px; /* Garante tamanho mínimo */
+            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+            padding: 0.5rem; /* Padding interno do logo */
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+            color: #fffbd1 !important;
+        }
+        .navbar .btn-light:hover {
+            background-color: #fff3cd;
+            color: #000;
         }
 
-        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
-            color: white !important;
+        /* Estilos do Conteúdo Principal */
+        .container.main-content {
+            flex-grow: 1; 
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px; /* Espaçamento abaixo do navbar */
+            margin-bottom: 30px;
         }
-
-        /* Estilos dos botões gerais */
-        .btn-custom-orange { 
-            background-color: var(--laranja);
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none; /* Para links estilizados como botão */
-        }
-        .btn-custom-orange:hover {
-            background-color: var(--laranja-escuro);
-            color: white;
-        }
-
-        /* Outros estilos do perfil */
+        
+        /* Estilos do perfil */
         .card.perfil {
             margin-top: 20px;
             padding: 20px;
@@ -57,19 +92,29 @@
         }
         .perfil-header {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* Alinha no topo, não no centro */
             margin-bottom: 20px;
+            flex-wrap: wrap; /* Permite quebrar linha em telas menores */
         }
         .perfil-header img {
-            width: 100px;
-            height: 100px;
+            width: 120px; /* Aumentado um pouco para destaque */
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             margin-right: 20px;
-            border: 2px solid var(--laranja);
+            border: 3px solid var(--laranja); /* Borda mais pronunciada */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra na imagem */
+        }
+        .perfil-header .info {
+            flex-grow: 1; /* Ocupa o espaço restante */
         }
         .perfil-header .info p {
-            margin-bottom: 5px;
+            margin-bottom: 8px; /* Espaçamento entre as linhas de info */
+            font-size: 1rem;
+            color: #555;
+        }
+        .perfil-header .info p strong {
+            color: #333; /* Cor mais escura para as labels */
         }
         .card.pets {
             margin-top: 20px;
@@ -82,7 +127,7 @@
             display: block;
         }
 
-        /* Estilos do Rodapé (copiados) */
+        /* Estilos do Footer (copiados da sua home.html) */
         .footer {
             background-color: #333;
             color: white;
@@ -111,56 +156,91 @@
             margin: 0 10px;
             color: white;
         }
+
+        /* Botões de Ação do perfil */
+        .btn-custom-orange { 
+            background-color: var(--laranja);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .btn-custom-orange:hover {
+            background-color: var(--laranja-escuro);
+            color: white;
+        }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/index.html">AdoteMe</a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <nav class="navbar navbar-expand-lg shadow-sm fixed-top"
+        style="background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%);">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo" width="90" height="90"
+                    class="rounded-circle bg-white p-2 shadow-sm">
+                <span class="fw-bold text-white">Adote</span><span style="color: #222;">Me</span>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/index.html#como-funciona">Como funciona</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index.html#pets">Pets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index.html#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li>
-                </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center flex-wrap gap-3">
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item d-none" id="myProfileLink">
-                        <a class="nav-link" href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a>
-                    </li>
-                    <li class="nav-item d-none" id="loginRegisterLinks">
-                        <a class="nav-link" href="/modulos/login/login.html">Login/Registrar</a>
-                    </li>
-                    <li class="nav-item" id="userInfoContainer">
+                    <form class="d-flex" role="search" action="/modulos/busca/busca.html" method="get">
+                        <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet"
+                            aria-label="Buscar" id="busca-pet" name="q">
+                        <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
+                    </form>
+
+                    <ul class="navbar-nav flex-row gap-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#como-funciona">❓ Como funciona</a>
                         </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#pets">🐾 Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#sobre">ℹ️ Sobre</a>
+                        </li>
+                        <li class="nav-item" id="navItemMeuPerfil">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/meu-perfil/meu_perfil.html">👤 Meu perfil</a>
+                        </li>
+                        <li class="nav-item" id="navItemMinhasAdocoes">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/minhas_adocoes/minhas_adocoes.html">🧡 Minhas Adoções</a>
+                        </li>
+                        <li class="nav-item" id="userInfoAndLogoutContainer">
+                            </li>
+                        <li class="nav-item" id="navItemLogin">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/login/login.html">🔒 Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container mt-5 flex-grow-1">
+    <div class="container main-content">
+        <a href="/index.html" class="btn btn-secondary mb-4"><i class="bi bi-arrow-left"></i> Voltar à Home</a>
+
         <main>
             <section class="card perfil">
-                <h2>Minhas Informações</h2>
+                <h2 class="mb-4">Minhas Informações</h2>
                 <div class="perfil-header">
-                    <img id="fotoPerfil" src="" alt="Foto de perfil" class="img-fluid" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid var(--laranja);" />
+                    <img id="fotoPerfil" src="" alt="Foto de perfil" class="img-fluid" />
                     <div class="info ms-3">
-                        <p>Nome: <span id="nome"></span></p>
-                        <p>Email: <span id="email"></span></p>
-                        <p>Endereço: <span id="endereco"></span></p>
-                        <p>Celular: <span id="celular"></span></p>
-                        <p>CPF: <span id="cpf"></span></p>
-                        <p>Login: <span id="login"></span></p>
+                        <p><strong>Nome:</strong> <span id="nome"></span></p>
+                        <p><strong>Email:</strong> <span id="email"></span></p>
+                        <p><strong>Endereço:</strong> <span id="endereco"></span></p>
+                        <p><strong>Celular:</strong> <span id="celular"></span></p>
+                        <p><strong>CPF:</strong> <span id="cpf"></span></p>
+                        <p><strong>Login:</strong> <span id="login"></span></p>
                         <div class="actions mt-3">
                             <button class="btn btn-primary btn-custom-orange" id="btnEditarPerfil">Editar Perfil</button>
                         </div>
@@ -169,9 +249,11 @@
             </section>
 
             <section class="card pets mt-4">
-                <h2>Meus Pets</h2>
-                <a href="/modulos/cadastro_pets/pets.html" class="btn btn-primary btn-custom-orange" style="margin-bottom: 16px;">Cadastrar novo pet</a>
-                <div id="petsContainer" class="row mt-3"></div>
+                <h2 class="mb-4">Meus Pets</h2>
+                <a href="/modulos/cadastro_pets/pets.html" class="btn btn-primary btn-custom-orange mb-3">Cadastrar novo pet</a>
+                <div id="petsContainer" class="row mt-3">
+                    </div>
+                <p id="noPetsMessage" class="text-muted text-center mt-3" style="display: none;">Você ainda não cadastrou nenhum pet.</p>
             </section>
         </main>
     </div>
@@ -189,7 +271,6 @@
                     <p><a href="/index.html#pets">Pets disponíveis</a></p>
                     <p><a href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a></p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
                     <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
@@ -218,34 +299,57 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../../assets/js/login.js"></script>
-    <script>
-        // Script para gerenciar a visibilidade da navbar (copiado da index.html)
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <script>
+        AOS.init(); 
+
+        // Funções globais do sistema de login/logout (ajustadas para caminhos absolutos)
+        function logoutUser() {
+            sessionStorage.removeItem('usuarioCorrente');
+            window.location.href = '/modulos/login/login.html'; 
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            const myProfileLink = document.getElementById('myProfileLink');
-            const loginRegisterLinks = document.getElementById('loginRegisterLinks');
-            const userInfoContainer = document.getElementById('userInfoContainer');
+            const navItemMeuPerfil = document.getElementById('navItemMeuPerfil');
+            const navItemMinhasAdocoes = document.getElementById('navItemMinhasAdocoes');
+            const userInfoAndLogoutContainer = document.getElementById('userInfoAndLogoutContainer');
+            const navItemLogin = document.getElementById('navItemLogin');
 
             const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
 
             if (usuarioCorrenteJSON) {
                 const usuario = JSON.parse(usuarioCorrenteJSON);
-                userInfoContainer.innerHTML = `
-                    <a class="nav-link text-white" href="#">
+                
+                // Exibe os links de "Meu Perfil", "Minhas Adoções"
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'list-item';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'list-item';
+
+                // Cria o conteúdo para "Olá, [Nome] e botão Sair"
+                userInfoAndLogoutContainer.innerHTML = `
+                    <a class="nav-link text-white fw-semibold px-3" href="#">
                         Olá, ${usuario.nome}!
                         <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
                     </a>
                 `;
-                if (myProfileLink) myProfileLink.classList.remove('d-none');
-                if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
+                userInfoAndLogoutContainer.style.display = 'list-item';
+
+                // Esconde o link de "Login"
+                if (navItemLogin) navItemLogin.style.display = 'none';
+
             } else {
-                // Se não houver usuário logado, redireciona para a página de login
-                window.location.href = '/modulos/login/login.html'; 
+                // Se não houver usuário logado, esconde os links de perfil/adoções/sair
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'none';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'none';
+                if (userInfoAndLogoutContainer) userInfoAndLogoutContainer.style.display = 'none';
+                
+                // Exibe o link de "Login"
+                if (navItemLogin) navItemLogin.style.display = 'list-item';
+                
+                // Se não está logado, redireciona para a página de login
+                window.location.href = '/modulos/login/login.html'; // Garante que o usuário esteja logado
             }
         });
     </script>
     <script src="../../assets/js/meu_perfil.js"></script>
 </body>
-
 </html>

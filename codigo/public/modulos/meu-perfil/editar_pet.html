@@ -5,53 +5,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editar Pet</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    
-   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        /* Cores personalizadas, copiadas da sua home/navbar */
+        /* Variáveis de Cores (da sua home.html) */
         :root {
-            --laranja: #ff7f00;
+            --laranja: #ff7f50;
             --laranja-escuro: #e66f00;
-            --fundo: #fffaf3;
+            --fundo: #fffefc;
+            --navbar-height: 85px; /* Altura da navbar ajustada */
         }
 
         body {
+            font-family: 'Roboto', sans-serif;
             background-color: var(--fundo);
-            padding-top: 70px; /* Compensa a navbar fixa */
-            min-height: 100vh;
+            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
+        /* Estilos da Navbar (mantendo do original, mas ajustando logo) */
         .navbar {
-            background-color: var(--laranja);
+            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+        }
+        .navbar-brand {
+            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+        }
+        .navbar-brand img {
+            width: 70px; /* Largura do logo */
+            height: 70px; /* Altura do logo */
+            min-width: 70px; /* Garante tamanho mínimo */
+            min-height: 70px; /* Garante tamanho mínimo */
+            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+            padding: 0.5rem; /* Padding interno do logo */
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+            color: #fffbd1 !important;
+        }
+        .navbar .btn-light:hover {
+            background-color: #fff3cd;
+            color: #000;
         }
 
-        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
-            color: white !important;
-        }
-
-        /* Estilos do container principal (para empurrar footer) */
-        .container {
+        /* Estilos do Conteúdo Principal */
+        .container.main-content {
             flex-grow: 1; /* Permite que o container principal se expanda */
-        }
-
-        /* Estilos do formulário como um "card" */
-        .card-form {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background-color: #ffffff; /* Fundo branco para o card */
             padding: 30px;
-            margin-top: 40px;
-            margin-bottom: 40px;
-            max-width: 800px; /* Largura um pouco maior para o formulário de pet */
-            margin-left: auto;
-            margin-right: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px; /* Espaçamento abaixo do navbar */
+            margin-bottom: 30px;
+            max-width: 800px; /* Limita a largura do formulário como um card */
         }
 
-        .card-form h2 {
+        .main-content h1 {
+            color: #ff7e29;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .main-content h2 {
             text-align: center;
             margin-bottom: 30px;
             color: #333;
@@ -86,7 +102,7 @@
             background-color: #5a6268;
             color: white;
         }
-        .btn-danger-custom { /* Novo estilo para botão de excluir */
+        .btn-danger-custom { 
             background-color: #dc3545;
             color: white;
             border: none;
@@ -100,6 +116,25 @@
             color: white;
         }
 
+        /* Ajuste para botões de tamanho pequeno para ficarem alinhados */
+        .btn-sm-custom {
+            padding: 0.25rem 0.5rem; /* Bootstrap btn-sm padding */
+            font-size: 0.875rem; /* Bootstrap btn-sm font size */
+            line-height: 1.5; /* Bootstrap btn-sm line height */
+            border-radius: 0.2rem; /* Bootstrap btn-sm border radius */
+        }
+        /* Garantindo que os botões de ação na parte inferior tenham o mesmo tamanho */
+        .btn-action-wide {
+            min-width: 120px; /* Define uma largura mínima para alinhar */
+            text-align: center;
+        }
+        .btn-action-small {
+            min-width: 100px; /* Ajuste se necessário para combinar */
+            text-align: center;
+            padding: 6px 12px; /* Um pouco menos padding para ser menor */
+        }
+
+
         #imgPreview {
             max-width: 200px;
             height: auto;
@@ -110,8 +145,8 @@
             object-fit: cover;
         }
 
-        /* Estilos do Rodapé Aprimorado */
-        .footer {
+        /* Estilos do Rodapé Aprimorado (copiados da sua home.html) */
+         .footer {
             background-color: #333;
             color: white;
             padding-top: 30px;
@@ -140,165 +175,181 @@
             color: white;
         }
     </style>
-
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="/index.html">AdoteMe</a>
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <nav class="navbar navbar-expand-lg shadow-sm fixed-top"
+        style="background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%);">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo" width="90" height="90"
+                    class="rounded-circle bg-white p-2 shadow-sm">
+                <span class="fw-bold text-white">Adote</span><span style="color: #222;">Me</span>
+            </a>
+
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="/index.html#como-funciona">Como funciona</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index.html#pets">Pets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/index.html#sobre">Sobre</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/adocoes.html">Adoções</a></li>
-                </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Buscar pet..." aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">Buscar</button>
-                </form>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center flex-wrap gap-3">
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item d-none" id="myProfileLink">
-                        <a class="nav-link" href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a>
-                    </li>
-                    <li class="nav-item d-none" id="loginRegisterLinks">
-                        <a class="nav-link" href="/modulos/login/login.html">Login/Registrar</a>
-                    </li>
-                    <li class="nav-item" id="userInfoContainer">
+                    <form class="d-flex" role="search" action="/modulos/busca/busca.html" method="get">
+                        <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet"
+                            aria-label="Buscar" id="busca-pet" name="q">
+                        <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
+                    </form>
+
+                    <ul class="navbar-nav flex-row gap-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#como-funciona">❓ Como funciona</a>
                         </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#pets">🐾 Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#sobre">ℹ️ Sobre</a>
+                        </li>
+                        <li class="nav-item" id="navItemMeuPerfil">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/meu-perfil/meu_perfil.html">👤 Meu perfil</a>
+                        </li>
+                        <li class="nav-item" id="navItemMinhasAdocoes">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/minhas_adocoes/minhas_adocoes.html">🧡 Minhas Adoções</a>
+                        </li>
+                        <li class="nav-item" id="userInfoAndLogoutContainer">
+                            </li>
+                        <li class="nav-item" id="navItemLogin">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/login/login.html">🔒 Login</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
 
-    <div class="container py-4">
-        <div class="card-form">
-            <h2>Editar Pet</h2>
-            <form id="formEditarPet">
-                <div class="row">
-                    <div class="col-md-2 mb-3">
-                        <label for="inputId" class="form-label">ID</label>
-                        <input type="text" class="form-control" id="inputId" disabled />
-                    </div>
-                    <div class="col-md-5 mb-3">
-                        <label for="inputNome" class="form-label">Nome do Pet (*)</label>
-                        <input type="text" class="form-control" id="inputNome" required />
-                    </div>
-                    <div class="col-md-5 mb-3">
-                        <label for="inputEspecie" class="form-label">Espécie (*)</label>
-                        <input type="text" class="form-control" id="inputEspecie" required />
-                    </div>
+    <div class="container main-content">
+        <a href="/modulos/meu-perfil/meu_perfil.html" class="btn btn-secondary mb-4"><i class="bi bi-arrow-left"></i> Voltar ao Meu Perfil</a>
+        
+        <h1 class="text-center">Editar Pet</h1>
+        
+        <form id="formEditarPet">
+            <div class="row">
+                <div class="col-md-2 mb-3">
+                    <label for="inputId" class="form-label">ID</label>
+                    <input type="text" class="form-control" id="inputId" disabled />
                 </div>
+                <div class="col-md-5 mb-3">
+                    <label for="inputNome" class="form-label">Nome do Pet (*)</label>
+                    <input type="text" class="form-control" id="inputNome" required />
+                </div>
+                <div class="col-md-5 mb-3">
+                    <label for="inputEspecie" class="form-label">Espécie (*)</label>
+                    <input type="text" class="form-control" id="inputEspecie" required />
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <label for="inputRaca" class="form-label">Raça</label>
-                        <input type="text" class="form-control" id="inputRaca" />
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="inputIdade" class="form-label">Idade (anos)</label>
-                        <input type="number" class="form-control" id="inputIdade" />
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputSexo" class="form-label">Sexo</label>
-                        <select class="form-select" id="inputSexo">
-                            <option value="">Selecione</option>
-                            <option>Macho</option>
-                            <option>Fêmea</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputPorte" class="form-label">Porte</label>
-                        <select class="form-select" id="inputPorte">
-                            <option value="">Selecione</option>
-                            <option>Pequeno</option>
-                            <option>Médio</option>
-                            <option>Grande</option>
-                        </select>
-                    </div>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="inputRaca" class="form-label">Raça</label>
+                    <input type="text" class="form-control" id="inputRaca" />
                 </div>
+                <div class="col-md-2 mb-3">
+                    <label for="inputIdade" class="form-label">Idade (anos)</label>
+                    <input type="number" class="form-control" id="inputIdade" />
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputSexo" class="form-label">Sexo</label>
+                    <select class="form-select" id="inputSexo">
+                        <option value="">Selecione</option>
+                        <option>Macho</option>
+                        <option>Fêmea</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputPorte" class="form-label">Porte</label>
+                    <select class="form-select" id="inputPorte">
+                        <option value="">Selecione</option>
+                        <option>Pequeno</option>
+                        <option>Médio</option>
+                        <option>Grande</option>
+                    </select>
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label for="inputPeso" class="form-label">Peso (kg)</label>
-                        <input type="number" class="form-control" id="inputPeso" />
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputVacinado" class="form-label">Vacinado?</label>
-                        <select class="form-select" id="inputVacinado">
-                            <option>Sim</option>
-                            <option>Não</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputVermifugado" class="form-label">Vermifugado?</label>
-                        <select class="form-select" id="inputVermifugado">
-                            <option>Sim</option>
-                            <option>Não</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputCastrado" class="form-label">Castrado?</label>
-                        <select class="form-select" id="inputCastrado">
-                            <option>Sim</option>
-                            <option>Não</option>
-                        </select>
-                    </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="inputPeso" class="form-label">Peso (kg)</label>
+                    <input type="number" class="form-control" id="inputPeso" />
                 </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputVacinado" class="form-label">Vacinado?</label>
+                    <select class="form-select" id="inputVacinado">
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputVermifugado" class="form-label">Vermifugado?</label>
+                    <select class="form-select" id="inputVermifugado">
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputCastrado" class="form-label">Castrado?</label>
+                    <select class="form-select" id="inputCastrado">
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="inputCondicao" class="form-label">Condição Especial</label>
-                        <input type="text" class="form-control" id="inputCondicao" />
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="inputTemperamento" class="form-label">Temperamento</label>
-                        <input type="text" class="form-control" id="inputTemperamento" />
-                    </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="inputCondicao" class="form-label">Condição Especial</label>
+                    <input type="text" class="form-control" id="inputCondicao" />
                 </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputTemperamento" class="form-label">Temperamento</label>
+                    <input type="text" class="form-control" id="inputTemperamento" />
+                </div>
+            </div>
 
-                <div class="row">
-                    <div class="col-md-3 mb-3">
-                        <label for="inputCriancas" class="form-label">Dá-se bem com crianças?</label>
-                        <select class="form-select" id="inputCriancas">
-                            <option>Sim</option>
-                            <option>Não</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3 mb-3">
-                        <label for="inputOutrosPets" class="form-label">Dá-se bem com outros pets?</label>
-                        <select class="form-select" id="inputOutrosPets">
-                            <option>Sim</option>
-                            <option>Não</option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="inputLocalizacao" class="form-label">Localização</label>
-                        <input type="text" class="form-control" id="inputLocalizacao" />
-                    </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="inputCriancas" class="form-label">Dá-se bem com crianças?</label>
+                    <select class="form-select" id="inputCriancas">
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
                 </div>
+                <div class="col-md-3 mb-3">
+                    <label for="inputOutrosPets" class="form-label">Dá-se bem com outros pets?</label>
+                    <select class="form-select" id="inputOutrosPets">
+                        <option>Sim</option>
+                        <option>Não</option>
+                    </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="inputLocalizacao" class="form-label">Localização</label>
+                    <input type="text" class="form-control" id="inputLocalizacao" />
+                </div>
+            </div>
 
-                <div class="mb-3">
-                    <label for="inputImagem" class="form-label">URL da Imagem do Pet</label>
-                    <input type="url" class="form-control" id="inputImagem" />
-                    <img id="imgPreview" src="" alt="Prévia da imagem do pet" class="mt-2 img-thumbnail" style="max-width: 200px; display: none;">
-                </div>
+            <div class="mb-3">
+                <label for="inputImagem" class="form-label">URL da Imagem do Pet</label>
+                <input type="url" class="form-control" id="inputImagem" />
+                <img id="imgPreview" src="" alt="Prévia da imagem do pet" class="mt-2 img-thumbnail" style="max-width: 200px; display: none;">
+            </div>
 
-                <div class="d-flex justify-content-between mt-4">
-                    <div>
-                        <a href="/modulos/meu-perfil/meu_perfil.html" class="btn btn-secondary-custom me-2">Voltar</a>
-                        <button type="submit" class="btn btn-custom-orange">Salvar Alterações</button>
-                    </div>
-                    <button type="button" class="btn btn-danger-custom" id="btnExcluirPet">Excluir Pet</button>
+            <div class="d-flex justify-content-between mt-4">
+                <div>
+                    <button type="submit" class="btn btn-custom-orange btn-action-wide">Salvar Alterações</button>
                 </div>
-            </form>
-        </div>
+                <button type="button" class="btn btn-danger-custom btn-action-wide" id="btnExcluirPet">Excluir Pet</button>
+            </div>
+        </form>
     </div>
 
     <footer class="footer text-center text-md-start">
@@ -314,7 +365,6 @@
                     <p><a href="/index.html#pets">Pets disponíveis</a></p>
                     <p><a href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a></p>
                 </div>
-
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
                     <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
                     <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
@@ -343,27 +393,47 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/login.js"></script>
-    <script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <script>
+        AOS.init(); 
+
+        // Funções globais do sistema de login/logout (ajustadas para caminhos absolutos)
+        function logoutUser() {
+            sessionStorage.removeItem('usuarioCorrente');
+            window.location.href = '/modulos/login/login.html'; 
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
-            const myProfileLink = document.getElementById('myProfileLink');
-            const loginRegisterLinks = document.getElementById('loginRegisterLinks');
-            const userInfoContainer = document.getElementById('userInfoContainer');
+            const navItemMeuPerfil = document.getElementById('navItemMeuPerfil');
+            const navItemMinhasAdocoes = document.getElementById('navItemMinhasAdocoes');
+            const userInfoAndLogoutContainer = document.getElementById('userInfoAndLogoutContainer');
+            const navItemLogin = document.getElementById('navItemLogin');
 
             const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
 
             if (usuarioCorrenteJSON) {
                 const usuario = JSON.parse(usuarioCorrenteJSON);
-                userInfoContainer.innerHTML = `
-                    <a class="nav-link text-white" href="#">
+                
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'list-item';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'list-item';
+
+                userInfoAndLogoutContainer.innerHTML = `
+                    <a class="nav-link text-white fw-semibold px-3" href="#">
                         Olá, ${usuario.nome}!
                         <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
                     </a>
                 `;
-                if (myProfileLink) myProfileLink.classList.remove('d-none');
-                if (loginRegisterLinks) loginRegisterLinks.classList.add('d-none');
+                userInfoAndLogoutContainer.style.display = 'list-item';
+
+                if (navItemLogin) navItemLogin.style.display = 'none';
+
             } else {
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'none';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'none';
+                if (userInfoAndLogoutContainer) userInfoAndLogoutContainer.style.display = 'none';
+                
+                if (navItemLogin) navItemLogin.style.display = 'list-item';
+                
                 window.location.href = '/modulos/login/login.html'; 
             }
         });

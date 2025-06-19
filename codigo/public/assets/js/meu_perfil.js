@@ -96,7 +96,7 @@ async function carregarPerfil() {
                             ${pet.especie} - ${pet.raca}<br>
                             Idade: ${pet.idade} ano(s)
                         </p>
-                        <a href="/modulos/meu-perfil/editar_pet.html?id=${pet.id}" class="btn btn-sm btn-info me-2">Editar Pet</a>
+<a href="/modulos/meu-perfil/editar_pet.html?id=${pet.id}" class="btn btn-sm btn-custom-orange me-2">Editar Pet</a>
                         <button class="btn btn-sm btn-danger" onclick="confirmDeletePet(${pet.id}, '${pet.nome}')">Excluir Pet</button>
                     </div>
                 </div>
