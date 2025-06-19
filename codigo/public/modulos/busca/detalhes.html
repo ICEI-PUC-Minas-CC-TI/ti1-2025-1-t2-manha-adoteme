@@ -1,106 +1,346 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Detalhes do Pet</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detalhes do Pet</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-    :root {
-      --laranja-claro: #ffe6cc;
-      --laranja-gradiente: linear-gradient(90deg, #ff7e29, #ff944d);
-      --texto-escuro: #333;
-      --botao-laranja: #ff7e29;
-      --botao-hover: #e86c1a;
-      --botao-adotar: #28a745; /* Novo estilo para o botão Adotar */
-      --botao-adotar-hover: #218838;
-    }
+        /* Variáveis de Cores (da sua home.html) */
+        :root {
+            --laranja: #ff7f50; /* Laranja principal do site */
+            --laranja-escuro: #e66f00;
+            --fundo: #fffefc;
+            --navbar-height: 85px; /* Altura da navbar ajustada */
+            --texto-escuro: #333; /* Adicionado para consistência */
+        }
 
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--laranja-claro);
-    }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--fundo);
+            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    header {
-      background: var(--laranja-gradiente);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+        /* Estilos da Navbar (copiados do padrão) */
+        .navbar {
+            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+            background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%); /* Gradiente da navbar */
+        }
+        .navbar-brand {
+            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+        }
+        .navbar-brand img {
+            width: 70px; /* Largura do logo */
+            height: 70px; /* Altura do logo */
+            min-width: 70px; /* Garante tamanho mínimo */
+            min-height: 70px; /* Garante tamanho mínimo */
+            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
+            padding: 0.5rem; /* Padding interno do logo */
+        }
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+            color: #fffbd1 !important;
+        }
+        .navbar .btn-light:hover {
+            background-color: #fff3cd;
+            color: #000;
+        }
+        /* Cor dos links e placeholder na navbar */
+        .navbar-brand, .nav-link, .navbar .form-control::placeholder {
+            color: white !important; /* Garante que os itens da navbar sejam brancos */
+        }
 
-    h1 {
-      color: var(--texto-escuro);
-      margin: 1.5rem 2rem 0.5rem;
-      font-weight: bold;
-    }
+        /* Estilos do Conteúdo Principal (o card de detalhes do pet) */
+        .container.main-content {
+            flex-grow: 1; /* Permite que o container principal se expanda */
+            background-color: #ffffff; /* Fundo branco para o card */
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 30px; /* Espaçamento abaixo do navbar */
+            margin-bottom: 30px;
+            max-width: 900px; /* Um pouco mais largo para os detalhes */
+        }
 
-    .detalhes {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin: 1rem 2rem;
-    }
+        h1 {
+            color: var(--laranja); /* Título principal laranja */
+            font-weight: 700; /* Negrito */
+            margin-bottom: 30px; /* Espaço abaixo do título principal */
+            text-align: center;
+        }
 
-    .detalhes p {
-      margin: 8px 0;
-      font-size: 1rem;
-      color: #444;
-    }
+        /* Estilos da seção de detalhes (o conteúdo dinâmico) */
+        .detalhes-pet-content {
+            display: flex;
+            flex-direction: column; /* Padrão coluna */
+            gap: 25px; /* Espaçamento entre imagem e texto */
+            align-items: center; /* Centraliza verticalmente em telas pequenas */
+        }
+        @media (min-width: 768px) { /* Em telas maiores, vira linha */
+            .detalhes-pet-content {
+                flex-direction: row;
+                align-items: flex-start; /* Alinha no topo */
+            }
+        }
 
-    .voltar {
-      display: inline-block;
-      margin: 1rem 2rem;
-      padding: 10px 18px;
-      background-color: var(--botao-laranja);
-      color: white;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
+        .detalhes-pet-content img {
+            width: 100%;
+            max-width: 550px; /* AINDA MAIS: Largura máxima da imagem aumentada */
+            height: 450px; /* AINDA MAIS: Altura fixa para a imagem aumentada */
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave */
+        }
 
-    .voltar:hover {
-      background-color: var(--botao-hover);
-    }
+        .detalhes-pet-info {
+            flex-grow: 1; /* Permite que a div de informações ocupe o espaço restante */
+            color: var(--texto-escuro);
+        }
 
-    /* Novo estilo para o botão Quero Adotar */
-    .btn-quero-adotar {
-        display: inline-block;
-        padding: 12px 25px;
-        background-color: var(--botao-adotar);
-        color: white;
-        border: none;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 1.1rem;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 20px; /* Adiciona espaçamento superior */
-    }
+        .detalhes-pet-info h2 {
+            font-size: 2.2rem; /* Aumentado para mais destaque */
+            font-weight: 700;
+            color: var(--laranja-escuro); /* Nome do pet em laranja escuro */
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee; /* Linha de separação suave */
+            padding-bottom: 10px;
+        }
 
-    .btn-quero-adotar:hover {
-        background-color: var(--botao-adotar-hover);
-    }
-  </style>
+        .detalhes-pet-info h2 span.especie-detalhe { /* Nova classe para a espécie */
+            font-size: 1.4rem; /* Aumentado um pouco para legibilidade */
+            font-weight: 400;
+            color: #6c757d; /* Espécie em cinza claro */
+            margin-left: 10px;
+        }
+
+        .detalhes-pet-info p {
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        .detalhes-pet-info p strong {
+            color: var(--texto-escuro); /* Labels em cor escura */
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        /* Estilo do botão Quero Adotar (copiado e ajustado para ser um botão do Bootstrap) */
+        .btn-quero-adotar {
+            display: block; /* Ocupa a largura total */
+            width: 100%; /* Ocupa 100% da largura disponível */
+            padding: 12px 25px;
+            background-color: #28a745; /* Verde para adotar */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 25px; /* Espaçamento superior */
+        }
+        .btn-quero-adotar:hover {
+            background-color: #218838;
+        }
+
+        /* Estilos do Rodapé Aprimorado (copiados da sua home.html) */
+         .footer {
+            background-color: #333;
+            color: white;
+            padding-top: 30px;
+            margin-top: auto;
+        }
+
+        .footer h5 {
+            color: var(--laranja);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer p, .footer a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
+    <nav class="navbar navbar-expand-lg shadow-sm fixed-top"
+        style="background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%);">
+        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
 
-  <h1>Detalhes do Pet</h1>
-  <div id="petDetails" class="detalhes">
-    Carregando...
-</div>
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/index.html">
+                <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Logo" width="90" height="90"
+                    class="rounded-circle bg-white p-2 shadow-sm">
+                <span class="fw-bold text-white">Adote</span><span style="color: #222;">Me</span>
+            </a>
 
-  <a href="busca.html" class="voltar">← Voltar à lista</a>
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  <script src="../../assets/js/busca.js"></script>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="d-flex align-items-center flex-wrap gap-3">
+
+                    <form class="d-flex" role="search" action="/modulos/busca/busca.html" method="get">
+                        <input class="form-control me-2 border-0 shadow-sm" type="search" placeholder="Buscar pet"
+                            aria-label="Buscar" id="busca-pet" name="q">
+                        <button class="btn btn-light fw-semibold shadow-sm" type="submit">🔍</button>
+                    </form>
+
+                    <ul class="navbar-nav flex-row gap-2">
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#como-funciona">❓ Como funciona</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#pets">🐾 Pets</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold px-3" href="/index.html#sobre">ℹ️ Sobre</a>
+                        </li>
+                        <li class="nav-item" id="navItemMeuPerfil">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/meu-perfil/meu_perfil.html">👤 Meu perfil</a>
+                        </li>
+                        <li class="nav-item" id="navItemMinhasAdocoes">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/minhas_adocoes/minhas_adocoes.html">🧡 Minhas Adoções</a>
+                        </li>
+                        <li class="nav-item" id="userInfoAndLogoutContainer">
+                            </li>
+                        <li class="nav-item" id="navItemLogin">
+                            <a class="nav-link text-white fw-semibold px-3" href="/modulos/login/login.html">🔒 Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <a href="#" id="backButton" class="btn btn-secondary mb-4"><i class="bi bi-arrow-left"></i> Voltar</a>
+        
+        <h1 class="text-center"><i class="bi bi-info-circle"></i> Detalhes do Pet</h1>
+        
+        <div id="petDetails" class="detalhes-pet-content">
+            Carregando...
+        </div>
+    </div>
+
+   <footer class="footer text-center text-md-start">
+        <div class="container">
+            <div class="row pt-4 pb-4">
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">AdoteMe</h5>
+                    <p>Conectando corações e patinhas, garantindo um lar feliz para cada pet abandonado.</p>
+                </div>
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Navegação</h5>
+                    <p><a href="/index.html#como-funciona">Como funciona</a></p>
+                    <p><a href="/index.html#pets">Pets disponíveis</a></p>
+                    <p><a href="/modulos/meu-perfil/meu_perfil.html">Meu Perfil</a></p>
+                </div>
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <h5 class="text-uppercase fw-bold mb-4">Contato</h5>
+                    <p><i class="bi bi-house-door-fill me-2"></i> Belo Horizonte, MG, Brasil</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i> contato@adoteme.com</p>
+                    <p><i class="bi bi-telephone-fill me-2"></i> +55 (31) 98765-4321</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p class="text-center text-md-start">© 2025 Copyright:
+                        <a href="#" class="text-white fw-bold" style="text-decoration: none;">AdoteMe</a>
+                    </p>
+                </div>
+                <div class="col-md-5 col-lg-4">
+                    <div class="text-center text-md-end">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script> <script>
+        AOS.init(); 
+
+        // Funções globais do sistema de login/logout (ajustadas para caminhos absolutos)
+        function logoutUser() {
+            sessionStorage.removeItem('usuarioCorrente');
+            window.location.href = '/modulos/login/login.html'; 
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItemMeuPerfil = document.getElementById('navItemMeuPerfil');
+            const navItemMinhasAdocoes = document.getElementById('navItemMinhasAdocoes');
+            const userInfoAndLogoutContainer = document.getElementById('userInfoAndLogoutContainer');
+            const navItemLogin = document.getElementById('navItemLogin');
+
+            const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
+
+            if (usuarioCorrenteJSON) {
+                const usuario = JSON.parse(usuarioCorrenteJSON);
+                
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'list-item';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'list-item';
+
+                userInfoAndLogoutContainer.innerHTML = `
+                    <a class="nav-link text-white fw-semibold px-3" href="#">
+                        Olá, ${usuario.nome}!
+                        <button class="btn btn-sm btn-outline-light ms-2" onclick="logoutUser()">Sair</button>
+                    </a>
+                `;
+                userInfoAndLogoutContainer.style.display = 'list-item';
+
+                if (navItemLogin) navItemLogin.style.display = 'none';
+
+            } else {
+                if (navItemMeuPerfil) navItemMeuPerfil.style.display = 'none';
+                if (navItemMinhasAdocoes) navItemMinhasAdocoes.style.display = 'none';
+                if (userInfoAndLogoutContainer) userInfoAndLogoutContainer.style.display = 'none';
+                
+                if (navItemLogin) navItemLogin.style.display = 'list-item';
+                
+                // Removido o redirecionamento aqui, pois páginas de detalhes costumam ser públicas
+                // window.location.href = '/modulos/login/login.html'; 
+            }
+        });
+
+        // Lógica para o botão "Voltar" (específico para esta página)
+        document.addEventListener('DOMContentLoaded', function() {
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                // A página de detalhes geralmente volta para a busca
+                backButton.href = '/modulos/busca/busca.html'; 
+            }
+        });
+    </script>
+    <script src="/assets/js/busca.js"></script>
 </body>
+
 </html>
