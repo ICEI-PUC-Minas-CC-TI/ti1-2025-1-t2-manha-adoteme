@@ -29,7 +29,7 @@ async function buscarPets() {
 // Função para mostrar lista de pets na tela
 function mostrarPets(pets) {
     const petsList = document.getElementById('petsList');
-    if (!petsList) return; // Garante que estamos na página correta
+    if (!petsList) return;
 
     if (!pets || pets.length === 0) {
         petsList.innerHTML = '<p>Nenhum pet encontrado.</p>';
@@ -55,8 +55,6 @@ function mostrarPets(pets) {
         btn.addEventListener('click', () => {
             const id = btn.getAttribute('data-id');
             // Caminho corrigido para o botão "Saiba Mais"
-            // Se busca.html está em /modulos/busca/ e detalhes.html também,
-            // então o caminho relativo é apenas "detalhes.html" ou "./detalhes.html"
             window.location.href = `detalhes.html?id=${id}`; 
         });
     });
@@ -144,8 +142,6 @@ async function carregarDetalhesPet() {
             `;
             // Adiciona o evento de clique ao botão "Quero Adotar"
             document.querySelector('.btn-quero-adotar').addEventListener('click', () => {
-                // Caminho corrigido para o botão "Quero Adotar"
-                // De public/modulos/busca/detalhes.html para public/modulos/minhas_adocoes/formulario_adocao.html
                 window.location.href = `../minhas_adocoes/formulario_adocao.html?petId=${pet.id}`; 
             });
         }
@@ -164,13 +160,11 @@ function main() {
     const searchInputElement = document.getElementById('searchInput');
 
     if (petsListElement && searchInputElement) {
-        // Estamos na página de busca (ou uma que usa esses elementos)
         buscarPets();
         configurarFiltros();
     } 
     // Verifica se o elemento da página de detalhes existe
     else if (document.getElementById('petDetails')) {
-        // Estamos na página de detalhes
         carregarDetalhesPet();
     }
     // Caso contrário, não faz nada (pode ser a home.html ou outra página)
