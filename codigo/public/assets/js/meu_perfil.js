@@ -4,8 +4,6 @@ const API_BASE_URL = 'http://localhost:3000';
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 
-// REMOVIDO: let usuarioCorrente = null; // Esta declaração estava causando o erro
-
 async function carregarPerfil() {
     console.log("carregarPerfil: Iniciando...");
     try {
@@ -61,19 +59,18 @@ async function carregarPerfil() {
         }
         const todosPets = await petsResponse.json();
         console.log("carregarPerfil: TODOS os pets carregados:", todosPets);
-        console.log("carregarPerfil: petIDs do usuário logado:", usuario.petIDs); // NOVO LOG
-
+        console.log("carregarPerfil: petIDs do usuário logado:", usuario.petIDs);
         // Filtra os pets que pertencem ao usuário logado
         const meusPets = todosPets.filter(pet => {
             const isAssociated = (usuario.petIDs || []).includes(Number(pet.id)); // Certifica que pet.id é Number
-            const isOwner = (pet.ownerId && pet.ownerId === usuario.id); // NOVO: Verifica se o ownerId do pet bate com o userId
+            const isOwner = (pet.ownerId && pet.ownerId === usuario.id); //Verifica se o ownerId do pet bate com o userId
             
             console.log(`Pet ID: ${pet.id}, Nome: ${pet.nome}, pet.ownerId: ${pet.ownerId}, usuario.id: ${usuario.id}, Associado (petIDs): ${isAssociated}, Proprietário (ownerId): ${isOwner}`); // LOG DETALHADO
             
             return isAssociated && isOwner; // Ambos devem ser verdadeiros
         });
         
-        console.log("carregarPerfil: Meus Pets FILTRADOS FINALMENTE:", meusPets); // NOVO LOG
+        console.log("carregarPerfil: Meus Pets FILTRADOS FINALMENTE:", meusPets);
 
         const petsContainer = document.getElementById('petsContainer');
         petsContainer.innerHTML = '';
@@ -112,8 +109,6 @@ async function carregarPerfil() {
 }
 
 // Funções para deletar pet (copiada e adaptada de pets.js)
-// IMPORTANTE: Esta função precisa ser global para ser chamada por onclick no HTML
-// Usamos window.usuarioCorrente para acessar a variável global
 async function confirmDeletePet(petId, petNome) {
     if (!window.usuarioCorrente || !window.usuarioCorrente.id) {
         alert('Erro: Você precisa estar logado para excluir um pet.');
@@ -171,4 +166,3 @@ document.getElementById("btnEditarPerfil").addEventListener("click", () => {
 });
 
 // Event listener para o botão "Cadastrar novo pet" (agora é um link direto no HTML, este JS é desnecessário)
-// REMOVIDO: document.getElementById("btnCadastrarPet").addEventListener("click", () => { ... });
