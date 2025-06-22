@@ -1,4 +1,4 @@
-// Este arquivo: assets/js/meu_perfil.js
+
 
 const API_BASE_URL = 'http://localhost:3000';
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
@@ -127,13 +127,13 @@ async function confirmDeletePet(petId, petNome) {
             alert('Pet excluído com sucesso!');
             
             // Atualiza o perfil do usuário para remover o ID do pet
-            const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`); // Usar window.usuarioCorrente
+            const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`); 
             if (!userResponse.ok) throw new Error(`Erro ao buscar usuário para remoção de petIDs: ${userResponse.status}`);
             const user = await userResponse.json();
 
             const updatedPetIDs = (user.petIDs || []).filter(id => id !== Number(petId));
             
-            const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`, { // Usar window.usuarioCorrente
+            const updateUserResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`, { 
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ petIDs: updatedPetIDs }),
@@ -165,4 +165,4 @@ document.getElementById("btnEditarPerfil").addEventListener("click", () => {
     window.location.href = "editar_perfil.html";
 });
 
-// Event listener para o botão "Cadastrar novo pet" (agora é um link direto no HTML, este JS é desnecessário)
+

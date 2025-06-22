@@ -1,4 +1,4 @@
-// Constantes (API_URL e ADOPTION_REQUESTS_KEY permanecem aqui)
+
 const API_URL = 'http://localhost:3000/pets';
 const ADOPTION_REQUESTS_KEY = 'adoptionRequests';
 
@@ -7,7 +7,6 @@ let currentAdoptionRequests = [];
 let currentPetsDoUsuario = []; 
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // ... (Seus elementos de seção e mensagens: userNotLoggedInDiv, solicitacoesEnviadasSection, etc.) ...
     const userNotLoggedInDiv = document.getElementById('userNotLoggedIn');
     const solicitacoesEnviadasSection = document.getElementById('solicitacoesEnviadasSection');
     const solicitacoesRecebidasSection = document.getElementById('solicitacoesRecebidasSection');

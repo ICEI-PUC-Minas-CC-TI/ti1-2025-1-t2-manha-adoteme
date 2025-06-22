@@ -1,4 +1,4 @@
-// Este arquivo: assets/js/editar_pet.js (NOVO ARQUIVO)
+
 
 const API_BASE_URL = 'http://localhost:3000';
 const API_PETS_URL = `${API_BASE_URL}/pets`;
@@ -76,7 +76,7 @@ async function loadPetData(petId) {
         document.getElementById('inputCriancas').value = pet.criancas || 'Não';
         document.getElementById('inputOutrosPets').value = pet.outrosPets || 'Não';
         document.getElementById('inputLocalizacao').value = pet.localizacao || '';
-        document.getElementById('inputImagem').value = pet.imagem || ''; // Usa 'imagem'
+        document.getElementById('inputImagem').value = pet.imagem || ''; 
         
         const imgPreview = document.getElementById('imgPreview');
         if (pet.imagem) {
@@ -121,7 +121,7 @@ async function savePetChanges(event) {
         criancas: document.getElementById('inputCriancas').value,
         outrosPets: document.getElementById('inputOutrosPets').value,
         localizacao: document.getElementById('inputLocalizacao').value,
-        imagem: document.getElementById('inputImagem').value // Usa 'imagem'
+        imagem: document.getElementById('inputImagem').value 
     };
 
     // Adicionar ownerId do usuário logado (se existir) para consistência no DB
@@ -142,8 +142,7 @@ async function savePetChanges(event) {
         }
 
         displayMessage('Pet atualizado com sucesso!', 'success');
-        // Opcional: redirecionar de volta para a página do perfil após salvar
-        // window.location.href = '/modulos/meu-perfil/meu_perfil.html';
+
     } catch (error) {
         console.error('savePetChanges: Erro ao salvar alterações do pet:', error);
         displayMessage(`Erro ao salvar alterações: ${error.message}`, 'danger');

@@ -1,4 +1,4 @@
-// Este arquivo agora será assets/js/editar_perfil.js
+
 
 const API_BASE_URL = 'http://localhost:3000'; // Base URL para seu json-server
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; // Endpoint para usuários

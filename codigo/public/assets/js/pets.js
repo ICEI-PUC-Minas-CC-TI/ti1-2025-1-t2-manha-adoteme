@@ -1,15 +1,13 @@
-// Este arquivo: assets/js/pets.js
-// Finalidade: Exclusivamente para cadastro de novos pets e associação ao usuário logado.
+
 
 const API_BASE_URL = 'http://localhost:3000';
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
 
-// --- Funções de Utilitário ---
 
 // Função para exibir mensagens de sucesso ou erro
-function displayMessage(mensagem, tipo = 'warning') { // tipo pode ser 'success', 'danger', 'warning', 'info'
+function displayMessage(mensagem, tipo = 'warning') { 
     console.log(`displayMessage: Exibindo mensagem - Tipo: ${tipo}, Mensagem: ${mensagem}`);
     const msgDiv = document.getElementById('msg');
     if (msgDiv) {
@@ -117,8 +115,6 @@ async function createPet(pet) {
     }
 }
 
-// Funções Removidas ou Simplificadas (Não Usadas na Página de Cadastro)
-// readPets(), updatePet(), deletePet(), editPet() não são mais necessárias nesta página
 
 // Função para enviar o formulário (apenas inserir nesta página)
 async function handleSubmit(event) {
@@ -141,7 +137,7 @@ async function handleSubmit(event) {
         criancas: document.getElementById('inputCriancas').value,
         outrosPets: document.getElementById('inputOutrosPets').value,
         localizacao: document.getElementById('inputLocalizacao').value,
-        imagem: document.getElementById('inputFoto').value // Usa 'imagem' conforme db.json
+        imagem: document.getElementById('inputFoto').value 
     };
 
     // Validação básica dos campos obrigatórios

@@ -1,18 +1,7 @@
-// Trabalho Interdisciplinar 1 - Aplicações Web
-//
-// Esse módulo realiza o registro de novos usuários e login para aplicações com 
-// backend baseado em API REST provida pelo JSONServer
-// Os dados de usuário estão localizados no arquivo db.json que acompanha este projeto.
-//
-// Autor: Rommel Vieira Carneiro (rommelcarneiro@gmail.com)
-// Data: 09/09/2024
-//
-// Código LoginApp  
 
-// Página inicial de Login
 const LOGIN_URL = "/modulos/login/login.html";
-let RETURN_URL = "/index.html"; // Ajustado para sua home principal
-const API_URL = 'http://localhost:3000/usuarios'; // URL completa para os usuários no json-server
+let RETURN_URL = "/index.html"; 
+const API_URL = 'http://localhost:3000/usuarios'; 
 
 // Objeto para o banco de dados de usuários baseado em JSON
 var db_usuarios = []; // Inicializado como array vazio
@@ -52,8 +41,6 @@ function initLoginApp () {
 
         // REGISTRA LISTENER PARA O EVENTO DE CARREGAMENTO DA PÁGINA PARA ATUALIZAR INFORMAÇÕES DO USUÁRIO
         document.addEventListener('DOMContentLoaded', function () {
-            // Este showUserInfo só é chamado se o usuarioCorrente for carregado aqui
-            // A lógica de navbar em outras páginas já chama showUserInfo diretamente
             console.log("initLoginApp: DOMContentLoaded acionado. Verificando userInfo.");
             showUserInfo('userInfo');
         });
@@ -119,10 +106,10 @@ function logoutUser () {
     window.location = LOGIN_URL;
 }
 
-// Função para adicionar um novo usuário (AGORA RECEBE TODOS OS NOVOS PARÂMETROS)
-async function addUser (nome, login, senha, email, endereco, celular, cpf, fotoPerfil) { // NOVOS PARÂMETROS AQUI
+// Função para adicionar um novo usuário 
+async function addUser (nome, login, senha, email, endereco, celular, cpf, fotoPerfil) { 
     console.log("addUser: Tentando adicionar novo usuário:", login);
-    // Objeto usuário agora inclui os novos campos
+
     let usuario = { 
         "login": login, 
         "senha": senha, 
@@ -132,7 +119,7 @@ async function addUser (nome, login, senha, email, endereco, celular, cpf, fotoP
         "celular": celular,
         "cpf": cpf,
         "fotoPerfil": fotoPerfil,
-        "petIDs": [] // Inicializa com array vazio para pets
+        "petIDs": [] 
     };
 
     try {

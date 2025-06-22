@@ -1,6 +1,6 @@
-// Constantes
-const API_URL = 'http://localhost:3000/pets'; // A mesma URL da sua API de pets
-const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; // Chave para armazenar as solicitações no sessionStorage
+
+const API_URL = 'http://localhost:3000/pets'; 
+const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; 
 
 document.addEventListener('DOMContentLoaded', async () => {
     const petInfoSummary = document.getElementById('petInfoSummary');
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Preencher campos do formulário automaticamente, se o usuário estiver logado
         if (document.getElementById('nomeCompleto')) document.getElementById('nomeCompleto').value = usuarioAdotante.nome || '';
         if (document.getElementById('email')) document.getElementById('email').value = usuarioAdotante.email || '';
-        if (document.getElementById('telefone')) document.getElementById('telefone').value = usuarioAdotante.celular || ''; // Correção: 'celular' se for o nome no seu usuarioCorrente
+        if (document.getElementById('telefone')) document.getElementById('telefone').value = usuarioAdotante.celular || ''; 
         if (document.getElementById('endereco')) document.getElementById('endereco').value = usuarioAdotante.endereco || '';
     } else {
         console.warn('Nenhum usuário logado. Preencha o formulário manualmente.');
@@ -79,8 +79,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const solicitacao = {
                 id: Date.now(), // ID único para a solicitação (apenas para simulação)
                 petId: petId,
-                petNome: document.querySelector('#petInfoSummary h4 strong')?.textContent || 'Nome Indefinido', // Pega o nome do pet exibido
-                petImagem: document.querySelector('#petInfoSummary img')?.src || 'https://via.placeholder.com/80', // Pega a imagem do pet exibida
+                petNome: document.querySelector('#petInfoSummary h4 strong')?.textContent || 'Nome Indefinido', 
+                petImagem: document.querySelector('#petInfoSummary img')?.src || 'https://via.placeholder.com/80', 
                 
                 // Dados do adotante - prioriza os campos do formulário preenchidos manualmente
                 adotanteNome: document.getElementById('nomeCompleto')?.value || '',
@@ -106,10 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (alertMessage) alertMessage.style.display = 'block';
             adoptionForm.reset(); // Limpa o formulário
 
-            //Redirecionar após o envio
-            // setTimeout(() => {
-            //     window.location.href = '../minhas_adocoes/minhas_adocoes.html'; 
-            // }, 2000); 
+
         });
     }
 });
