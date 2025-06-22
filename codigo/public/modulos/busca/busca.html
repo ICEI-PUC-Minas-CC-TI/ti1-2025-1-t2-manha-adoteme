@@ -10,39 +10,39 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        /* Variáveis de Cores (da sua home.html) */
+ 
         :root {
-            --laranja: #ff7f50; /* Laranja principal do site */
+            --laranja: #ff7f50; 
             --laranja-escuro: #e66f00;
             --fundo: #fffefc;
-            --navbar-height: 85px; /* Altura da navbar ajustada */
-            --texto-escuro: #333; /* Adicionado para consistência */
+            --navbar-height: 85px; 
+            --texto-escuro: #333; 
         }
 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--fundo);
-            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
+            padding-top: var(--navbar-height); 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Estilos da Navbar (copiados do padrão) */
+      
         .navbar {
-            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
-            background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%); /* Gradiente da navbar */
+            padding: 0.8rem 0;
+            background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%); 
         }
         .navbar-brand {
-            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+            font-size: 2.2rem !important; 
         }
         .navbar-brand img {
-            width: 70px; /* Largura do logo */
-            height: 70px; /* Altura do logo */
-            min-width: 70px; /* Garante tamanho mínimo */
-            min-height: 70px; /* Garante tamanho mínimo */
-            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-            padding: 0.5rem; /* Padding interno do logo */
+            width: 70px; 
+            height: 70px; 
+            min-width: 70px;
+            min-height: 70px; 
+            object-fit: cover; 
+            padding: 0.5rem; 
         }
         .navbar-nav .nav-link:hover {
             text-decoration: underline;
@@ -52,79 +52,79 @@
             background-color: #fff3cd;
             color: #000;
         }
-        /* Cor dos links e placeholder na navbar */
+      
         .navbar-brand, .nav-link, .navbar .form-control::placeholder {
-            color: white !important; /* Garante que os itens da navbar sejam brancos */
+            color: white !important; 
         }
 
-        /* Estilos do Conteúdo Principal (para o corpo da página de busca) */
+        
         .container.main-content {
-            flex-grow: 1; /* Permite que o container principal se expanda */
-            background-color: transparent; /* Fundo transparente, pois o body já tem cor */
-            padding-top: 30px; /* Espaçamento abaixo do navbar */
+            flex-grow: 1; 
+            background-color: transparent; 
+            padding-top: 30px; 
             padding-bottom: 30px;
         }
 
         h1 {
-            color: var(--laranja); /* Título principal laranja */
-            font-weight: 700; /* Negrito */
-            margin-bottom: 30px; /* Espaço abaixo do título principal */
+            color: var(--laranja); 
+            font-weight: 700; 
+            margin-bottom: 30px; 
             text-align: center;
         }
 
         .filters {
-            background-color: #ffffff; /* Fundo branco para o card de filtros */
+            background-color: #ffffff; 
             margin-bottom: 30px;
-            padding: 20px; /* Padding interno */
+            padding: 20px; 
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Sombra consistente */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
-            align-items: flex-end; /* Alinha os inputs no final */
+            align-items: flex-end; 
         }
 
         .filters .form-control,
         .filters .form-select {
-            flex: 1; /* Permite que os inputs e selects ocupem espaço */
+            flex: 1; 
             min-width: 150px;
         }
 
         #petsList {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Ajustado para cards um pouco maiores */
-            gap: 25px; /* Espaçamento entre os cards */
-            padding: 0; /* Remove padding extra, o container já tem */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+            padding: 0; 
         }
 
         .pet-card {
             background: white;
-            padding: 20px; /* Mais padding interno */
+            padding: 20px; 
             border-radius: 10px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.2s;
-            overflow: hidden; /* Garante que nada transborde */
+            overflow: hidden; 
         }
 
         .pet-card:hover {
-            transform: translateY(-5px); /* Efeito de levantar */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada no hover */
+            transform: translateY(-5px); 
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); 
         }
 
         .pet-card img {
-            width: 100%; /* Imagem ocupa 100% da largura do card */
-            height: 200px; /* Altura fixa para as imagens dos pets */
+            width: 100%;
+            height: 200px; 
             object-fit: cover;
-            border-radius: 8px; /* Cantos arredondados na imagem */
+            border-radius: 8px; 
             margin-bottom: 15px;
         }
 
         .pet-card h3 {
             margin: 0 0 10px;
-            color: var(--laranja); /* Título do pet laranja */
+            color: var(--laranja); 
             font-weight: 600;
             font-size: 1.5rem;
             font-family: 'Roboto', sans-serif; 
@@ -133,18 +133,18 @@
         .pet-info {
             font-size: 0.95rem;
             color: #555;
-            margin-bottom: 15px; /* Mais espaço para o botão */
+            margin-bottom: 15px; 
         }
 
         .btn-saiba-mais {
-            padding: 10px 18px; /* Padding ajustado para o padrão do site */
-            background-color: var(--laranja); /* Cor laranja do site */
+            padding: 10px 18px; 
+            background-color: var(--laranja); 
             color: white;
             border: none;
             border-radius: 5px;
             font-weight: bold;
             text-decoration: none;
-            display: block; /* Ocupa a largura total */
+            display: block; 
             width: 100%;
             text-align: center;
             transition: background-color 0.3s;
@@ -159,10 +159,10 @@
             color: #666;
             text-align: center;
             padding: 1rem 0;
-            grid-column: 1 / -1; /* Ocupa todas as colunas no grid */
+            grid-column: 1 / -1; 
         }
 
-        /* Estilos do Rodapé Aprimorado (copiados da sua home.html) */
+        
          .footer {
             background-color: #333;
             color: white;

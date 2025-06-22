@@ -9,27 +9,27 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
-        /* Cores personalizadas do seu site */
+       
         :root {
             --laranja: #ff7f00;
             --laranja-escuro: #e66f00;
             --fundo: #fffaf3;
 
-            /* Cores para o gradiente da seção de boas-vindas */
-            --gradiente-azul-claro: rgba(76, 175, 80, 0.7); /* Verde amigável para pets com transparência */
-            --gradiente-azul-escuro: rgba(33, 150, 243, 0.7); /* Azul vibrante com transparência */
+           
+            --gradiente-azul-claro: rgba(76, 175, 80, 0.7); 
+            --gradiente-azul-escuro: rgba(33, 150, 243, 0.7); 
             --texto-gradiente: #ffffff;
         }
 
         body {
-            background-color: var(--fundo); /* Cor de fundo principal do site */
-            padding-top: 70px; /* Compensa a navbar fixa */
-            min-height: 100vh; /* Garante que o body ocupa a altura total da viewport */
+            background-color: var(--fundo); 
+            padding-top: 70px; 
+            min-height: 100vh; 
             display: flex;
             flex-direction: column;
         }
 
-        /* Estilo da Navbar */
+        
         .navbar {
             background-color: var(--laranja);
         }
@@ -38,48 +38,48 @@
             color: white !important;
         }
 
-        /* Estilo para o container principal do login (o "card" dividido) */
+        
         .login-card-container {
             background-color: white;
-            border-radius: 15px; /* Bordas mais arredondadas */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Sombra mais pronunciada */
-            max-width: 900px; /* Largura máxima do card dividido */
+            border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            max-width: 900px; 
             width: 100%;
-            display: flex; /* Para que as colunas fiquem lado a lado */
-            overflow: hidden; /* Garante que o radius se aplique às colunas internas */
-            min-height: 500px; /* Altura mínima para o card */
+            display: flex;
+            overflow: hidden; 
+            min-height: 500px; 
         }
 
-        /* Seção de Boas-Vindas*/
+       
         .welcome-section {
-            /* Gradiente com sobreposição na imagem do doguinho */
-            background: url('https://placedog.net/500/750?id=123') no-repeat center center; /* URL da foto do doguinho */
-            background-size: cover; /* Faz a imagem cobrir toda a área */
-            color: var(--texto-gradiente); /* Cor do texto (embora não haja texto aqui, é bom ter) */
-            padding: 40px; /* Padding interno */
-            display: flex; /* Para centralizar o conteúdo se houvesse */
+           
+            background: url('https://placedog.net/500/750?id=123') no-repeat center center; 
+            background-size: cover; 
+            color: var(--texto-gradiente); 
+            padding: 40px; 
+            display: flex; 
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            z-index: 1; /* Para garantir que o conteúdo fique acima do gradiente */
+            z-index: 1; 
         }
         .welcome-section::before {
             content: '';
             position: absolute;
-            bottom: -50px; /* Posição para o efeito "montanha" */
+            bottom: -50px; 
             left: 0;
             width: 100%;
             height: 100px;
-            background: rgba(255, 255, 255, 0.1); /* Transparência para a onda */
+            background: rgba(255, 255, 255, 0.1); 
             border-radius: 50%;
             transform: rotate(-5deg);
             z-index: 0;
-            filter: blur(10px); /* Suaviza o efeito */
+            filter: blur(10px);
         }
 
-        /* Seção do Formulário de Login (direita) */
+        
         .login-form-section {
             padding: 40px;
             display: flex;
@@ -124,7 +124,7 @@
             color: var(--laranja);
         }
         
-        /* Estilo para o link "Registre-se" */
+ 
         .link-register {
             color: var(--laranja-escuro) !important;
             font-weight: bold;
@@ -134,7 +134,7 @@
             text-decoration: underline;
         }
 
-        /* Estilos para botões personalizados */
+  
         .btn-custom-orange {
             background-color: var(--laranja);
             color: white;
@@ -163,7 +163,6 @@
         }
 
 
-        /* Estilos do Rodapé */
         .footer {
             background-color: #333;
             color: white;
@@ -193,7 +192,6 @@
             color: white;
         }
 
-        /* Responsividade para telas menores */
         @media (max-width: 767.98px) {
             .login-card-container {
                 flex-direction: column;
@@ -205,10 +203,10 @@
                 border-bottom-right-radius: 0;
                 border-top-left-radius: 15px;
                 border-top-right-radius: 15px;
-                height: 300px; /* Altura fixa para a seção de boas-vindas em mobile */
+                height: 300px; 
             }
             .welcome-section::before {
-                display: none; /* Esconde o efeito de onda em mobile */
+                display: none; 
             }
             .login-form-section {
                 padding: 30px 20px;
@@ -366,13 +364,11 @@
             }
         });
 
-        // Event Listeners
-        // Certifique-se que o formulário de login NÃO tem onsubmit="loginUser(this)" no HTML
-        // Apenas este addEventListener deve controlar o submit
+
         document.getElementById('login-form').addEventListener('submit', processaFormLogin);
         document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
 
-        // FUNÇÕES processaFormLogin e salvaLogin (precisam estar no assets/js/login.js para boa prática)
+        
 
         async function processaFormLogin(event) { // Tornar async é crucial se loginUser é async
             event.preventDefault(); // Impede o envio padrão do formulário

@@ -8,40 +8,40 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
     <style>
-        /* Variáveis de Cores */
+       
         :root {
             --laranja: #ff7f50;
             --laranja-escuro: #e66f00;
             --fundo: #fffefc;
             --botao-adotar: #28a745; 
             --botao-adotar-hover: #218838;
-            --navbar-height: 85px; /* Altura da navbar ajustada */
+            --navbar-height: 85px; 
         }
 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--fundo);
-            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
+            padding-top: var(--navbar-height); 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Estilos da Navbar */
+       
         .navbar {
-            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+            padding: 0.8rem 0; 
             background: linear-gradient(90deg, var(--laranja) 0%, var(--laranja-escuro) 100%);
         }
         .navbar-brand {
-            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+            font-size: 2.2rem !important;
         }
         .navbar-brand img {
-            width: 70px; /* Largura do logo */
-            height: 70px; /* Altura do logo */
-            min-width: 70px; /* Garante tamanho mínimo */
-            min-height: 70px; /* Garante tamanho mínimo */
-            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-            padding: 0.5rem; /* Padding interno do logo */
+            width: 70px; 
+            height: 70px; 
+            min-width: 70px; 
+            min-height: 70px; 
+            object-fit: cover;
+            padding: 0.5rem; 
         }
         .navbar-nav .nav-link:hover {
             text-decoration: underline;
@@ -51,19 +51,19 @@
             background-color: #fff3cd;
             color: #000;
         }
-        /* Cor dos links e placeholder na navbar */
+       
         .navbar-brand, .nav-link, .navbar .form-control::placeholder {
             color: white !important;
         }
 
-        /* Estilos do Conteúdo Principal */
+      
         .container.main-content {
             flex-grow: 1; 
             background-color: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin-top: 30px; /* Espaçamento abaixo do navbar */
+            margin-top: 30px; 
             margin-bottom: 30px;
         }
         h1 {
@@ -89,10 +89,10 @@
             background-color: #fefefe;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .adoption-request-card.status-Pendente { border-left: 5px solid #ffc107; } /* Amarelo */
-        .adoption-request-card.status-Aprovada { border-left: 5px solid #28a745; } /* Verde */
-        .adoption-request-card.status-Rejeitada { border-left: 5px solid #dc3545; } /* Vermelho */
-        .adoption-request-card.status-EmAnalise { border-left: 5px solid #007bff; } /* Azul */
+        .adoption-request-card.status-Pendente { border-left: 5px solid #ffc107; } 
+        .adoption-request-card.status-Aprovada { border-left: 5px solid #28a745; } 
+        .adoption-request-card.status-Rejeitada { border-left: 5px solid #dc3545; } 
+        .adoption-request-card.status-EmAnalise { border-left: 5px solid #007bff; } 
 
         .adoption-request-card img {
             width: 80px;
@@ -127,7 +127,7 @@
             font-size: 0.85rem;
         }
 
-        /* Estilos do Footer */
+        
           .footer {
             background-color: #333;
             color: white;

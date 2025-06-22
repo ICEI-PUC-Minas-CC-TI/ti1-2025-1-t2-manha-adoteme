@@ -12,7 +12,7 @@
     background-color: var(--laranja);
     color: white;
     border: none;
-    padding: 10px 20px; /* Default larger padding */
+    padding: 10px 20px; 
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -24,44 +24,43 @@
     color: white;
 }
 
-/* Add or adjust these styles for the small size specifically */
-.btn-sm.btn-custom-orange { /* Target .btn-custom-orange when it also has .btn-sm */
-    padding: 5px 10px; /* Smaller padding, typical for btn-sm */
-    font-size: 0.875rem; /* Smaller font size, typical for btn-sm */
-    /* You might also need to ensure a consistent height if that's the issue */
-    height: 32px; /* Example height if buttons are misaligned vertically */
+
+.btn-sm.btn-custom-orange { 
+    padding: 5px 10px; 
+    font-size: 0.875rem; 
+    height: 32px; 
 }
-        /* Variáveis de Cores */
+    
         :root {
             --laranja: #ff7f50;
             --laranja-escuro: #e66f00;
             --fundo: #fffefc;
-            --navbar-height: 85px; /* Altura da navbar ajustada */
+            --navbar-height: 85px; 
         }
 
         body {
             font-family: 'Roboto', sans-serif;
             background-color: var(--fundo);
-            padding-top: var(--navbar-height); /* Compensa a navbar fixa */
+            padding-top: var(--navbar-height); 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* Estilos da Navbar */
+      
         .navbar {
-            padding: 0.8rem 0; /* Espaçamento vertical da navbar */
+            padding: 0.8rem 0; 
         }
         .navbar-brand {
-            font-size: 2.2rem !important; /* Tamanho da fonte do logo */
+            font-size: 2.2rem !important;
         }
         .navbar-brand img {
-            width: 70px; /* Largura do logo */
-            height: 70px; /* Altura do logo */
-            min-width: 70px; /* Garante tamanho mínimo */
-            min-height: 70px; /* Garante tamanho mínimo */
-            object-fit: cover; /* Garante que a imagem preencha sem distorcer */
-            padding: 0.5rem; /* Padding interno do logo */
+            width: 70px; 
+            height: 70px; 
+            min-width: 70px; 
+            min-height: 70px; 
+            object-fit: cover; 
+            padding: 0.5rem; 
         }
         .navbar-nav .nav-link:hover {
             text-decoration: underline;
@@ -72,18 +71,18 @@
             color: #000;
         }
 
-        /* Estilos do Conteúdo Principal */
+        
         .container.main-content {
             flex-grow: 1; 
             background-color: #ffffff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            margin-top: 30px; /* Espaçamento abaixo do navbar */
+            margin-top: 30px; 
             margin-bottom: 30px;
         }
         
-        /* Estilos do perfil */
+        
         .card.perfil {
             margin-top: 20px;
             padding: 20px;
@@ -92,29 +91,29 @@
         }
         .perfil-header {
             display: flex;
-            align-items: flex-start; /* Alinha no topo, não no centro */
+            align-items: flex-start; 
             margin-bottom: 20px;
-            flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+            flex-wrap: wrap; 
         }
         .perfil-header img {
-            width: 120px; /* Aumentado um pouco para destaque */
+            width: 120px; 
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
             margin-right: 20px;
-            border: 3px solid var(--laranja); /* Borda mais pronunciada */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra na imagem */
+            border: 3px solid var(--laranja); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
         }
         .perfil-header .info {
-            flex-grow: 1; /* Ocupa o espaço restante */
+            flex-grow: 1; 
         }
         .perfil-header .info p {
-            margin-bottom: 8px; /* Espaçamento entre as linhas de info */
+            margin-bottom: 8px; 
             font-size: 1rem;
             color: #555;
         }
         .perfil-header .info p strong {
-            color: #333; /* Cor mais escura para as labels */
+            color: #333; 
         }
         .card.pets {
             margin-top: 20px;
@@ -127,7 +126,6 @@
             display: block;
         }
 
-        /* Estilos do Footer */
         .footer {
             background-color: #333;
             color: white;
@@ -157,7 +155,7 @@
             color: white;
         }
 
-        /* Botões de Ação do perfil */
+        
         .btn-custom-orange { 
             background-color: var(--laranja);
             color: white;
