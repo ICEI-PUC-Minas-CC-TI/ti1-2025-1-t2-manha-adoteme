@@ -1,6 +1,8 @@
 
+// O URL REAL do seu serviço JSON Server no Render
+const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-json.onrender.com'; 
 
-const API_BASE_URL = 'http://localhost:3000';
+// As URLs específicas para pets e usuários, construídas com a base
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
