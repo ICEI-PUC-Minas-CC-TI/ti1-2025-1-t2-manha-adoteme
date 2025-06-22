@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 1. Obter o ID do pet da URL e CONVERTER PARA NÚMERO
     const urlParams = new URLSearchParams(window.location.search);
-    petId = parseInt(urlParams.get('petId')); // <--- AQUI ESTÁ A CORREÇÃO!
+    petId = parseInt(urlParams.get('petId'));
 
     if (isNaN(petId)) { // Verifica se a conversão resultou em "Not a Number"
         petInfoSummary.innerHTML = '<p class="text-danger">ID do pet inválido na URL.</p>';
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <p>Idade: ${pet.idade} anos | Porte: ${pet.porte} | Sexo: ${pet.sexo}</p>
                 </div>
             `;
-            // Armazenar detalhes do pet para uso posterior (se necessário, como para a solicitação)
+            // Armazenar detalhes do pet para usar depois (se necessário, como para a solicitação)
             petInfoSummary.dataset.petDetails = JSON.stringify(pet);
         }
 
@@ -65,8 +65,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (document.getElementById('endereco')) document.getElementById('endereco').value = usuarioAdotante.endereco || '';
     } else {
         console.warn('Nenhum usuário logado. Preencha o formulário manualmente.');
-        // Opcional: Você pode querer desabilitar o formulário ou redirecionar o usuário aqui
-        // window.location.href = '../login/login.html'; 
     }
 
     // 4. Lidar com o envio do formulário
@@ -80,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Coletar dados do formulário
             const solicitacao = {
                 id: Date.now(), // ID único para a solicitação (apenas para simulação)
-                petId: petId, // Agora este petId será um NÚMERO
+                petId: petId,
                 petNome: document.querySelector('#petInfoSummary h4 strong')?.textContent || 'Nome Indefinido', // Pega o nome do pet exibido
                 petImagem: document.querySelector('#petInfoSummary img')?.src || 'https://via.placeholder.com/80', // Pega a imagem do pet exibida
                 
@@ -108,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (alertMessage) alertMessage.style.display = 'block';
             adoptionForm.reset(); // Limpa o formulário
 
-            // Opcional: Redirecionar após o envio
+            //Redirecionar após o envio
             // setTimeout(() => {
             //     window.location.href = '../minhas_adocoes/minhas_adocoes.html'; 
             // }, 2000); 
