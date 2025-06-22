@@ -2,8 +2,6 @@
 const API_URL = 'http://localhost:3000/pets';
 const ADOPTION_REQUESTS_KEY = 'adoptionRequests';
 
-// Removidas as declarações globais de const modalNomeCompleto, etc.
-// Elas serão obtidas dentro da função displayAdotanteDetails
 
 let currentAdoptionRequests = []; 
 let currentPetsDoUsuario = []; 
@@ -118,9 +116,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             console.error('Minhas Adoções: Solicitação não encontrada para exibir detalhes:', requestId);
         }
     };
-}); // Fim do DOMContentLoaded
+}); 
 
-// --- Função para renderizar as solicitações (GLOBALMENTE ACESSÍVEL) ---
+
 function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, loggedInUser) {
     const solicitacoesEnviadasDiv = document.getElementById('solicitacoesEnviadas');
     const noSentRequestsP = document.getElementById('noSentRequests');
@@ -129,7 +127,7 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
     const noReceivedRequestsP = document.getElementById('noReceivedRequests');
     const solicitacoesEnviadasSection = document.getElementById('solicitacoesEnviadasSection');
 
-    // --- Parte 1: Exibir Solicitações Enviadas pelo Usuário Logado ---
+  
     const solicitacoesEnviadas = adoptionRequestsToRender.filter(req => req.adotanteEmail === loggedInUser.email);
 
     if (solicitacoesEnviadas.length > 0) {
@@ -156,7 +154,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
         solicitacoesEnviadasSection.style.display = 'block'; 
     }
 
-    // --- Parte 2: Exibir Solicitações Recebidas para os Pets do Usuário Logado ---
     if (petsOfCurrentUser.length > 0) {
         solicitacoesRecebidasSection.style.display = 'block';
         const petsIdsDoUsuario = petsOfCurrentUser.map(pet => pet.id);
@@ -199,8 +196,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
             noReceivedRequestsP.style.display = 'block';
         }
 
-        // --- Adicionar event listeners APÓS a renderização ---
-        // Para os botões Aceitar/Rejeitar
         document.querySelectorAll('.btn-action-request').forEach(button => {
             button.addEventListener('click', (event) => {
                 const requestId = parseInt(event.target.closest('button').dataset.requestId);
@@ -209,7 +204,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
             });
         });
 
-        // Para os botões "Detalhes"
         document.querySelectorAll('.btn-view-details').forEach(button => {
             button.addEventListener('click', (event) => {
                 const requestId = parseInt(event.target.closest('button').dataset.requestId);
@@ -221,7 +215,6 @@ function renderAdoptionRequests(adoptionRequestsToRender, petsOfCurrentUser, log
         solicitacoesRecebidasSection.style.display = 'none'; 
     }
 
-    // Adicionar event listeners para os botões de remover (ambas as seções)
     document.querySelectorAll('.btn-remove-request').forEach(button => {
         button.addEventListener('click', (event) => {
             const requestId = parseInt(event.target.closest('button').dataset.requestId);
