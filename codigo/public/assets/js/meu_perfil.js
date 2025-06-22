@@ -1,6 +1,6 @@
 
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-json.onrender.com'; // ESTE É O URL DO SEU BACKEND (JSON SERVER)
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 
