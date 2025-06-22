@@ -41,7 +41,7 @@ Nesse cenário, surge a necessidade de uma solução digital que promova a aprox
 
 
 * Objetivo Geral:
-Desenvolver uma plataforma digital que facilite e incentive a adoção responsável de pets, conectando adotantes a abrigos, ONGs e protetores independentes, de forma acessível, segura e intuitiva.
+Desenvolver uma plataforma digital que facilite e incentive a adoção responsável de pets, conectando adotantes a abrigos e protetores independentes, de forma acessível, segura e intuitiva.
 
 * Objetivos Específicos:
 
@@ -49,9 +49,6 @@ Centralizar informações de animais disponíveis para adoção e instituições
 
 Reduzir a burocracia e simplificar o processo de adoção.
 
-Fornecer orientações educativas sobre cuidados com os pets e responsabilidades do adotante.
-
-Oferecer suporte informativo sobre os custos iniciais da adoção.
 
 ## Justificativa
 
@@ -68,13 +65,9 @@ A solução proposta tem impacto direto não apenas no bem-estar dos pets, mas t
 
 O público-alvo da plataforma é composto por diferentes perfis:
 
-Pessoas interessadas em adotar: Buscam um meio confiável, prático e seguro para encontrar um novo companheiro..
-
-Veterinários e clínicas parceiras: Podem oferecer cuidados básicos aos animais adotados e suporte técnico aos adotantes.
+Pessoas interessadas em adotar: Buscam um meio confiável, prático e seguro para encontrar um novo companheiro.
 
 Voluntários e protetores independentes: Atuam no resgate e cuidado inicial dos animais e precisam de apoio para promover as adoções.
-
-Educadores e agentes de conscientização: Trabalham com a divulgação de informações sobre adoção consciente e cuidados com os pets.
 
 Adotantes já experientes: Que podem compartilhar feedback, ajudar na orientação de novos adotantes e continuar conectados à rede de apoio pós-adoção.
 
@@ -131,7 +124,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-001 | Permitir o cadastro de usuários (adotantes, protetores e ONGs) | ALTA |
 | RF-002 | Permitir o cadastro de pets com informações detalhadas (nome, idade, raça, histórico, fotos) | ALTA |
 | RF-003 | Permitir busca de pets | ALTA |
-| RF-004 | Permitir moderação de usuários e postagens para garantir a segurança | ALTA |
+| RF-003 | Permitir gerenciamento das informações do usuário | MÉDIA |
+| RF-003 | Permitir gerenciamento das informações dos pets | MÉDIA |
+| RF-003 | Permitir a requisão de adoção de um pet | ALTO |
+| RF-003 | Permitir aceitar/recusar uma doção, bem como ver os detalhes do usuário interessado | ALTO |
+| RF-003 | Permitir ver os detalhes de cada pet | ALTO |
+
 
 
 ### Requisitos não Funcionais
@@ -140,9 +138,7 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | ID | Descrição do Requisito | Prioridade |
 | --- | --- | --- |
 | RNF-001 | O sistema deve ser responsivo e acessível em dispositivos móveis e desktops | ALTA |
-| RNF-002 | O sistema deve garantir alta disponibilidade e segurança dos dados | ALTA |
 | RNF-003 | O sistema deve ser intuitivo e de fácil usabilidade | ALTA |
-| RNF-004 | O sistema deve garantir a proteção dos dados pessoais dos usuários | MÉDIA |
 | RNF-005 | O sistema deve ter tempos de resposta rápidos para todas as funcionalidades principais | MÉDIA |
 | RNF-006 | O sistema deve ser escalável para futuras atualizações e melhorias | MÉDIA |
 | RNF-007 | O sistema deve utilizar tecnologias modernas para backend e frontend | MÉDIA |
@@ -182,12 +178,12 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Processo de Design Thinking | Miro       | https://www.canva.com/design/DAGjiSz5Dq0/Vdoa-w5IkelpkL5FbgK9zQ/edit?utm_content=DAGjiSz5Dq0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton        |
 | Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-CC-TI/ti1-2025-1-t2-manha-adoteme.git      |
 | Protótipo Interativo       | MarvelApp  | https://www.figma.com/proto/9nqgkjLYdcLDgqU3qD0Ys5/TI-1--?node-id=1-1130&p=f&t=zol3TUu77AKOu688-1&scaling=contain&content-scaling=fixed&page-id=0%3A1   |
-|                             |            |                                                    |
+| Hospedagem                 |        |                                                    |
 
 
 ## Gerenciamento do Projeto
 
-![alt text](images/Kanban.AdoteMe.png)
+![alt text](<images/Gerencimento Projeto FInal.png>)
 
 # Solução Implementada
 
@@ -195,15 +191,7 @@ Esta seção apresenta todos os detalhes da solução criada no projeto.
 
 ## Vídeo do Projeto
 
-O vídeo a seguir traz uma apresentação do problema que a equipe está tratando e a proposta de solução. ⚠️ EXEMPLO ⚠️
-
-[![Vídeo do projeto](images/video.png)](https://www.youtube.com/embed/70gGoFyGeqQ)
-
-> ⚠️ **APAGUE ESSA PARTE ANTES DE ENTREGAR SEU TRABALHO**
->
-> O video de apresentação é voltado para que o público externo possa conhecer a solução. O formato é livre, sendo importante que seja apresentado o problema e a solução numa linguagem descomplicada e direta.
->
-> Inclua um link para o vídeo do projeto.
+https://youtu.be/5OgT0Wtr1B4
 
 ## Funcionalidades
 
@@ -369,36 +357,10 @@ Pets da aplicação
     }
   
 ```
-##### Estrutura de Dados - Busca  
-
-```json
-    {
-      "id": 1,
-      "nome": "Pipoca",
-      "especie": "Cachorro",
-      "raca": "Border Collie",
-      "idade": "5",
-      "sexo": "Fêmea",
-      "porte": "Médio",
-      "peso": "18",
-      "vacinado": "Sim",
-      "vermifugado": "Não",
-      "castrado": "Sim",
-      "condicao": "Nenhuma",
-      "temperamento": "Dócil",
-      "criancas": "Sim",
-      "outrosPets": "Sim",
-      "localizacao": "Rua Montanha Branca, 89",
-      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
-      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
-      "ownerId": 1
-    
-    }
-  
-```
 
 ##### Estrutura de Dados - Meu Perfil 
 
+Usuários da aplicação
 
 ```json
     "usuarios": 
@@ -422,20 +384,6 @@ Pets da aplicação
   }
 ```
 
-##### Estrutura de Dados - Home 
-
-```json
-
-    {
-      "nome": "Pipoca",
-      "localizacao": "Rua Montanha Branca, 89",
-      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
-      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
-      "id": "1",
-
-    }
-  
-```
 
 
 ## Módulos e APIs

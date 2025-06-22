@@ -33,7 +33,7 @@ Bem-vindo(a) ao AdoteMe! Nossa plataforma foi criada para conectar pets que prec
 
 Para encontrar o seu novo melhor amigo: Barra de Busca na Navbar: Na barra de navegação superior, utilize o campo "Buscar pet..." para procurar animais por nome ou raça.
 
-* Página de Busca (🐾 Pets): Ao clicar em "🐾 Pets" (ou usando a busca na navbar), você será direcionado à página de busca completa, onde poderá:
+* Página de Busca : Ao clicar em "🐾 Pets" (ou usando a busca na navbar), você será direcionado à página de busca completa, onde poderá:
 * Digitar o nome ou raça do pet no campo de busca.
 * Utilizar os filtros de Espécie, Porte, Sexo e Vacinado? para refinar sua pesquisa.
 * Clique em "Saiba Mais" em qualquer card de pet para ver seus detalhes completos.
