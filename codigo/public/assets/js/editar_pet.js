@@ -2,11 +2,11 @@
 
 const API_BASE_URL = 'http://localhost:3000';
 const API_PETS_URL = `${API_BASE_URL}/pets`;
-const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; // Para atualizar petIDs do usuário
+const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
-let currentPetId = null; // Armazenará o ID do pet que está sendo editado
+let currentPetId = null;
+let originalOwnerId = null; 
 
-// Função para exibir mensagens de sucesso ou erro
 function displayMessage(mensagem, tipo = 'warning') {
     const msgDiv = document.getElementById('msg');
     if (msgDiv) {
@@ -16,26 +16,22 @@ function displayMessage(mensagem, tipo = 'warning') {
         </div>`;
     } else {
         console.error("displayMessage: Elemento #msg não encontrado no DOM.");
-        alert(mensagem); // Fallback para alerta se div de mensagem não existir
+        alert(mensagem);
     }
 }
 
-// Função para obter o ID do pet da URL
 function getPetIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get('id');
 }
 
-// Função para verificar status de login e carregar dados do pet
 async function initEditPetPage() {
-    // Verifica se o usuário está logado
     const usuarioCorrenteJSON = sessionStorage.getItem('usuarioCorrente');
     if (!usuarioCorrenteJSON) {
         console.error('initEditPetPage: Nenhum usuário logado. Redirecionando.');
         window.location.href = '/modulos/login/login.html';
         return;
     }
-    // A variável usuarioCorrente já é global via login.js
 
     currentPetId = getPetIdFromUrl();
     if (!currentPetId) {
@@ -44,10 +40,9 @@ async function initEditPetPage() {
         return;
     }
 
-    await loadPetData(currentPetId); // Carrega os dados do pet
+    await loadPetData(currentPetId);
 }
 
-// Função para carregar os dados do pet no formulário
 async function loadPetData(petId) {
     try {
         const response = await fetch(`${API_PETS_URL}/${petId}`);
@@ -59,7 +54,8 @@ async function loadPetData(petId) {
         }
         const pet = await response.json();
 
-        // Preenche o formulário
+        originalOwnerId = pet.ownerId; 
+
         document.getElementById('inputId').value = pet.id;
         document.getElementById('inputNome').value = pet.nome || '';
         document.getElementById('inputEspecie').value = pet.especie || '';
@@ -76,8 +72,11 @@ async function loadPetData(petId) {
         document.getElementById('inputCriancas').value = pet.criancas || 'Não';
         document.getElementById('inputOutrosPets').value = pet.outrosPets || 'Não';
         document.getElementById('inputLocalizacao').value = pet.localizacao || '';
-        document.getElementById('inputImagem').value = pet.imagem || ''; 
+        document.getElementById('inputImagem').value = pet.imagem || '';
         
+       
+        document.getElementById('inputDescricao').value = pet.descricao || ''; 
+
         const imgPreview = document.getElementById('imgPreview');
         if (pet.imagem) {
             imgPreview.src = pet.imagem;
@@ -94,7 +93,6 @@ async function loadPetData(petId) {
     }
 }
 
-// Função para salvar as alterações do pet
 async function savePetChanges(event) {
     event.preventDefault();
 
@@ -103,9 +101,8 @@ async function savePetChanges(event) {
         return;
     }
     
-    // Coleta todos os dados do formulário
     const updatedPet = {
-        id: currentPetId, // Garante que o ID é mantido
+        id: currentPetId, 
         nome: document.getElementById('inputNome').value,
         especie: document.getElementById('inputEspecie').value,
         raca: document.getElementById('inputRaca').value,
@@ -121,17 +118,24 @@ async function savePetChanges(event) {
         criancas: document.getElementById('inputCriancas').value,
         outrosPets: document.getElementById('inputOutrosPets').value,
         localizacao: document.getElementById('inputLocalizacao').value,
-        imagem: document.getElementById('inputImagem').value 
+        imagem: document.getElementById('inputImagem').value,
+        descricao: document.getElementById('inputDescricao').value 
     };
 
-    // Adicionar ownerId do usuário logado (se existir) para consistência no DB
-    if (window.usuarioCorrente && window.usuarioCorrente.id) {
+    if (originalOwnerId !== null) {
+        updatedPet.ownerId = originalOwnerId;
+    } else if (window.usuarioCorrente && window.usuarioCorrente.id) {
         updatedPet.ownerId = window.usuarioCorrente.id;
+        console.warn('originalOwnerId não disponível, usando usuarioCorrente.id como fallback.');
+    } else {
+        displayMessage('Erro: Não foi possível determinar o proprietário do pet para salvar. Login necessário.', 'danger');
+        console.error('savePetChanges: originalOwnerId e usuarioCorrente.id não disponíveis.');
+        return;
     }
 
     try {
         const response = await fetch(`${API_PETS_URL}/${currentPetId}`, {
-            method: 'PUT', // PUT para atualizar o recurso completo
+            method: 'PUT', 
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedPet),
         });
@@ -142,14 +146,12 @@ async function savePetChanges(event) {
         }
 
         displayMessage('Pet atualizado com sucesso!', 'success');
-
     } catch (error) {
         console.error('savePetChanges: Erro ao salvar alterações do pet:', error);
         displayMessage(`Erro ao salvar alterações: ${error.message}`, 'danger');
     }
 }
 
-// Função para excluir o pet
 async function deletePetConfirmed() {
     if (!currentPetId) {
         displayMessage('Erro: ID do pet não encontrado para exclusão.', 'danger');
@@ -160,7 +162,6 @@ async function deletePetConfirmed() {
         return;
     }
 
-    // Verifica se o usuário está logado (para atualização de petIDs)
     if (!window.usuarioCorrente || !window.usuarioCorrente.id) {
         displayMessage('Erro: Você precisa estar logado para excluir um pet.', 'danger');
         return;
@@ -177,7 +178,6 @@ async function deletePetConfirmed() {
 
         displayMessage('Pet excluído com sucesso!', 'success');
         
-        // Atualiza o perfil do usuário para remover o ID do pet
         const userResponse = await fetch(`${API_USUARIOS_URL}/${window.usuarioCorrente.id}`);
         if (!userResponse.ok) throw new Error(`Erro ao buscar usuário para remoção de petIDs: ${userResponse.status}`);
         const user = await userResponse.json();
@@ -194,11 +194,9 @@ async function deletePetConfirmed() {
             throw new Error(`Erro ao remover petID do usuário: ${updateUserResponse.status}`);
         }
 
-        // Atualiza o usuarioCorrente no sessionStorage
         const updatedUser = await updateUserResponse.json();
         sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser));
 
-        // Redireciona de volta para a página de perfil após a exclusão
         window.location.href = '/modulos/meu-perfil/meu_perfil.html';
 
     } catch (error) {
@@ -207,22 +205,41 @@ async function deletePetConfirmed() {
     }
 }
 
-// Inicialização da página e Event Listeners
-window.onload = () => {
-    initEditPetPage(); // Carrega dados do pet
+window.onload = () => { 
+    initEditPetPage(); 
     
-    document.getElementById('formEditarPet').addEventListener('submit', savePetChanges);
-    document.getElementById('btnExcluirPet').addEventListener('click', deletePetConfirmed);
+    const formEditarPet = document.getElementById('formEditarPet');
+    if (formEditarPet) {
+        formEditarPet.addEventListener('submit', savePetChanges);
+    } else {
+        console.error("Elemento 'formEditarPet' não encontrado para adicionar event listener.");
+    }
 
-    // Prévia da imagem ao digitar a URL
-    document.getElementById('inputImagem').addEventListener('input', function () {
-        const imgPreview = document.getElementById('imgPreview');
-        if (this.value) {
-            imgPreview.src = this.value;
-            imgPreview.style.display = 'block';
-        } else {
-            imgPreview.src = '';
-            imgPreview.style.display = 'none';
-        }
-    });
+    const btnExcluirPet = document.getElementById('btnExcluirPet');
+    if (btnExcluirPet) {
+        btnExcluirPet.addEventListener('click', deletePetConfirmed);
+    } else {
+        console.warn("Elemento 'btnExcluirPet' não encontrado. Exclusão de pet pode não estar disponível.");
+    }
+
+    const inputImagem = document.getElementById('inputImagem');
+    const imgPreview = document.getElementById('imgPreview');
+    if (inputImagem && imgPreview) {
+        inputImagem.addEventListener('input', function () {
+            const imageUrl = this.value;
+            if (imageUrl) {
+                imgPreview.src = imageUrl;
+                imgPreview.style.display = 'block';
+            } else {
+                imgPreview.src = '';
+                imgPreview.style.display = 'none';
+            }
+        });
+    }
+
+    // Lógica para pré-visualização da imagem de descrição
+    const inputDescricao = document.getElementById('inputDescricao'); // Certifique-se que este ID existe no HTML
+    if (inputDescricao) {
+  
+    }
 };
