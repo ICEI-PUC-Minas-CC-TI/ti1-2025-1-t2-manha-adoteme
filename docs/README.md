@@ -178,7 +178,7 @@ Relação de ferramentas empregadas pelo grupo durante o projeto.
 | Processo de Design Thinking | Miro       | https://www.canva.com/design/DAGjiSz5Dq0/Vdoa-w5IkelpkL5FbgK9zQ/edit?utm_content=DAGjiSz5Dq0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton        |
 | Repositório de código     | GitHub     | https://github.com/ICEI-PUC-Minas-CC-TI/ti1-2025-1-t2-manha-adoteme.git      |
 | Protótipo Interativo       | MarvelApp  | https://www.figma.com/proto/9nqgkjLYdcLDgqU3qD0Ys5/TI-1--?node-id=1-1130&p=f&t=zol3TUu77AKOu688-1&scaling=contain&content-scaling=fixed&page-id=0%3A1   |
-| Hospedagem                 |        |                                                    |
+| Hospedagem                 | Render       |     https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com                                               |
 
 
 ## Gerenciamento do Projeto
