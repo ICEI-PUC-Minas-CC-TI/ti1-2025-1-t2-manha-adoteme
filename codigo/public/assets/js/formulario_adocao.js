@@ -1,6 +1,5 @@
-
-const API_URL = 'http://localhost:3000/pets'; 
-const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; 
+const API_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/pets';
+const ADOPTION_REQUESTS_KEY = 'adoptionRequests';
 
 document.addEventListener('DOMContentLoaded', async () => {
     const petInfoSummary = document.getElementById('petInfoSummary');
