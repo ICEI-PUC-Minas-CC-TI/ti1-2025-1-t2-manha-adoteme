@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/pets';
+const API_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/pets';
 let petsCache = [];
 
 // Função para buscar todos os pets da API
