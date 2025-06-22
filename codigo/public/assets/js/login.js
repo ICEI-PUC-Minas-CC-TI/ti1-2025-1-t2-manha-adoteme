@@ -48,7 +48,6 @@ function initLoginApp () {
             console.log("initLoginApp: Usuário corrente carregado do sessionStorage:", usuarioCorrente);
         } else {
             console.log("initLoginApp: Nenhum usuário corrente no sessionStorage. Redirecionando para LOGIN_URL.");
-            // window.location.href = LOGIN_URL; // Removido para evitar loop em páginas que não precisam de login
         }
 
         // REGISTRA LISTENER PARA O EVENTO DE CARREGAMENTO DA PÁGINA PARA ATUALIZAR INFORMAÇÕES DO USUÁRIO
@@ -129,10 +128,10 @@ async function addUser (nome, login, senha, email, endereco, celular, cpf, fotoP
         "senha": senha, 
         "nome": nome, 
         "email": email,
-        "endereco": endereco, // NOVO
-        "celular": celular,   // NOVO
-        "cpf": cpf,           // NOVO
-        "fotoPerfil": fotoPerfil, // NOVO
+        "endereco": endereco,
+        "celular": celular,
+        "cpf": cpf,
+        "fotoPerfil": fotoPerfil,
         "petIDs": [] // Inicializa com array vazio para pets
     };
 
