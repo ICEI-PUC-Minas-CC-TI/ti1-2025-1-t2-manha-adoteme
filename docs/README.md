@@ -347,68 +347,52 @@ Pets da aplicação
 
 ```json
     {
+      "id": 1,
       "nome": "Pipoca",
       "especie": "Cachorro",
-      "raca": "Border Collie ",
+      "raca": "Border Collie",
       "idade": "5",
       "sexo": "Fêmea",
-      "porte": "Grande",
-      "peso": "19",
+      "porte": "Médio",
+      "peso": "18",
       "vacinado": "Sim",
-      "vermifugado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "temperamento": "Dócil",
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Montanha Branca, 89",
-      "id": "1"
-    }
-  
-```
-##### Estrutura de Dados - ONG's   
-
-Instituições
-
-```json
-    {
-      
-      "id": 1,
-      "nome": "Amigos dos Animais",
-      "telefone": "(31) 99999-0001",
-      "email": "contato@amigosanimais.org",
-      "cidade": "Belo Horizonte",
-      "categoria": "Adoção",
-      "site": "https://www.amigosanimais.org",
-      "responsavel": "Carla Souza",
-      "cnpj": "12.345.678/0001-90",
-      "fundacao": "2012-05-10",
-      "descricao": "Trabalhamos com a adoção responsável de cães e gatos resgatados."
-    
+      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
+      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
+      "ownerId": 1
     }
   
 ```
 ##### Estrutura de Dados - Busca  
 
-
 ```json
     {
+      "id": 1,
       "nome": "Pipoca",
       "especie": "Cachorro",
-      "raca": "Border Collie ",
+      "raca": "Border Collie",
       "idade": "5",
       "sexo": "Fêmea",
-      "porte": "Grande",
-      "peso": "19",
+      "porte": "Médio",
+      "peso": "18",
       "vacinado": "Sim",
-      "vermifugado": "Sim",
+      "vermifugado": "Não",
       "castrado": "Sim",
       "condicao": "Nenhuma",
       "temperamento": "Dócil",
       "criancas": "Sim",
       "outrosPets": "Sim",
       "localizacao": "Rua Montanha Branca, 89",
-      "id": "1"
+      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
+      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
+      "ownerId": 1
+    
     }
   
 ```
@@ -417,20 +401,25 @@ Instituições
 
 
 ```json
- "users": [
+    "usuarios": 
     {
       "id": 1,
-      "nome": "Matheus Silva",
-      "email": "matheus@email.com",
+      "senha": "senha123",
+      "nome": "Pedro Augusto",
+      "email": "joao@email.com",
       "endereco": "Rua das Flores, 123",
       "celular": "(31) 98765-4321",
       "cpf": "123.456.789-00",
-      "nomeUsuario": "matheus123",
-      "senha": "senhaSegura",
-      "fotoPerfil": "https://i.pravatar.cc/160?img=5",
-      "petIDs": [1, 2]
-    }
-  ],
+      "login": "joao123",
+      "fotoPerfil": "https://images.pexels.com/photos/60778/pexels-photo-60778.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "petIDs": [
+        1,
+        2,
+        11,
+        12
+      ]
+    
+  }
 ```
 
 ##### Estrutura de Dados - Home 
@@ -439,9 +428,9 @@ Instituições
 
     {
       "nome": "Pipoca",
-      "especie": "Cachorro",
-      "raca": "Border Collie ",
-      "idade": "5",
+      "localizacao": "Rua Montanha Branca, 89",
+      "descricao": "Dócil e inteligente, ideal para famílias ativas.",
+      "imagem": "https://petfisio.com.br/wp-content/uploads/2019/07/bordercollie3.jpg",
       "id": "1",
 
     }
