@@ -1,7 +1,8 @@
 
 const LOGIN_URL = "/modulos/login/login.html";
-let RETURN_URL = "/index.html"; 
-const API_URL = 'http://localhost:3000/usuarios'; 
+let RETURN_URL = "/index.html";
+const API_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/usuarios';
+
 
 // Objeto para o banco de dados de usuários baseado em JSON
 var db_usuarios = []; // Inicializado como array vazio
