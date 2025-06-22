@@ -15,7 +15,7 @@
             --laranja-escuro: #e66f00;
             --fundo: #fffaf3;
 
-            /* Cores para o gradiente da seção de boas-vindas (inspiradas na imagem) */
+            /* Cores para o gradiente da seção de boas-vindas */
             --gradiente-azul-claro: rgba(76, 175, 80, 0.7); /* Verde amigável para pets com transparência */
             --gradiente-azul-escuro: rgba(33, 150, 243, 0.7); /* Azul vibrante com transparência */
             --texto-gradiente: #ffffff;
@@ -50,7 +50,7 @@
             min-height: 500px; /* Altura mínima para o card */
         }
 
-        /* Seção de Boas-Vindas (esquerda) - APENAS A FOTO DO CACHORRO COM GRADIENTE */
+        /* Seção de Boas-Vindas*/
         .welcome-section {
             /* Gradiente com sobreposição na imagem do doguinho */
             background: url('https://placedog.net/500/750?id=123') no-repeat center center; /* URL da foto do doguinho */
@@ -65,7 +65,6 @@
             position: relative;
             z-index: 1; /* Para garantir que o conteúdo fique acima do gradiente */
         }
-        /* Este pseudo-elemento é para o "efeito montanha/onda" que você tinha na imagem de referência */
         .welcome-section::before {
             content: '';
             position: absolute;
@@ -367,15 +366,13 @@
             }
         });
 
-        // Event Listeners (permanecem os mesmos)
+        // Event Listeners
         // Certifique-se que o formulário de login NÃO tem onsubmit="loginUser(this)" no HTML
         // Apenas este addEventListener deve controlar o submit
         document.getElementById('login-form').addEventListener('submit', processaFormLogin);
         document.getElementById('btn_salvar').addEventListener('click', salvaLogin);
 
         // FUNÇÕES processaFormLogin e salvaLogin (precisam estar no assets/js/login.js para boa prática)
-        // Mantenho-as aqui APENAS para referência, se você as tem no HTML.
-        // Se já estão no login.js, REMOVA estas definições duplicadas daqui.
 
         async function processaFormLogin(event) { // Tornar async é crucial se loginUser é async
             event.preventDefault(); // Impede o envio padrão do formulário
@@ -392,7 +389,7 @@
 
                 if (resultadoLogin) {
                     console.log("processaFormLogin: Login bem-sucedido. Redirecionando para /index.html");
-                    window.location.href = "/index.html"; // <-- Linha de redirecionamento
+                    window.location.href = "/index.html";
                 } else {
                     console.log("processaFormLogin: Login falhou. Exibindo alerta.");
                     alert('Usuário ou senha incorretos');
@@ -416,7 +413,6 @@
                 return;
             }
 
-            // NOVOS CAMPOS AQUI
             let endereco = document.getElementById('txt_endereco').value;
             let celular = document.getElementById('txt_celular').value;
             let cpf = document.getElementById('txt_cpf').value;
