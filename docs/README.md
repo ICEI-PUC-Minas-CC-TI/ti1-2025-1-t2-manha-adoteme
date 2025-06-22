@@ -220,21 +220,24 @@ Permite a inclusão, leitura, alteração e exclusão de pets para o sistema
   * Clique em "Registrar um Pet"
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/funcionalidade_pets.png)
+![Tela de Funcionalidade](images/CADASTRO%20PET.png)
 
-##### Funcionalidade 2 - Cadastro de ONG's
+##### Funcionalidade 2 - Adoção
 
-Permite a inclusão, leitura, alteração e exclusão de ONGS para o sistema
-
+Função principal é facilitar a conexão entre pets e futuros adotantes, guiando-os através de um formulário de candidatura e requisitos necessários.
 
 * **Instruções de acesso:**
   * Abra o site e efetue o login
-  * Acesse o menu principal e escolha a opção Cadastros
-  * Em seguida, escolha a opção ONGS
-  * Cadastre a sua ONG
+  * Acesse o menu principal e vá na barra de busca
+  * Em seguida, escreva o que procura ou utilize os filtros para facilitar sua busca
+  * Depois escolha seu Pet e entre na sua página de detalhes
+  * Veja os detalhes e solicite uma requisição de adoção
+  * Preencha o formulário e o submeta
+  * Aguarde a resposta do outro usuário 
 * **Tela da funcionalidade**:
-
-![Tela de Funcionalidade](images/funcionalidade_ongs.jpg)
+  ![Tela de Funcionalidade](images/detalhespet.png)
+  ![Tela de Funcionalidade](images/formularioadocao.png)
+  ![Tela de Funcionalidade](images/solicitacoes.png)
 
 ##### Funcionalidade 3 - Ferramenta de busca: 
 
@@ -246,7 +249,7 @@ Permite a inserir termos como nome do pet, raça ou palavras-chave. Aciona uma b
   * Em seguida, escreva o que procura ou utilize os filtros para facilitar sua busca
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/Funcinalidades_busca.png)
+![Tela de Funcionalidade](images/PAGINA%20BUSCA.png)
 
 ##### Funcionalidade 4 - Gerenciamento de Perfil
 
@@ -257,8 +260,8 @@ Permite o usuário ver suas inforamções, bem como alterá-las, além de ver o 
   * Acesse o menu principal e vá na aba meu perfil
 * **Tela da funcionalidade**:
 
-![Tela de Funcionalidade](images/Meu_Perfil.png)
-![Tela de Funcionalidade](images/Edição_Perfil.png)
+![Tela de Funcionalidade](images/MEUPERFIL.png)
+![Tela de Funcionalidade](images/EDITARPERFIL.png)
 
 ##### Funcionalidade 5 - Home do Site:
 
@@ -269,6 +272,69 @@ Tela inicial que os usuários logados estarão permitidos a ver e utilizar
   * Será direcionado para a Home do nosso site
 * **Tela da funcionalidade**:
 ![Tela de Funcionalidade](images/adoteme.home.jpg)
+
+##### Funcionalidade 6 - Edição das Informações dos Pets:
+
+Permite o usuário a editar os pets cadastrados
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Vá em Meu Perfil
+  * Veja os seus Pets e quilique em editar Pet
+  * Edite conforme o desejado
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/edicaopets.png)
+
+##### Funcionalidade 7 - Login:
+
+Permite o usuário efetuar Login para acessar o site
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/login.png)
+
+##### Funcionalidade 8 - Registro de Usuário:
+
+Permite o usuário se registrar para depois efetuar o login e acessaro o site
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Selecione a opção Registre-se e efetue o registro de usuário
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/registro.png)
+
+##### Funcionalidade 9 - Página de Detalhes dos Pets:
+
+Permite o usuário analisar os detalhes dos Pets para depois efetuar a solicitação de adoção
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Em seguida, escreva o que procura ou utilize os filtros para facilitar sua busca
+  * Depois escolha seu Pet e entre na sua página de detalhes
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/detalhespet.png)
+
+##### Funcionalidade 10 - Cards Pets Home:
+
+Permite o usuário ver alguns Pets disponíveis na Home
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Em seguida, na Home irá aparecer alguns Pets disponíveis
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/cards.png)
+
+##### Funcionalidade 11 - Página Minhas adoções:
+
+Permite o usuário ver os Pets solicitados e os que foram requisitados para serem adotados
+
+* **Instruções de acesso:**
+  * Abra o site e efetue o login
+  * Em seguida, na Home, apertar o botão Minhas Adoções
+  * Poderá ver todas as solicitações feitas e recebidas
+* **Tela da funcionalidade**:
+![Tela de Funcionalidade](images/minhasadocoes.png)
 
 
 ## Estruturas de Dados
