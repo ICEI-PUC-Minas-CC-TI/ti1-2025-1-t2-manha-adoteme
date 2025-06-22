@@ -5,7 +5,6 @@ const API_BASE_URL = 'http://localhost:3000';
 const API_PETS_URL = `${API_BASE_URL}/pets`;
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
-// Acessamos 'usuarioCorrente' que é declarado e gerenciado por 'login.js' no escopo global (window)
 
 // --- Funções de Utilitário ---
 
@@ -31,7 +30,6 @@ function clearForm() {
     document.getElementById('btnInserir').style.display = 'inline'; // Botão 'Adicionar' visível
     document.getElementById('btnAlterar').style.display = 'none'; // Botão 'Editar' escondido nesta página
     
-    // MUDANÇA AQUI: Para limpar a mensagem, basta esvaziar o innerHTML da div #msg
     const msgDiv = document.getElementById('msg');
     if (msgDiv) {
         msgDiv.innerHTML = ''; // Limpa o conteúdo da div #msg
@@ -108,7 +106,7 @@ async function createPet(pet) {
         sessionStorage.setItem('usuarioCorrente', JSON.stringify(updatedUser)); 
         console.log('createPet: petIDs do usuário atualizados no db.json e sessionStorage:', updatedUser);
 
-        // NOVO: Redirecionar para a página "Meu Perfil" após um pequeno delay para a mensagem ser lida
+        //Redirecionar para a página "Meu Perfil" após um pequeno delay para a mensagem ser lida
         setTimeout(() => { 
             window.location.href = '/modulos/meu-perfil/meu_perfil.html';
         }, 2500); // Redireciona após 2.5 segundos
