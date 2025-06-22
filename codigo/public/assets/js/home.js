@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const petsContainer = document.getElementById("pets-container");
 
-  fetch("http://localhost:3000/pets")
+ fetch("https://adoteme-json-api-meu-nome.onrender.com/pets") 
     .then(response => response.json())
     .then(pets => {
       pets.slice(0, 6).forEach(pet => {
