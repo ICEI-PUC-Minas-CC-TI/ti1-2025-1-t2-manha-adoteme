@@ -1,7 +1,7 @@
 
+const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com'; // URL pública no Render
+const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`;
 
-const API_BASE_URL = 'http://localhost:3000'; // Base URL para seu json-server
-const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; // Endpoint para usuários
 
 let petIDsUsuario = []; // Armazenará os IDs de pets do usuário
 
