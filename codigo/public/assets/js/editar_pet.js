@@ -35,15 +35,12 @@ async function initEditPetPage() {
         window.location.href = '/modulos/login/login.html';
         return;
     }
-    // Não precisamos de window.usuarioCorrente aqui, pois só precisamos do ID do usuário logado para autorização/atualização de petIDs
     // A variável usuarioCorrente já é global via login.js
 
     currentPetId = getPetIdFromUrl();
     if (!currentPetId) {
         console.error('initEditPetPage: ID do pet não encontrado na URL.');
         displayMessage('Erro: ID do pet não especificado na URL para edição.', 'danger');
-        // Opcional: redirecionar de volta para a página de perfil ou listagem de pets
-        // window.location.href = '/modulos/meu-perfil/meu_perfil.html';
         return;
     }
 
@@ -94,8 +91,6 @@ async function loadPetData(petId) {
     } catch (error) {
         console.error('loadPetData: Erro ao carregar dados do pet:', error);
         displayMessage(`Erro ao carregar dados do pet: ${error.message}`, 'danger');
-        // Opcional: redirecionar após erro grave no carregamento
-        // window.location.href = '/modulos/meu-perfil/meu_perfil.html';
     }
 }
 
