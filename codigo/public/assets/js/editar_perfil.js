@@ -38,7 +38,7 @@ async function carregarDadosParaEditar() {
         document.getElementById('endereco').value = usuario.endereco || '';
         document.getElementById('celular').value = usuario.celular || '';
         document.getElementById('cpf').value = usuario.cpf || '';
-        document.getElementById('login').value = usuario.login || ''; // Alterado de nomeUsuario para login
+        document.getElementById('login').value = usuario.login || '';
         document.getElementById('fotoPerfil').value = usuario.fotoPerfil || '';
         document.getElementById('imgPreview').src = usuario.fotoPerfil || '';
         document.getElementById('imgPreview').style.display = usuario.fotoPerfil ? 'block' : 'none'; // Mostra/oculta a prévia
