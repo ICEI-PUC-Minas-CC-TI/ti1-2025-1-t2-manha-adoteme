@@ -4,7 +4,7 @@ const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/';
 const API_URL = `${API_BASE_URL}/pets`; 
 const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; 
 
-const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; // Mantém esta linha como está
+const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; 
 
 
 let currentAdoptionRequests = []; 
