@@ -1,12 +1,8 @@
 
-// AQUI ESTÁ A MUDANÇA PARA ESTE ARQUIVO ESPECÍFICO
+const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/';
 
-// Defina a base da sua API primeiro (o URL do seu serviço JSON Server no Render)
-const API_BASE_URL = 'https://ti1-2025-1-t2-manha-adoteme-p1jd.onrender.com/'; // O URL DO SEU JSON SERVER REAL
-
-// E então, as URLs específicas para pets e usuários
-const API_URL = `${API_BASE_URL}/pets`; // Para requisições de pets
-const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; // Provavelmente necessário neste arquivo para buscar pets dos usuários
+const API_URL = `${API_BASE_URL}/pets`; 
+const API_USUARIOS_URL = `${API_BASE_URL}/usuarios`; 
 
 const ADOPTION_REQUESTS_KEY = 'adoptionRequests'; // Mantém esta linha como está
 
